@@ -1,12 +1,13 @@
 /* Document */
 
 body { font-family: Verdana,Geneva,sans-serif; line-height: 1.2; margin: 1%; }
-h1 { font-size: 2em; font-weight: bold; }
-h2 { font-size: 1.3em; font-weight: bold; }
-p { margin-bottom: 0.5%; }
-ul { margin: 1%; }
-li { list-style-type: disc; list-style-position: inside; margin-bottom: 0.3%; }
-nav li { list-style-type: none; margin-bottom: 0.5%; }
+h1 { font-size: 2em; }
+h2 { font-size: 1.3em; }
+h1, h2 { font-weight: bold; margin: 5px 0; }
+p { margin: 5px 0; }
+ul { padding-left: 10px; margin: 10px 0; list-style-type: disc; }
+li { margin-left: 10px; padding-left: 10px; }
+nav li { margin-bottom: 0.5%; }
 strong { font-weight: bold; }
 
 header, article, aside, footer { padding: 10px 1em; margin: 0 5% 10px; }
