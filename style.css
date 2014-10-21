@@ -11,6 +11,7 @@ ul { padding-left: 10px; margin: 10px 0; list-style-type: disc; }
 li { margin-left: 10px; padding-left: 10px; }
 nav li { margin-bottom: 0.5%; }
 strong { font-weight: bold; }
+em { font-style: italic; }
 pre { padding-top: 10px; background-color: #FFFFFF; }
 code, pre { color: #454E53; font-weight: bold; font-size: .8em; }
 a { color: #8C6B52; }
