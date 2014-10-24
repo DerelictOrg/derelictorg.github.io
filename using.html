@@ -73,14 +73,18 @@
         dub build
         </pre>
 
-        <p>At this point, you should have a platform-specific library in a the 'lib' sudirectory of each package. In order to compile your code, the compiler will need to be able to find the Derelict source modules so that it can parse the import statements it encounters. In order to link the executable, the linker will need to know where to find the library files. Failure to properly configure your build system or IDE will result in compilation or linker errors. It is beyond the scope of this documentation to describe how to configure the various IDEs and build tools people may use with D, but the relevant paths for this example are as follows.</p>
+        <p>At this point, you should have a platform-specific library in a the 'lib' sudirectory of each package. In order to compile your code, the compiler will need to be able to find the Derelict source modules so that it can parse the import statements it encounters. The following paths are the ones you need to configure in your build system.</p>
 
         <pre>
         // These are the import paths to the top-level import directory for the compiler
         $DERELICT/DerelictSDL2/source
         $DERELICT/DerelictGL3/source
         $DERELICT/DerelictUtil/source
+        </pre>
 
+        <p>In order to link the executable, the linker will need to know which libraries to link with and where to find them. The libraries needed in this example are shown below, along with their full paths. These will need to be configured appropriately in your build system.</p>
+
+        <pre>
         // These are the paths to the libraries for the linker on Windows systems
         $DERELICT/DerelictSDL2/lib/DerelictSDL2.lib
         $DERELICT/DerelictGL3/lib/DerelictGL3.lib
@@ -92,7 +96,9 @@
         $DERELICT/DerelictUtil/lib/libDerelictUtil.a
         </pre>
 
-        <p>It is up to you know how to use these paths appropriately with your build system.</p>
+        <p><strong>Note For Posix Systems:</strong> When building on a Posix system (such as Mac, Linux, or one of the BSDs), you will also need to link with <code>libdl</code>. This is used by DerelictUtil to load shared libraries dynamically at runtime.</p>
+
+        <p>Failure to properly configure your build system or IDE will result in compilation or linker errors. It is beyond the scope of this documentation to describe how to configure the various IDEs and build tools people may use with D. That is entirely up to the user.</p>
     </article>
 </body>
 </html>
