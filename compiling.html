@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+<head>
+    <title>Derelict Documentation -- Building and Linking</title>
+    <meta name="author" content="Mike Parker">
+    <meta name="description" content="Documentation for the DerelictOrg project (https://github.com/DerelictOrg/).">
+    <meta name="keywords" content="derelict,bindings,dlang,dynamic">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header role="banner" >
+        <h1>Using Derelict</h1>
+        <nav role="navigation">
+            <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="using.html">Using Derelict</a></li>
+            </ul>
+        </nav>
+    </header>
+    <aside role="complementary">
+        <p>Please note that this documentation is under development and is currently incomplete.</p>
+    </aside>
+    <article>
+        <h2>Building and Linking</h2>
+
+        <p>All of the Derelict packages are configured for convenient compilation via <a href="http://code.dlang.org/download" target="_blank">DUB</a>, the build and package tool for D. There are two ways to go about using DUB to compile any Derelict package for your projects. The recommended way is to <a href="#dub">use DUB to manage your own project</a>. This is easiest and requires little effort to configure. If you <a href="#nodub">do not use DUB to manage your project</a>, then you will need to use it to compile the Derelict libraries you need to use and then configure your preferred build system or IDE to find the Derelict source and libraries.</p>
+
+        <h3 id="dub">When Using DUB to Manage Your Project</h3>
+
+        <p>Using this approach, you never have to clone any of the Derelict packages in Git. DUB will take care of pulling down the source of any Derelict packages you need to use, compiling it, and linking it with your executable. It can also make sure that you have the very latest release of the packages you are using. You can find a great many DUB-enabled libraries other than Derelict in the <a href="http://code.dlang.org/" target="_blank">DUB Package Registry</a>, all of which can also be automatically compiled and linked with your project just by editing a configuration file.</p>
+
+        <p>When creating a project for DUB to manage, a configuration file of the name dub.json needs to be provided. This is not a tutorial on general DUB use, so to learn more about how to configure compile settings and more, please see the <a href="http://code.dlang.org/package-format" target="_blank">package format documentation</a>. To find help with using DUB, vist the <a href="forum.rejectedsoftware.com/groups/rejectedsoftware.dub/" target="_blank">DUB forums</a>.
+
+        <p>To use any package from the DerelictOrg collection in your project, you'll simply need to add the package to your dub.json configuration as a dependency. When you execute <code>dub</code> or <code>dub build</code> in the directory where your dub.json configuration lives, DUB will make sure that the dependencies are installed, compiled and linked. You can upgrade to the latest version of each of your project's dependencies by executing <code>dub upgrade</code> in the same directory.</p>
+
+        <p>All packages from DerelictOrg are registered in the DUB registry under names that are formatted in a specific way, derived from the package name. For example, the package DerelictSDL2 is registered as <code>"derelict-sdl2"</code> and the package DerelictGL3 as <code>"derelict-gl3"</code>. Every official Derelict package follows that pattern.</p>
+
+        <p>Some people maintain Derelict-style packages, using DerelictUtil as a foundation, outside of the DerelictOrg group. These projects tend to use a similar format for registered names, with the addition of the word <code>"extras"</code>. For example, a third-party package called DerelictFoo would be registered as <code>"derelict-extras-foo"</code>. Please be aware that the DerelictOrg maintainers are not responsible for such packages and any support requests should be directed to the person or people who are.</p>
+
+        <p>To enable any package from the DUB registry, including the Derelict packages, in your DUB-managed project, simply add the registered package name, coupled with a version string, as a dependency in your dub.json configuration. For example, a project using both DerelictSDL2 and DerelictGL3 would add something like the following:</p>
+
+        <pre>
+        "dependencies": {
+            "derelict-sdl2": "~>1.1.9",
+            "derelict-gl3": ">=1.0.9"
+        }
+        </pre>
+
+        <p>This specifies a version of DerelictSDL2 <em>greater than or equal to</em> 1.1.9 and <em>less than</em> 1.2.0, along with any version of DerelictGL3 <em>greater than or eqaul to</em> 1.0.9. When compiling the first time, DUB will check the local system for any version matching the cronstraints and, if none is found, will fetch the latest from git that does match. Later, when running <code>dub upgrade</code>, DUB will look to see if a newer version that matches the constraints is available. For more information on DUB dependencies, see the <a href="http://code.dlang.org/package-format" target="_blank">DUB package documentation</a>.</p>
+
+        <h3 id="nodub">When Managing Your Project Outside of DUB</h3>
+
+        <p>When using a build system besides DUB, or an IDE, to manage your poject, the first thing you need to do is to determine which Derelict packages you actually need. For the purposes of the example to follow, a project using DerelictSDL2 and DerelictGL3 will be assumed. These packages will need to be cloned from Git. Every Derelict package has a dependency on DerelictUtil, so it will also need to be cloned. In this example, $DERELICT refers to the path of the top-level directory into which you want to clone the source, whatver that may be.</p>
+
+        <pre>
+        cd $DERELICT
+        git clone https://github.com/DerelictOrg/DerelictSDL2.git
+        git clone https://github.com/DerelictOrg/DerelictGL3.git
+        git clone https://github.com/DerelictOrg/DerelictUtil.git
+        </pre>
+
+        <p>The next step is to compile each package. Make sure that DUB is installed and is on your path, then execute the following commands, continuing from above.</p>
+
+        <pre>
+        cd DerelictSDL2
+        dub build
+        cd ../DerelictGL3
+        dub build
+        cd ../DerelictUtil
+        dub build
+        </pre>
+
+        <p>At this point, you should have a platform-specific library in a the 'lib' sudirectory of each package. In order to compile your code, the compiler will need to be able to find the Derelict source modules so that it can parse the import statements it encounters. The following paths are the ones you need to configure in your build system.</p>
+
+        <pre>
+        // These are the import paths to the top-level import directory for the compiler
+        $DERELICT/DerelictSDL2/source
+        $DERELICT/DerelictGL3/source
+        $DERELICT/DerelictUtil/source
+        </pre>
+
+        <p>In order to link the executable, the linker will need to know which libraries to link with and where to find them. The libraries needed in this example are shown below, along with their full paths. These will need to be configured appropriately in your build system.</p>
+
+        <pre>
+        // These are the paths to the libraries for the linker on Windows systems
+        $DERELICT/DerelictSDL2/lib/DerelictSDL2.lib
+        $DERELICT/DerelictGL3/lib/DerelictGL3.lib
+        $Derelict/DerelictUtil/lib/DerelictUtil.lib
+
+        // And the library paths for the linker on POSIX systems.
+        $DERELICT/DerelictSDL2/lib/libDerelictSDL2.a
+        $DERELICT/DerelictGL3/lib/libDerelictGL3.a
+        $DERELICT/DerelictUtil/lib/libDerelictUtil.a
+        </pre>
+
+        <p><strong>Note For Posix Systems:</strong> When building on a Posix system (such as Mac, Linux, or one of the BSDs), you will also need to link with <code>libdl</code>. This is used by DerelictUtil to load shared libraries dynamically at runtime.</p>
+
+        <p>Failure to properly configure your build system or IDE will result in compilation or linker errors. It is beyond the scope of this documentation to describe how to configure the various IDEs and build tools people may use with D. That is entirely up to the user.</p>
+    </article>
+</body>
+</html>

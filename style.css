@@ -8,10 +8,9 @@ h1, h2 { font-weight: bold; margin: 5px 0; }
 h1, h2, h3 { background-color: #DFDCD0; }
 p { margin: 10px 0; }
 ul { padding-left: 10px; margin: 10px 0; list-style-type: disc; }
-li { margin-left: 10px; padding-left: 10px; }
-nav li { margin-bottom: 0.5%; }
+li { margin-left: 10px; margin-top: 10px; padding-left: 10px; }
 strong { font-weight: bold; }
-em { font-style: italic; }
+em { font-style: italic; font-weight: 500; }
 pre { padding-top: 10px; background-color: #FFFFFF; }
 code, pre { color: #454E53; font-weight: bold; font-size: .8em; }
 a { color: #B87333; }
