@@ -11,19 +11,19 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <header role="banner" >
+    <div id="header" role="banner" >
         <h1>Using Derelict</h1>
-        <nav role="navigation">
-            <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="using.html">Using Derelict</a></li>
-            </ul>
-        </nav>
-    </header>
-    <aside role="complementary">
+    </div>
+    <div id="navbar" role="navigation">
+        <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="using.html">Using Derelict</a></li>
+        </ul>
+    </div>
+    <div class="note" role="complementary">
         <p>Please note that this documentation is under development and is currently incomplete.</p>
-    </aside>
-    <article>
+    </div>
+    <div id="content">
         <h2>Building and Linking</h2>
 
         <p>All of the Derelict packages are configured for convenient compilation via <a href="http://code.dlang.org/download" target="_blank">DUB</a>, the build and package tool for D. There are two ways to go about using DUB to compile any Derelict package for your projects. The recommended way is to <a href="#dub">use DUB to manage your own project</a>. This is easiest and requires little effort to configure. If you <a href="#nodub">do not use DUB to manage your project</a>, then you will need to use it to compile the Derelict libraries you need to use and then configure your preferred build system or IDE to find the Derelict source and libraries.</p>
@@ -99,6 +99,6 @@
         <p><strong>Note For Posix Systems:</strong> When building on a Posix system (such as Mac, Linux, or one of the BSDs), you will also need to link with <code>libdl</code>. This is used by DerelictUtil to load shared libraries dynamically at runtime.</p>
 
         <p>Failure to properly configure your build system or IDE will result in compilation or linker errors. It is beyond the scope of this documentation to describe how to configure the various IDEs and build tools people may use with D. That is entirely up to the user.</p>
-    </article>
+    </div>
 </body>
 </html>

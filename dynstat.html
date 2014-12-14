@@ -11,19 +11,19 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <header role="banner" >
+    <div id="header" role="banner" >
         <h1>Dynamic Bindings and Static Bindings</h1>
-        <nav role="navigation">
-            <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="using.html">Using Derelict</a></li>
-            </ul>
-        </nav>
-    </header>
-    <aside role="complementary">
+    </div>
+    <div id="navbar" role="navigation">
+        <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="using.html">Using Derelict</a></li>
+        </ul>
+    </div>
+    <div class="note" role="complementary">
         <p>Please note that this documentation is under development and is currently incomplete.</p>
-    </aside>
-    <article>
+    </div>
+    <div id="content">
         <h2>Introduction</h2>
 
         <p>The bindings in Derelict are <em>dynamic bindings</em>, as opposed to those in the <a href="https://github.com/D-Programming-Deimos" target="_blank">Deimos project</a> which are all <em>static bindings</em>. This page aims to clarify the difference between static and dynamic bindings. It is important when starting a new project to understand the implications of each and selecting the right type of binding in order to avoid unnecessary frustration.</p>
@@ -78,6 +78,6 @@
         <h3>Conclusion</h3>
 
         <p>The information above is intended to shed light on the difference between static and dynamic bindings. Generally, neither type of binding is "better" than the other. For most applications, it probably doesn't matter which type is used as long as the application programmer is comfortable with the concepts of compiling, linking, and loading. The pros and cons of each approach can take on different weights in different contexts, but debating or explaining such is beyond the scope of this documentation.
-    </article>
+    </div>
 </body>
 </html>
