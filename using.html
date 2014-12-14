@@ -22,14 +22,90 @@
     <div class="note" role="complementary">
         <p>Please note that this documentation is under development and is currently incomplete.</p>
     </div>
-    <div id=content >
+    <div id="content">
         <h2>Using Derelict</h2>
 
         <p>All of the packages in Derelict are <em>dynamic bindings</em>. Dynamic bindings may not be suitable for every application. Sometimes, <em>static bindings</em> may be more desirable. Before learning how to compile, link and run programs using Derelict, it is useful to understand the difference between the two types of bindings. The page on <a href="dynstat.html">Dynamic Bindings and Static Bindings</a> explains this along with some terminology used in this documentation that will be helpful when discussing Derelict with others.</p>
 
-        <p>Once the decision to use Derelict has been made, the next step is to decide how to manage the project. Derelict is designed to work out of the box with <a href="http://code.dlang.org/download" target="_blank">DUB</a>, the build tool and package manager for D. When using Derelict, it is most convenient to use DUB to build and manage the entire application, but it is not required. As long as DUB is available to build the Derelict libraries, they can be used with any build tool or IDE. The page on <a href="compiling.html">Building and Linking Derelict</a> explains the steps required for both cases.</p>
+        <p>Once the decision to use Derelict has been made, the next step is to decide how to manage the project. Derelict is designed to work out of the box with <a href="http://code.dlang.org/download" target="_blank">DUB</a>, the build tool and package manager for D. When using Derelict, it is most convenient to use DUB to build and manage the entire application, but it is not required. As long as DUB is available to build the Derelict libraries, they can be used with any build tool or IDE. The page on <a href="compiling.html">Building and Linking Derelict</a> explains the steps required for both cases. The remainder of this page explains how to use Derelict at run time.</p>
 
-        <p>TODO -- Derelict at run time</p>
+        <h3>Loading a Shared Library</h3>
+
+        <p>All Derelict packages have one thing in common. Because each package is a dynamic binding, it must be loaded at runtime. The interface for this is the same across all packages.</p>
+
+        <p>The <code>DerelictUtil</code> package contains all of the functionality needed to load a dynamic library at runtime. Each binding contains a loader class that extends from <code>SharedLibLoader</code>, a class found in <code>derelict.util.loader</code>. This class exposes two methods for dynamically loading shared libraries.</p>
+
+        <p>The method that most developers will use is called <code>load</code> and takes no arguments. The specific loader on which this method is called will attempt to load shared library using a predefined set of library names, using the default system shared library path. Loader instances are created automatically in module constructors and are named according to the Derelict package to which they belong. The following example shows how to load the <a href="http://libsdl.org" target="_blank">SDL 2 library</a> via the <code>DerelictSDL2</code>.</p>
+
+        <pre>
+        import derelict.sdl2.sdl;
+
+        void main()
+        {
+            DerelictSDL2.load();
+        }
+        </pre>
+
+        <p>It is important to understand the system library path for each system an application is intended to support. For example, on Windows the system loader will search for the SDL DLL first in the application directory, then in the current working directory, then in a couple of predefined system directories before falling back on those specified in the <code>PATH</code> environment variable (<a href="http://msdn.microsoft.com/en-us/library/7d83bc18.aspx" target="_blank">see MSDN</a> for more details). On other platforms, the application directory and current working directory typically are not searched at all (see <a href="http://tldp.org/HOWTO/Program-Library-HOWTO/dl-libraries.html">this page</a> for Linux and <a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/dlopen.3.html" target="_blank">this one</a> for Mac OSX).</p>
+
+        <p>The default library names are selected for each Derelict package based on common formats for each operating system. Sometimes, it is necessary to bypass the default names. For example, a developer may decide to ship special copies of a shared library using a non-standard name, or storing them in a subdirectory under the application directory. In such a case, an overload of the <code>load</code> method be used. This form accepts an array of strings specifying which specify one or more libraries to search for. If a path is not specified, the default search path will be used.</p>
+
+        <pre>
+        import derelict.sdl2.sdl;
+
+        version Windows libName = "MySDL2.dll";
+        else libName = "MySDL2.so";
+
+        void main()
+        {
+            // Search for libname on the default search path
+            DerelictSDL2.load([ libName ]);
+
+            // Search for libname in a subdirectory of the current working directory
+            DerelictSDL2.load([ "MySharedLibs/" ~ libName ]);
+        }
+        </pre>
+
+        <h3>Failure to Load</h3>
+
+        <p>A shared library can fail to load for one of two reasons. Either the library was not found or a symbol in the library was not found. In either case, both load methods will throw a sublcass of <code>DerelictException</code>, which in turn is a subclass of D's <code>Exception</code>. More specifically, a <code>SharedLibLoadException</code> is thrown when the library is not found and a <code>SymbolLoadException</code> is found when a symbol cannot be loaded.</p>
+
+        <p>The loader will attempt to load every library name that is passed to it in the name array (either the internal default or a user-supplied parameter). It will only throw a <code>SharedLibLoad</code> exception when the last one fails to load. However, since there can only be one symbol matching any given name in a shared library, if any particular symbol is missing, loading will be aborted and a <code>SymbolLoadException</code> will immediately be thrown. To catch and manipulate any of these excptions, import <code>derelict.util.exception</code></p>
+
+        <p>In some cases, it may be desirable that the loader continue and no exception be thrown when a symbol is missing. Continuing to use SDL as an example, version 2.0.2 of the SDL library containes functions that are not present in 2.0.1, which also has functions not present in version 2.0.2. When using a version of <code>DerelictSDL2</code> that is configured to load SDL 2.0.2 by default, a <code>SymbolLoadException</code> will be thrown if the user's system only has version 2.0.1 or 2.0.0 installed. If the application does not absolutely require the functions from 2.0.2, it is possible to still load 2.0.0 or 2.0.1. The best option is to use the version of <code>DerelictSDL2</code> that supports the minimally required version of SDL, as it will also be able to load later 2.0.x versions. Another option is to use Derelict's selective symbol loading mechanism.</p>
+
+        <h3>Selective Symbol Loading</h3>
+
+        <p><em>Selective symbol loading</em> is a means of telling a Derelict loader that it is okay to continue loading a library when a specific symbol is missing. Each loader has a <code>missingSymbolCallback</code> property which can be set to either a D delegate or function pointer. The signature in both cases is the same. An example usage follows.</p>
+
+        <pre>
+        // This is needed for the return type enum.
+        import derelict.util.exception;
+
+        import derelict.sdl2.sdl;
+
+        ShouldThrow myMissingSymCB( string symbolName )
+        {
+            if( symbolName == "SDL2_SomeFuncIDon'tNeed" )
+            {
+                return ShouldThrow.No;
+            }
+            else
+            {
+                return ShouldThrow.Yes;
+            }
+        }
+
+        void main()
+        {
+            // Set the callback *before* calling load
+            DerelictSDL2.missimgSymbolCallback = &myMissingSymCB;
+            DerelictSDL2.load();
+        }
+        </pre>
+
+        <p>The use of the <code>ShouldThrow</code> enum makes it easier to remember which value to return when implementing the callback. A simple <code>true</code> or <code>false</code> can sometimes be confusing: does <code>true</code> mean throw or don't throw? Because of the enum, <code>derelict.util.exception</code> must be imported, but there is no confusion.</p>
+
+        <p>The important point here is that the callback must be set <strong>before</strong> calling the <code>load</code> method. Otherwise, the loader will have no callback to call. Also note that this is a very basic example. In this scenario, there is usually more than one function that must be ignored. When using a <code>MissingSymbolCallback</code>, it is imperative to check the change log for each version of all C libraries used to understand what has changed between versions so that a complete set of symbol names can be covered. Hence the recommendation to use the version of a Derelict package that binds to the minimally supported version of a C library.</p>
     </div>
-</body>
 </html>
