@@ -10,38 +10,42 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div id="header" role="banner" >
+    <div id="header" role="banner">
         <h1>Derelict Documentation</h1>
     </div>
-    <div id="navbar" role="navigation">
-        <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="using.html">Using Derelict</a></li>
-        </ul>
+    <div class="col-sidebar">
+        <div id="navbar" role="navigation">
+            <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="using.html">Using Derelict</a></li>
+            </ul>
+        </div>
     </div>
-    <div class="note" role="complementary">
-        <p>Please note that this documentation is under development and is currently incomplete.</p>
-    </div>
-    <div id="content">
-        <h2>Introduction</h2>
+    <div class="col-main">
+        <div class="note" role="complementary">
+            <p>Please note that this documentation is under development and is currently incomplete.</p>
+        </div>
+        <div id="content">
+            <h2>Introduction</h2>
 
-        <p>Derelict is a collection of dynamic bindings to C and C++ libraries for the D programming language. It enables users to access popular libraries such as OpenGL, SDL, Lua and more, easily and with little effort across several platforms. This set of documentation provides users with the necessary knowledge to get started with Derelict, including general information applicable to all packages in the collection and package-specific information for each package. It is recommended that new Derelict users read the general documentation first, followed by the specific documentation for packages they intend to use.</p>
+            <p>Derelict is a collection of dynamic bindings to C and C++ libraries for the D programming language. It enables users to access popular libraries such as OpenGL, SDL, Lua and more, easily and with little effort across several platforms. This set of documentation provides users with the necessary knowledge to get started with Derelict, including general information applicable to all packages in the collection and package-specific information for each package. It is recommended that new Derelict users read the general documentation first, followed by the specific documentation for packages they intend to use.</p>
 
-        <h2>Getting Started</h2>
+            <h2>Getting Started</h2>
 
-        <p>All Derelict packages make use of the same build and package management system, <a href="http://code.dlang.org/download">DUB</a>, and a common foundation in the form of DerelictUtil. The first place to go before starting with any Derelict package is the page on <a href="using.html">Using Derelict</a>. There, you will learn the generalities of configuring your project to build and link with Derelict and about the common interface used to enable Derelict packages in your code.</p>
+            <p>All Derelict packages make use of the same build and package management system, <a href="http://code.dlang.org/download">DUB</a>, and a common foundation in the form of DerelictUtil. The first place to go before starting with any Derelict package is the page on <a href="using.html">Using Derelict</a>. There, you will learn the generalities of configuring your project to build and link with Derelict and about the common interface used to enable Derelict packages in your code.</p>
 
-        <p>While the steps to use most Derelict packages are identical, there are sometimes exceptions to the rule. Furthermore, each package has its own versioning scheme derived from the C or C++ library to which it binds. Because of this, before implementing Derelict in your project, you should take the time to read the specific documentation for any packages you intend to use. This way, you can be sure that you are basing your project on the version of the package appropriate to your requirements and will understand any special considerations necessary for that package.</p>
+            <p>While the steps to use most Derelict packages are identical, there are sometimes exceptions to the rule. Furthermore, each package has its own versioning scheme derived from the C or C++ library to which it binds. Because of this, before implementing Derelict in your project, you should take the time to read the specific documentation for any packages you intend to use. This way, you can be sure that you are basing your project on the version of the package appropriate to your requirements and will understand any special considerations necessary for that package.</p>
 
-        <h2>Support</h2>
+            <h2>Support</h2>
 
-        <p>For several years, forums were maintained specifically for Derelict discussion and support. At present, that is no longer the case. It is possible that a new forum will be opened at some point in the future, but for now the best methods to find help with Derelict are, in no particular order:</p>
+            <p>For several years, forums were maintained specifically for Derelict discussion and support. At present, that is no longer the case. It is possible that a new forum will be opened at some point in the future, but for now the best methods to find help with Derelict are, in no particular order:</p>
 
-        <ul>
-        <li>Vist the IRC channel #D on freenode.net. A number of Derelict users are active there.</li>
-        <li>Email Mike Parker via his <strong>aldacron</strong> handle at <strong>GMail</strong>.</li>
-        <li>If you are new to D and Derelict, you might visit the <a href="news://news.digitalmars.com">D Newsgroups</a>, specifically digitalmars.D.learn, which can be accessed via Vladimir Panteleev's <a href="http://forum.dlang.org/">web interface</a> and a <a href="http://lists.puremagic.com/mailman/listinfo">mailing list interface</a> in addition to standard newsreaders. However, please be aware that this is a generic D newsgroup and not a Derelict support forum.</li>
-        </ul>
+            <ul>
+            <li>Vist the IRC channel #D on freenode.net. A number of Derelict users are active there.</li>
+            <li>Email Mike Parker via his <strong>aldacron</strong> handle at <strong>GMail</strong>.</li>
+            <li>If you are new to D and Derelict, you might visit the <a href="news://news.digitalmars.com">D Newsgroups</a>, specifically digitalmars.D.learn, which can be accessed via Vladimir Panteleev's <a href="http://forum.dlang.org/">web interface</a> and a <a href="http://lists.puremagic.com/mailman/listinfo">mailing list interface</a> in addition to standard newsreaders. However, please be aware that this is a generic D newsgroup and not a Derelict support forum.</li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>

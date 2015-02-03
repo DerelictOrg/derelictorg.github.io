@@ -11,13 +11,32 @@ ul { padding-left: 10px; margin: 10px 0; list-style-type: disc; }
 li { margin-left: 10px; margin-top: 10px; padding-left: 10px; }
 strong { font-weight: bold; }
 em { font-style: italic; font-weight: 500; }
+em.term { font-weight: 600; }
 pre { padding-top: 10px; background-color: #FFFFFF; }
 code, pre { color: #454E53; font-weight: bold; font-size: .8em; }
 a { color: #B87333; }
-#header, #content, .note, #navbar { padding: 10px 1em; margin: 0 5% 10px; }
-#header { margin-top: 10px; }
-.note { font-style: italic; background-color: #FFFFFF; }
+#header, #content, .note, #navbar { padding: 10px 1em; margin: 5px; }
+#content { background-color: #FFFFFF; }
+.note { 
+	font-style: italic; 
+	background-color: #FFFFFF; 
+}
+#navbar a { 
+	color: #000000;
+	text-decoration: none;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 1.3em;
+}
+#navbar ul {
+	list-style-type: none;
+}
+[class*='col-'] {
+	float: left;
+}
 
-@media only screen and (min-width: 100em) {
+@media only screen and (min-width: 36em) {
     body { margin-left: 10%; margin-right: 10%; }
+    .col-main {  width: 80% };
+    .col-sidebar { width: 20%; }
+    #content { padding-bottom: 100px; }
 }
