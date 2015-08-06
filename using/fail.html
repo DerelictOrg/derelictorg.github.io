@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+<head>
+    <title>Derelict Documentation -- Using Derelict -- Failure</title>
+    <meta name="author" content="Mike Parker">
+    <meta name="description" content="Documentation for the DerelictOrg project (https://github.com/DerelictOrg/).">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="header" role="banner">
+        <h1>Using Derelict</h1>
+    </div>
+    <div class="col-sidebar">
+        <div id="navbar" role="navigation">
+            <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="using.html">Using Derelict</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-main">
+        <div class="note" role="complementary">
+            <p>Please note that this documentation is under development and is currently incomplete.</p>
+        </div>
+        <div id="content">
+            <h2>Failure to Load</h2>
+
+            <p>Sometimes, a library cannot be loaded. There are a handful of reasons why this may happen. In each case, Derelict will throw an exception. There is a way to prevent exceptions from being thrown.</p>
+
+            <h3>Loader Exceptions</h3>
+
+            <p>When a shared library cannot be loaded, the ader will throw a sublcass of <code>DerelictException</code>, which in turn is a subclass of D's <code>Exception</code>. More specifically, a <code>SymbolLoadException</code> is thrown when a function is not found in the shared library. A <code>SharedLibLoadException</code> is found when a shared library is not present on the system path, or fails to load into memory for some other reason.</p>
+
+            <p>The loader will attempt to load every library name that it is given. It will only throw a <code>SharedLibLoadException</code> when the last library name fails to load. When any given function fails to load, loading will be aborted and a <code>SymbolLoadException</code> thrown immediately. To catch and manipulate any of these excptions, import <code>derelict.util.exception</code></p>
+
+            <p>In some cases, it may be desirable that the loader continue and no exception be thrown when a symbol is missing. One option, is to use <code>SharedLibVersion</code> with any loaded that supports it. See <a href="load.html">Loading a Shared Library</a> for more information. Where <code>SharedLibVersion<a> is not supported, a feature called Selective Symbol Loading can be used instead.</p>
+
+            <h3>Selective Symbol Loading</h3>
+
+            <p><em>Selective symbol loading</em> is a means of telling a Derelict loader that it is okay to continue loading a library when a specific symbol is missing. Each loader has a <code>missingSymbolCallback</code> property which can be set to either a D delegate or function pointer. The signature in both cases is the same. An example usage follows.</p>
+
+            <pre>
+            // This is needed for the return type enum.
+            import derelict.util.exception;
+
+            import derelict.sdl2.sdl;
+
+            ShouldThrow myMissingSymCB( string symbolName )
+            {
+                if( symbolName == "SDL2_SomeFuncIDon'tNeed" )
+                {
+                    return ShouldThrow.No;
+                }
+                else
+                {
+                    return ShouldThrow.Yes;
+                }
+            }
+
+            void main()
+            {
+                // Set the callback *before* calling load
+                DerelictSDL2.missimgSymbolCallback = &myMissingSymCB;
+                DerelictSDL2.load();
+            }
+            </pre>
+
+            <p>The use of the <code>ShouldThrow</code> enum makes it easier to remember which value to return when implementing the callback. A simple <code>true</code> or <code>false</code> can sometimes be confusing: does <code>true</code> mean throw or don't throw? Because of the enum, <code>derelict.util.exception</code> must be imported, but there is no confusion.</p>
+
+            <p>The important point here is that the callback must be set <strong>before</strong> calling the <code>load</code> method. Otherwise, the loader will have no callback to call. Also note that this is a very basic example. In this scenario, there is usually more than one function that must be ignored. When using a <code>MissingSymbolCallback</code>, it is imperative to check the change log for each version of all C libraries used to understand what has changed between versions so that a complete set of symbol names can be covered. Hence the recommendation to use the version of a Derelict package that binds to the minimally supported version of a C library.</p>
+        </div>
+    </div>
+</body>
+</html>
