@@ -66,15 +66,15 @@
 
             <h3>SharedLibVersion</h3>
 
-            <p>Some Derelict loaders, but not all, support version-specific loading. In other words, it's possible to tell the loader to attempt to load a lower version of a shared library than the highest version it supports. An example is DerelictFI</p>
+            <p>Some Derelict loaders, but not all, support version-specific loading. In other words, it's possible to tell the loader to attempt to load a lower version of a shared library than the highest version it supports. An example is DerelictFI.</p>
 
             <p>DerelictFI is a binding to the FreeImage library. FreeImage is supported on every major platform. Most Linux distributions make it available through the system package manager, but the version available is always behind the highest version supported by DerelictFI. A program that simply calls <code>DerelictFI.load()</code> on these systems will fail to load the library.</p>
 
             <p>To work around this, a user can choose the minimum required version of FreeImage. The lowest supported by DerelictFI is 3.15.0. If none of the functions added in later versions of FreeImage are needed, then the call to <code>DerelictFI.load</code> can be made like so:</p>
 
-            ```
+            <pre>
             DerelictFI.load(SharedLibVersion(3, 15, 0));
-            ```
+            </pre>
 
             <p>Check the documentation for any Derelict package you use to determine if it supports loading with <code>SharedLibVersion</code> and, if so, which versions are available as arguments. To future-proof your program, it's a good idea to always use <code>SharedLibVersion</code> where supported. Simply calling <code>load()</code> will always attempt to load the highest version supported. If a Derelict package is updated and you release a new version of your app, the app can fail if your users haven't yet updated the library on their system. By always specifying the version of the library that you need, your app will always load newer releases of a library (though you shouldn't expect a 3.x loader to load a 4.x library).</p>
 
