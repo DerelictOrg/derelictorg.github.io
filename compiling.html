@@ -12,14 +12,13 @@
 </head>
 <body>
     <div id="header" role="banner" >
-        <h1>Building</h1>
+        <h1>Using Derelict</h1>
     </div>
     <div class="col-sidebar">
         <div id="navbar" role="navigation">
             <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="using.html">Using Derelict</a></li>
-            <li><a href="packages.html">Derelict Packages</a></li>
             </ul>
         </div>
     </div>
@@ -57,52 +56,65 @@
 
             <h3 id="nodub">When Managing Your Project Outside of DUB</h3>
 
-            <p>When using a build system besides DUB, or an IDE, to manage your poject, the first thing you need to do is to determine which Derelict packages you actually need. For the purposes of the example to follow, a project using DerelictSDL2 and DerelictGL3 will be assumed. These packages will need to be cloned from Git. Every Derelict package has a dependency on DerelictUtil, so it will also need to be cloned. In this example, $DERELICT refers to the path of the top-level directory into which you want to clone the source, whatver that may be.</p>
+            <p>When using a build system besides DUB, or an IDE, to manage your poject, the first thing you need to do is to determine which Derelict packages you actually need. For the purposes of the example to follow, a project using DerelictGLFW3 and DerelictGL3 will be assumed. Both, like all Derelict packages, have a dependency on DerelictUtil. All three of these packages will need to be obtained manually. One way is to clone them from their git repositories, but then you need to make sure you have the correct branches activated for the version you need of each. It's simpler to perform a manual fetch with DUB and let it manage the versions for you.</p>
 
+            <p>It's probably best to use the latest version of DerelictGLF3 and DerelictGL3. You can determine the latest by visiting code.dlang.org and searching for derelict-glfw3 and derelict-gl3 on that page. As I write this, that is 1.1.1 for the former and 1.0.18 for the latter. You'll also need to determine a common version of DerelictUtil. It will almost always be safe to get the latest version of DerelictUtil. As I write, 2.0.4 is the latest version of DerelictUtil. The only time it will not work is if a new, ABI-breaking version of DerelictUtil is released and the latest version of one of the other packages has not yet been updated to use it, but that's an extremely rare event.</p>
+
+            <p>The following commands will manually fetch each package.</p>
             <pre>
-            cd $DERELICT
-            git clone https://github.com/DerelictOrg/DerelictSDL2.git
-            git clone https://github.com/DerelictOrg/DerelictGL3.git
-            git clone https://github.com/DerelictOrg/DerelictUtil.git
+            mkdir derelict
+            cd derelict
+            dub fetch --cache=local derelict-glfw3 --version=1.1.1
+            dub fetch --cache=local derelict-gl3 --version=1.0.18
+            dub fetch --cache=local derelict-util --version=2.0.4
             </pre>
 
-            <p>The next step is to compile each package. Make sure that DUB is installed and is on your path, then execute the following commands, continuing from above.</p>
-
+            <p>This will install each package in subdirectories named using the <em>package-name-x.x.x</em> format, e.g. <em>derelict-glfw3-1.1.1</em>. Both DerelictGLFW3 and DerelictGL3 will need to know where to find the source for DerelictUtil. When manually fetching packages like this, they are not automatically added to the search path, so you will need to tell DUB with the following command.</p>
             <pre>
-            cd DerelictSDL2
+            dub add-local derelict-util-2.0.4
+            </pre>
+
+            <p>With that, you're ready to build all three packages (use backslashes in place of forward slahes on Windows).</p>
+            <pre>
+            cd derelict-glfw3-1.1.1
             dub build
-            cd ../DerelictGL3
+            cd ../derelict-gl3-1.0.18
             dub build
-            cd ../DerelictUtil
+            cd ../derelict-util-2.0.4
             dub build
             </pre>
 
-            <p>At this point, you should have a platform-specific library in a the 'lib' sudirectory of each package. In order to compile your code, the compiler will need to be able to find the Derelict source modules so that it can parse the import statements it encounters. The following paths are the ones you need to configure in your build system.</p>
+            <p>From here on out, assume $DERELICT is the path to the derelict directory, whether that is C:\derelict or C:\dev\derelict or whatever on Windows, or ~/dev/derelict on Linux. Most IDEs and build tools on Windows can work with forward slashes, but change them to backslashes in the following paths if you need to.</p>      
+
+            <p>At this point, you should have a platform-specific library in a the 'lib' sudirectory of each package. In order to compile your project, the compiler will need to be able to find the Derelict source modules so that it can parse the import statements it encounters. The following paths are the ones you need to configure in your build system (again, assuming Windows).</p>
 
             <pre>
-            // These are the import paths to the top-level import directory for the compiler
-            $DERELICT/DerelictSDL2/source
-            $DERELICT/DerelictGL3/source
-            $DERELICT/DerelictUtil/source
+            $DERELICT/derelict-glfw3-1.1.1/source
+            $DERELICT/derelict-gl3-1.0.18/source
+            $DERELICT/derelict-util-2.0.4/source
             </pre>
 
             <p>In order to link the executable, the linker will need to know which libraries to link with and where to find them. The libraries needed in this example are shown below, along with their full paths. These will need to be configured appropriately in your build system.</p>
 
             <pre>
-            // These are the paths to the libraries for the linker on Windows systems
-            $DERELICT/DerelictSDL2/lib/DerelictSDL2.lib
-            $DERELICT/DerelictGL3/lib/DerelictGL3.lib
-            $Derelict/DerelictUtil/lib/DerelictUtil.lib
+            // On Windows the libraries are in the DerelictFoo.lib format
+            $DERELICT\derelict-glfw3-1.1.1\lib\DerelictGLFW3.lib
+            $DERELICT\derelict-gl3-1.0.18\lib\DerelictGL3.lib
+            $DERELICT\derelict-util-2.0.4\lib\DerelictUtil.lib
+            </pre>
 
-            // And the library paths for the linker on POSIX systems.
+            <pre>
+            // On POSIX systems the libraries are in the libDerelictFoo.a format.
             $DERELICT/DerelictSDL2/lib/libDerelictSDL2.a
             $DERELICT/DerelictGL3/lib/libDerelictGL3.a
             $DERELICT/DerelictUtil/lib/libDerelictUtil.a
             </pre>
 
+            <p>You may find it more convenient to create a $DERELICT/lib directory, copy all of the libraries there, and then configure your IDE or build system to search for all libraries in that path. Then you need only specify the library file names and not the full paths.</p>
+
             <p><strong>Note For Posix Systems:</strong> When building on a Posix system (such as Mac, Linux, or one of the BSDs), you will also need to link with <code>libdl</code>. This is used by DerelictUtil to load shared libraries dynamically at runtime.</p>
 
-            <p>Failure to properly configure your build system or IDE will result in compilation or linker errors. It is beyond the scope of this documentation to describe how to configure the various IDEs and build tools people may use with D. That is entirely up to the user.</p>
+            <p>Failure to properly configure your build system or IDE will result in compilation or linker errors. It is beyond the scope of this documentation to describe how to configure the various IDEs and build tools people may use with D. Learning how to do so is entirely up to the user.</p>
         </div>
     </div>
 </body>
