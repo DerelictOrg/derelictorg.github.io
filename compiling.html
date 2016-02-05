@@ -77,12 +77,14 @@
             <p>With that, you're ready to build all three packages (use backslashes in place of forward slahes on Windows).</p>
             <pre>
             cd derelict-glfw3-1.1.1
-            dub build
+            dub build -brelease
             cd ../derelict-gl3-1.0.18
-            dub build
+            dub build -brelease
             cd ../derelict-util-2.0.4
-            dub build
+            dub build -brelease
             </pre>
+
+            <p>This will build optimized versions of each library. To build debug versions, omit the <tt>-brelease</tt> flags. To explicitly build 64-bit binaries, pass <tt>-ax86_64</tt> on the command line.</p>
 
             <p>From here on out, assume $DERELICT is the path to the derelict directory, whether that is C:\derelict or C:\dev\derelict or whatever on Windows, or ~/dev/derelict or whatever on other platforms. Most IDEs and build tools on Windows can work with forward slashes, but change them to backslashes in the following paths if you need to.</p>      
 

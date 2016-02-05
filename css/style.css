@@ -21,7 +21,7 @@ strong { font-weight: bold; }
 em { font-style: italic; font-weight: 500; }
 em.term { font-weight: 600; }
 pre { padding-top: 10px; background-color: #FFFFFF; }
-code, pre { color: #454E53; font-weight: bold; font-size: .8em; }
+code, pre, tt { color: #454E53; font-weight: bold; font-size: .8em; }
 a { color: #B87333; }
 #content, .note, #navbar { padding: 10px 1em; margin: 5px; }
 #header { float: right; }
