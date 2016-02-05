@@ -33,17 +33,17 @@
 
             <h3>Loader Exceptions</h3>
 
-            <p>When a shared library cannot be loaded, the ader will throw a sublcass of <code>DerelictException</code>, which in turn is a subclass of D's <code>Exception</code>. More specifically, a <code>SymbolLoadException</code> is thrown when a function is not found in the shared library. A <code>SharedLibLoadException</code> is found when a shared library is not present on the system path, or fails to load into memory for some other reason.</p>
+            <p>When a shared library cannot be loaded, the ader will throw a sublcass of <tt>DerelictException</tt>, which in turn is a subclass of D's <tt>Exception</tt>. More specifically, a <tt>SymbolLoadException</tt> is thrown when a function is not found in the shared library. A <tt>SharedLibLoadException</tt> is found when a shared library is not present on the system path, or fails to load into memory for some other reason.</p>
 
-            <p>The loader will attempt to load every library name that it is given. It will only throw a <code>SharedLibLoadException</code> when the last library name fails to load. When any given function fails to load, loading will be aborted and a <code>SymbolLoadException</code> thrown immediately. To catch and manipulate any of these excptions, import <code>derelict.util.exception</code></p>
+            <p>The loader will attempt to load every library name that it is given. It will only throw a <tt>SharedLibLoadException</tt> when the last library name fails to load. When any given function fails to load, loading will be aborted and a <tt>SymbolLoadException</tt> thrown immediately. To catch and manipulate any of these excptions, import <tt>derelict.util.exception</tt></p>
 
-            <p>In some cases, it may be desirable that the loader continue and no exception be thrown when a symbol is missing. For example, when a Derelict package has been updated to support the latest version of a C library, but the user wants to continue supporting the older version of the C library. One option is to use <code>SharedLibVersion</code> with any loaded that supports it. See <a href="load.html">Loading a Shared Library</a> for more information. Where <code>SharedLibVersion</code> is not supported, there are two possibilites. The recommended approach is to continue using the version of the Derelict package that supports the minimally required version of the C library. The other option is to use a library a feature called <em>selective symbol loading</em>.</p>
+            <p>In some cases, it may be desirable that the loader continue and no exception be thrown when a symbol is missing. For example, when a Derelict package has been updated to support the latest version of a C library, but the user wants to continue supporting the older version of the C library. One option is to use <tt>SharedLibVersion</tt> with any loaded that supports it. See <a href="load.html">Loading a Shared Library</a> for more information. Where <tt>SharedLibVersion</tt> is not supported, there are two possibilites. The recommended approach is to continue using the version of the Derelict package that supports the minimally required version of the C library. The other option is to use a library a feature called <em>selective symbol loading</em>.</p>
 
             <h3>Selective Symbol Loading</h3>
 
-            <p>Selective symbol loading is a means of telling a Derelict loader that it is okay to continue loading a library when a specific symbol is missing. Each loader has a <code>missingSymbolCallback</code> property which can be set to either a D delegate or function pointer. The signature in both cases is the same. An example usage follows.</p>
+            <p>Selective symbol loading is a means of telling a Derelict loader that it is okay to continue loading a library when a specific symbol is missing. Each loader has a <tt>missingSymbolCallback</tt> property which can be set to either a D delegate or function pointer. The signature in both cases is the same. An example usage follows.</p>
 
-            <pre>
+            <pre><code>
             // This is needed for the return type enum.
             import derelict.util.exception;
 
@@ -67,11 +67,11 @@
                 DerelictSDL2.missimgSymbolCallback = &myMissingSymCB;
                 DerelictSDL2.load();
             }
-            </pre>
+            </code></pre>
 
-            <p>The use of the <code>ShouldThrow</code> enum makes it easier to remember which value to return when implementing the callback. A simple <code>true</code> or <code>false</code> can sometimes be confusing: does <code>true</code> mean throw or don't throw? Because of the enum, <code>derelict.util.exception</code> must be imported, but there is no confusion.</p>
+            <p>The use of the <tt>ShouldThrow</tt> enum makes it easier to remember which value to return when implementing the callback. A simple <tt>true</tt> or <tt>false</tt> can sometimes be confusing: does <tt>true</tt> mean throw or don't throw? Because of the enum, <tt>derelict.util.exception</tt> must be imported, but there is no confusion.</p>
 
-            <p>The important point here is that the callback must be set <strong>before</strong> calling the <code>load</code> method. Otherwise, the loader will have no callback to call. Also note that this is a very basic example. There is usually more than one function that must be ignored. When using a <code>MissingSymbolCallback</code>, it is imperative to check the change log for each new version of the C library to understand what has changed between versions so that a complete set of symbol names can be covered. The <code>SharedLibVersion</code> feature, where supported, uses selective symbol loading internally.</p>
+            <p>The important point here is that the callback must be set <strong>before</strong> calling the <tt>load</tt> method. Otherwise, the loader will have no callback to call. Also note that this is a very basic example. There is usually more than one function that must be ignored. When using a <tt>MissingSymbolCallback</tt>, it is imperative to check the change log for each new version of the C library to understand what has changed between versions so that a complete set of symbol names can be covered. The <tt>SharedLibVersion</tt> feature, where supported, uses selective symbol loading internally.</p>
         </div>
     </div>
 </body>

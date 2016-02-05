@@ -32,28 +32,28 @@
 
             <p>All Derelict packages have one thing in common. Because each package is a dynamic binding, it must be loaded at runtime. The interface for this is the same across all packages.</p>
 
-            <p>The <code>DerelictUtil</code> package contains all of the functionality needed to load a dynamic library at runtime. Each binding contains a loader class that extends from <code>SharedLibLoader</code>, a class found in <code>derelict.util.loader</code>. This class exposes two methods for dynamically loading shared libraries.</p>
+            <p>The <tt>DerelictUtil</tt> package contains all of the functionality needed to load a dynamic library at runtime. Each binding contains a loader class that extends from <tt>SharedLibLoader</tt>, a class found in <tt>derelict.util.loader</tt>. This class exposes two methods for dynamically loading shared libraries.</p>
 
             <h3>A Normal Load</h3>
 
-            <p>The method that most developers will use is called <code>load</code> and takes no arguments. The specific loader on which this method is called will attempt to load shared library using a predefined set of library names, using the default system shared library path. Loader instances are created automatically in module constructors and are named according to the Derelict package to which they belong. The following example shows how to load the <a href="http://libsdl.org" target="_blank">SDL 2 library</a> via the <code>DerelictSDL2</code>.</p>
+            <p>The method that most developers will use is called <tt>load</tt> and takes no arguments. The specific loader on which this method is called will attempt to load shared library using a predefined set of library names, using the default system shared library path. Loader instances are created automatically in module constructors and are named according to the Derelict package to which they belong. The following example shows how to load the <a href="http://libsdl.org" target="_blank">SDL 2 library</a> via the <tt>DerelictSDL2</tt>.</p>
 
-            <pre>
+            <pre><code>
             import derelict.sdl2.sdl;
 
             void main()
             {
                 DerelictSDL2.load();
             }
-            </pre>
+            </code></pre>
 
             <h3>Custom Library Paths</h3>
 
-            <p>It is important to understand the system library path for each system an application is intended to support. For example, on Windows the system loader will search for the SDL DLL first in the application directory, then in the current working directory, then in a couple of predefined system directories before falling back on those specified in the <code>PATH</code> environment variable (<a href="http://msdn.microsoft.com/en-us/library/7d83bc18.aspx" target="_blank">see MSDN</a> for more details). On other platforms, the application directory and current working directory typically are not searched at all (see <a href="http://tldp.org/HOWTO/Program-Library-HOWTO/dl-libraries.html">this page</a> for Linux and <a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/dlopen.3.html" target="_blank">this one</a> for Mac OSX).</p>
+            <p>It is important to understand the system library path for each system an application is intended to support. For example, on Windows the system loader will search for the SDL DLL first in the application directory, then in the current working directory, then in a couple of predefined system directories before falling back on those specified in the <tt>PATH</tt> environment variable (<a href="http://msdn.microsoft.com/en-us/library/7d83bc18.aspx" target="_blank">see MSDN</a> for more details). On other platforms, the application directory and current working directory typically are not searched at all (see <a href="http://tldp.org/HOWTO/Program-Library-HOWTO/dl-libraries.html">this page</a> for Linux and <a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/dlopen.3.html" target="_blank">this one</a> for Mac OSX).</p>
 
-            <p>The default library names are selected for each Derelict package based on common formats for each operating system. Sometimes, it is necessary to bypass the default names. For example, a developer may decide to ship special copies of a shared library using a non-standard name, or storing them in a subdirectory under the application directory. In such a case, an overload of the <code>load</code> method should be used. One form accepts an array of strings, each a library name. Another overload takes single string containing a comma-separated list of library names. Each name can include a path. If no path is specified, the default search path will be used.</p>
+            <p>The default library names are selected for each Derelict package based on common formats for each operating system. Sometimes, it is necessary to bypass the default names. For example, a developer may decide to ship special copies of a shared library using a non-standard name, or storing them in a subdirectory under the application directory. In such a case, an overload of the <tt>load</tt> method should be used. One form accepts an array of strings, each a library name. Another overload takes single string containing a comma-separated list of library names. Each name can include a path. If no path is specified, the default search path will be used.</p>
 
-            <pre>
+            <pre><code>
             import derelict.sdl2.sdl;
 
             version Windows libName = "dlls\\MySDL2.dll";
@@ -63,21 +63,21 @@
             {
                 DerelictSDL2.load(libName);
             }
-            </pre>
+            </code></pre>
 
             <a name="sharedlibversion"><h3>SharedLibVersion</h3></a>
 
             <p>Some Derelict loaders, but not all, support version-specific loading. In other words, it's possible to tell the loader to attempt to load a lower version of a shared library than the highest version it supports. An example is DerelictFI.</p>
 
-            <p>DerelictFI is a binding to the FreeImage library. FreeImage is supported on every major platform. Most Linux distributions make it available through the system package manager, but the version available is always behind the highest version supported by DerelictFI. A program that simply calls <code>DerelictFI.load()</code> on these systems will fail to load the library.</p>
+            <p>DerelictFI is a binding to the FreeImage library. FreeImage is supported on every major platform. Most Linux distributions make it available through the system package manager, but the version available is always behind the highest version supported by DerelictFI. A program that simply calls <tt>DerelictFI.load()</tt> on these systems will fail to load the library.</p>
 
-            <p>To work around this, a user can choose the minimum required version of FreeImage. The lowest supported by DerelictFI is 3.15.0. If none of the functions added in later versions of FreeImage are needed, then the call to <code>DerelictFI.load</code> can be made like so:</p>
+            <p>To work around this, a user can choose the minimum required version of FreeImage. The lowest supported by DerelictFI is 3.15.0. If none of the functions added in later versions of FreeImage are needed, then the call to <tt>DerelictFI.load</tt> can be made like so:</p>
 
-            <pre>
+            <pre><code>
             DerelictFI.load(SharedLibVersion(3, 15, 0));
-            </pre>
+            </code></pre>
 
-            <p>Check the documentation for any Derelict package you use to determine if it supports loading with <code>SharedLibVersion</code> and, if so, which versions are available as arguments. To future-proof your program, it's a good idea to always use <code>SharedLibVersion</code> where supported. Simply calling <code>load()</code> will always attempt to load the highest version supported. If a Derelict package is updated and you release a new version of your app, the app can fail if your users haven't yet updated the library on their system. By always specifying the version of the library that you need, your app will always load newer releases of a library (though you shouldn't expect a 3.x loader to load a 4.x library).</p>
+            <p>Check the documentation for any Derelict package you use to determine if it supports loading with <tt>SharedLibVersion</tt> and, if so, which versions are available as arguments. To future-proof your program, it's a good idea to always use <tt>SharedLibVersion</tt> where supported. Simply calling <tt>load()</tt> will always attempt to load the highest version supported. If a Derelict package is updated and you release a new version of your app, the app can fail if your users haven't yet updated the library on their system. By always specifying the version of the library that you need, your app will always load newer releases of a library (though you shouldn't expect a 3.x loader to load a 4.x library).</p>
 
         </div>
     </div>

@@ -56,9 +56,9 @@
 
             <p>The source code for static bindings in D, like those found in the <a href="https://github.com/D-Programming-Deimos" target="_blank">Deimos projects</a>, tends to look very similar to the C or C++ headers for the C library to which they bind. Functions can be declared as normal, simply with no implementation. For example:</p>
 
-            <pre>
+            <pre><code>
             extern( C ) void SomeFunction( int );
-            </pre>
+            </code></pre>
 
             <p>Given a C library, MyLib, which exposes the function SomeFunction declared above, the user of the D binding for MyLib must either statically link with the MyLib static library (MyLib.lib on Windows, libMylib.a elsewhere) or with the MyLib shared library (the import library MyLib.lib on Windows, or libMyLib.so elsewhere). Additionally, the user must also link with the MyLib binding itself, most often as a static library.</p>
 
@@ -70,10 +70,10 @@
 
             <p>Not only are dynamic bindings used differently than static bindings, they are implemented differently. Normal function prototypes do not work with dynamic bindings because of the fact that such bindings make use of <em>dynamic loading</em>. All of the functions in the bound library must be declared in the binding as function pointers. The MyLib example above converted to a dynamic binding format in D might look something like this:</p>
 
-            <pre>
+            <pre><code>
             extern( C ) alias p_SomeFunction = void function( int );
             p_SomeFunction SomeFunction;
-            </pre>
+            </code></pre>
 
             <p>When an application using the MyLib dynamic binding is compiled, there is no link-time dependency beyond the binding itself. At run time, the dynamic binding will make a call into the OS API to load the MyLib shared library into the application's memory space. After that, it will again call into the OS API to fetch the address of the SomeFunction implementation and assign it to the SomeFunction variable declared above. From that point on, SomeFunction is ready to use.</p>
 
