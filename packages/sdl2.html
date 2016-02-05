@@ -29,67 +29,51 @@
         <div id="content">
             <h2>DerelictSDL2</h2>
 
-            <p>DerelictSDL2 is a dynamic D binding to the 2.x series of the <a href="http://libsdl.org" target="none">Simple DirectMedial Layer (SDL)</a> library. DerelictSDL2 2.0.0 and higher supports all releases of SDL2 from 2.0.0 and up via Derelict's <a href="../using/load.html#sharedlibversion">SharedLibVersion feature</a>. Older versions of DerelictSDL2 are tied to specific versions of SDL2. New projects using DerelictSDL2 should use 2.0.0 or higher.</p>
+            <p>DerelictSDL2 is a dynamic D binding to the 2.x series of the <a href="http://libsdl.org" target="none">Simple DirectMedial Layer (SDL)</a> library. DerelictSDL2 <tt>2.0.0</tt> and higher supports all releases of SDL2 from <tt>2.0.0</tt> and up via Derelict's <a href="../using/load.html#sharedlibversion">SharedLibVersion feature</a>. Older versions of DerelictSDL2 are tied to specific versions of SDL2. New projects using DerelictSDL2 should use <tt>2.0.0</tt> or higher.</p>
 
             <p>DerelictSDL2 also includes bindings to the following SDL satellite libraries:<p>
             <ul>
-            <li><a href="https://www.libsdl.org/projects/SDL_image/">SDL_image</a></li>
-            <li><a href="https://www.libsdl.org/projects/SDL_mixer/">SDL_mixer</a></li>
-            <li><a href="https://www.libsdl.org/projects/SDL_net/">SDL_net</a></li>
-            <li><a href="https://www.libsdl.org/projects/SDL_ttf/">SDL_ttf</a></li>
+            <li><a href="https://www.libsdl.org/projects/SDL_image/" target="_blank">SDL_image</a></li>
+            <li><a href="https://www.libsdl.org/projects/SDL_mixer/" target="_blank">SDL_mixer</a></li>
+            <li><a href="https://www.libsdl.org/projects/SDL_net/" target="_blank">SDL_net</a></li>
+            <li><a href="https://www.libsdl.org/projects/SDL_ttf/" target="_blank">SDL_ttf</a></li>
             </ul>
 
             <p>The following sections explain how to build and use DerelictSDL2. See the page <a href="../using.html">Using Derelict</a> for more information.
 
             <h3>Using With DUB</h3>
 
-            <p>The easiest way to use DerelictSDL2 is to use DUB to manage your project and add it as a dependency in your project configuration file. Those using <a href="http://code.dlang.org/package-format?lang=json" target="none">the JSON format</a> should add the following to the <em>"dependencies"</em> field of <em>dub.json</em>.</p>
+            <p>The easiest way to use DerelictSDL2 is to use DUB to manage your project and add it as a dependency in your project configuration file. Those using <a href="http://code.dlang.org/package-format?lang=json" target="_blank">the JSON format</a> should add the following to the <em>"dependencies"</em> field of <em>dub.json</em>.</p>
 
             <pre>
             "derelict-sdl2": "~>2.0.0"
             </pre>
 
-            <p>Those using <a href="http://code.dlang.org/package-format?lang=sdl" target="none">the Simple Declarative Language (SDLang)</a> should add the following to <em>dub.sdl</em>.</p>
+            <p>Those using <a href="http://code.dlang.org/package-format?lang=sdl" target="_blank">the Simple Declarative Language (SDLang)</a> should add the following to <em>dub.sdl</em>.</p>
 
             <pre>
             dependency "derelict-sdl2" version="~>2.0.0"
             </pre>
 
-            <p>By using the format ~>2.0.0, the version of DerelictSDL2 will be constrained between 2.0.0 and 2.1.0. This allows you to get the latest version when compiling a project for the first time or when running <em>dub upgrade</em> in your project directory.
+            <p>See <a href="../compiling#dub">the documentation</a> on using Derelict packages with DUB-managed projects for more information.</p>
 
             <h3>Using Without DUB</h3>
 
-            <p>It is not necessary to use DUB to manage your project in order to use DerelictSDL2, but it is still required to build it. To do so, make sure DUB, DMD and git are all available on your system path, then execute the following commands to obtain the source code.</p>
-
-            <pre>
-            git clone https://github.com/DerelictOrg/DerelictSDL2.git
-            cd DerelictSDL2
-            git checkout 2.0.0
-            </pre>
-
-            <p>The master branch is the default branch and may contain changes that have not yet been pushed the 2.0.0 branch. In order to make sure that you're using the latest release, checkout the 2.0.0 branch. The following will build the library.</p>
-
-            <pre>
-            dub build -brelease -ax86_64
-            </pre>
-            
-            <p>Drop the <em>-b</em> argument on the DUB command line for a debug build and the <em>-a</em> argument for 32-bit. The library will be created in DerelictSDL2/lib. DerelictSDL2 depends on DerelictUtil. DUB will pull it down and install it in the DUB cache. However, you will still need to build it and link it into your application. You can do that by building the version in the DUB cache or cloning the DerelictUtil repository seperately and building that.</p>
-
-            <p>Once you have both DerelictSDL2 and DerelictUtil compiled, you will need to link both libraries into your application. The easiest thing to do will be to copy them to a common directory where your compiler can find them, either through the system path or with a command line switch, or add them to your project settings in your IDE.</p>
+            <p>It is not necessary to use DUB to manage your project in order to use DerelictSDL2, but it is still required to build it. To do so, make sure DUB, DMD and git are all available on your system path, then execute the following commands to obtain the source code. The simplest way is to use DUB to fetch the latest version of both <a href="http://code.dlang.org/packages/derelict-sdl2" target="_blank">DerelictSDL2</a> and <a href="http://code.dlang.org/packages/derelict-util" target="_blank">DerelictUtil</a> (the links lead to the DUB registry page for each project, where you can find the latest version number). See <a href="../compiling#nodub">the documentation</a> on using Derelict with projects not managed by DUB for more information.</p>
 
             <h3>Loading</h3>
             <p>To load the SDL2 library with DerelictSDL2, call one of the overloads of the load method on the DerelictSDL2 instance.</p>
-            <pre>
+            <pre><code>
             DerelictSDL2.load();
-            </pre>
+            </code></pre>
             
-            <p>This no-argument version will attempt to load the SDL2 library using a default set of system-specific library names to look for on the system search path. Overloads accept one of more custom library names to search for. DerelictSDL2 also supports Derelict's SharedLibVersion feature. For example:</p>
+            <p>This no-argument version will attempt to load the SDL2 library using a default set of system-specific library names to look for on the system search path. Overloads accept one of more custom library names to search for. DerelictSDL2 also supports Derelict's <tt>SharedLibVersion</tt> feature. For example:</p>
 
-            <pre>
+            <pre><code>
             DerelictSDL2.load(SharedLibVersion(2, 0, 2));
-            </pre>
+            </code></pre>
 
-            <p>This requires SDL 2.0.2 as a minimum and will fail if only SDL 2.0.1 or lower is available, but will successfully load if SDL 2.0.2 or higher is available. See <a href="../using/load.html">the loading documentation</a> for more information relevant to all shared libraries.</p>
+            <p>This example requires SDL <tt>2.0.2</tt> as a minimum and will fail if only SDL <tt>2.0.1</tt> or lower is available, but will successfully load if SDL <tt>2.0.2</tt> or higher is available. See <a href="../using.html">the general documentation</a> on using Derelict for more information relevant to all shared libraries.</p>
 
             
         </div>
