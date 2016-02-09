@@ -29,7 +29,7 @@
         <div id="content">
             <h2>DerelictSDL2</h2>
 
-            <p>DerelictSDL2 is a dynamic D binding to the 2.x series of the <a href="http://libsdl.org" target="none">Simple DirectMedial Layer (SDL)</a> library. DerelictSDL2 <tt>2.0.0</tt> and higher supports all releases of SDL2 from <tt>2.0.0</tt> and up via Derelict's <a href="../using/load.html#sharedlibversion">SharedLibVersion feature</a>. Older versions of DerelictSDL2 are tied to specific versions of SDL2. New projects using DerelictSDL2 should use <tt>2.0.0</tt> or higher.</p>
+            <p>DerelictSDL2 is a dynamic D binding to the <tt>2.x</tt> series of the <a href="http://libsdl.org" target="_blank">Simple DirectMedial Layer (SDL)</a> library. DerelictSDL2 <tt>2.0.0</tt> and higher supports all releases of SDL2 from <tt>2.0.0</tt> and up via Derelict's <a href="../using/load.html#sharedlibversion">SharedLibVersion feature</a>. Older versions of DerelictSDL2 are tied to specific versions of SDL2. New projects using DerelictSDL2 should use <tt>2.0.0</tt> or higher.</p>
 
             <p>DerelictSDL2 also includes bindings to the following SDL satellite libraries:<p>
             <ul>
@@ -67,15 +67,13 @@
             DerelictSDL2.load();
             </code></pre>
             
-            <p>This no-argument version will attempt to load the SDL2 library using a default set of system-specific library names to look for on the system search path. Overloads accept one of more custom library names to search for. DerelictSDL2 also supports Derelict's <tt>SharedLibVersion</tt> feature. For example:</p>
+            <p>This no-argument version will attempt to load the SDL2 library using a default set of system-specific library names to look for on the system search path. Overloads accept one or more custom library names to search for. DerelictSDL2 also supports Derelict's <tt>SharedLibVersion</tt> feature. For example:</p>
 
             <pre><code>
             DerelictSDL2.load(SharedLibVersion(2, 0, 2));
             </code></pre>
 
-            <p>This example requires SDL <tt>2.0.2</tt> as a minimum and will fail if only SDL <tt>2.0.1</tt> or lower is available, but will successfully load if SDL <tt>2.0.2</tt> or higher is available. See <a href="../using.html">the general documentation</a> on using Derelict for more information relevant to all shared libraries.</p>
-
-            
+            <p>This example requires SDL <tt>2.0.2</tt> as a minimum and will fail if only SDL <tt>2.0.1</tt> or lower is available, but will successfully load if SDL <tt>2.0.2</tt> or higher is available. See <a href="../using.html">the general documentation</a> on using Derelict for more information relevant to all shared libraries.</p>            
         </div>
     </div>
 </body>
