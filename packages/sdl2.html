@@ -55,21 +55,35 @@
             dependency "derelict-sdl2" version="~>2.0.0"
             </pre>
 
-            <p>See <a href="../compiling#dub">the documentation</a> on using Derelict packages with DUB-managed projects for more information.</p>
+            <p>Note that all of the bindings for the satellite libraries are included in this dependency, so no special configuration is needed to use any of them. See <a href="../compiling#dub">the documentation</a> on using Derelict packages with DUB-managed projects for more information.</p>
 
             <h3>Using Without DUB</h3>
 
             <p>It is not necessary to use DUB to manage your project in order to use DerelictSDL2, but it is still required to build it. To do so, make sure DUB, DMD and git are all available on your system path, then execute the following commands to obtain the source code. The simplest way is to use DUB to fetch the latest version of both <a href="http://code.dlang.org/packages/derelict-sdl2" target="_blank">DerelictSDL2</a> and <a href="http://code.dlang.org/packages/derelict-util" target="_blank">DerelictUtil</a> (the links lead to the DUB registry page for each project, where you can find the latest version number). See <a href="../compiling#nodub">the documentation</a> on using Derelict with projects not managed by DUB for more information.</p>
 
+            <p>Note that the bindings to the satellite libraries are compiled automatically with DerelictSDL2 and are included in the final binary, so no separate compilation step is needed.</p>
+
             <h3>Loading</h3>
             <p>To load the SDL2 library with DerelictSDL2, call one of the overloads of the load method on the DerelictSDL2 instance.</p>
             <pre><code>
+            import derelict.sdl2.sdl;
             DerelictSDL2.load();
             </code></pre>
             
-            <p>This no-argument version will attempt to load the SDL2 library using a default set of system-specific library names to look for on the system search path. Overloads accept one or more custom library names to search for. DerelictSDL2 also supports Derelict's <tt>SharedLibVersion</tt> feature. For example:</p>
+            <p>This no-argument version will attempt to load the SDL2 library using a default set of system-specific library names to look for on the system search path. Overloads accept one or more custom library names to search for.</p>
+
+            <p>Note that the same steps are taken to load any of the satellite libraries. Each library has a corresponding module in the <tt>derelict.sdl2</tt> package and a corresponding loader. The naming conventions are the same for each binding. For example, to load the SDL_image library:</p>
 
             <pre><code>
+            import derelict.sdl2.image;
+            DerelictSDL2Image.load();
+            </code></pre>
+
+            <p>DerelictSDL2 also supports Derelict's <tt>SharedLibVersion</tt> feature (though not for the satellite library bindings). For example:</p>
+
+            <pre><code>
+            import derelict.sdl2.sdl;
+            import derelict.util.loader;
             DerelictSDL2.load(SharedLibVersion(2, 0, 2));
             </code></pre>
 
