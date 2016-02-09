@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Derelict Documentation -- Packages -- GLFW3</title>
+    <meta name="author" content="Mike Parker">
+    <meta name="description" content="Documentation for the DerelictOrg project (https://github.com/DerelictOrg/).">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body>
+    <div id="header" role="banner">
+        <h1>DerelictGLFW3</h1>
+    </div>
+    <div class="col-sidebar">
+        <div id="navbar" role="navigation">
+            <ul class="menu">
+            <li class="menu"><a href="../index.html">Home</a></li>
+            <li class="menu"><a href="../using.html">Using Derelict</a></li>
+            <li class="menu"><a href="../packages.html">Derelict Packages</a></li>
+            </ul>
+        </div
+    </div>
+    <div class="col-main">
+        <div class="note" role="complementary">
+            <p>Please note that this documentation is a work in progress and is currently incomplete.</p>
+        </div>
+        <div id="content">
+            <h2>DerelictGLFW3</h2>
+
+            <p>DerelictGLFW3 is a dynamic D binding to the 3.x series of the <a href="http://www.glfw.org" target="_blank">GLFW</a> library. DerelictGLFW3 <tt>1.0.x</tt> supports supports the <tt>3.0</tt> series of GLFW and <tt>1.1.x</tt> supports the <tt>3.1</tt> series. Derelict's <a href="../using/load.html#sharedlibversion">SharedLibVersion feature</a> is not currently supported.
+
+            <p>The following sections explain how to build and use DerelictGLFW3. See the page <a href="../using.html">Using Derelict</a> for more information.
+
+            <h3>Using With DUB</h3>
+
+            <p>The easiest way to use DerelictGLFW3 is to use DUB to manage your project and add it as a dependency in your project configuration file. Those using <a href="http://code.dlang.org/package-format?lang=json" target="_blank">the JSON format</a> should add the following to the <em>"dependencies"</em> field of <em>dub.json</em>.</p>
+
+            <pre>
+            "derelict-glfw3": "~>1.1.0"
+            </pre>
+
+            <p>Those using <a href="http://code.dlang.org/package-format?lang=sdl" target="_blank">the Simple Declarative Language (SDLang)</a> should add the following to <em>dub.sdl</em>.</p>
+
+            <pre>
+            dependency "derelict-glfw3" version="~>1.1.0"
+            </pre>
+
+            <p>Both of the above lines will add support for GLFW 3.1. For GLFW 3.0, use <tt>"~>1.0.0"</tt> instead. See <a href="../compiling#dub">the documentation</a> on using Derelict packages with DUB-managed projects for more information.</p>
+
+            <h3>Using Without DUB</h3>
+
+            <p>It is not necessary to use DUB to manage your project in order to use DerelictGLFW3, but it is still required to build it. To do so, make sure DUB, DMD and git are all available on your system path, then execute the following commands to obtain the source code. The simplest way is to use DUB to fetch the latest version of both <a href="http://code.dlang.org/packages/derelict-glfw3" target="_blank">DerelictGLFW3</a> and <a href="http://code.dlang.org/packages/derelict-util" target="_blank">DerelictUtil</a> (the links lead to the DUB registry page for each project, where you can find the latest version number). See <a href="../compiling#nodub">the documentation</a> on using Derelict with projects not managed by DUB for more information.</p>
+
+            <h3>Loading</h3>
+            <p>To load the GLFW library with DerelictGLFW3, call one of the overloads of the load method on the DerelictGLFW3 instance.</p>
+            <pre><code>
+            DerelictGLFW3.load();
+            </code></pre>
+            
+            <p>This no-argument version will attempt to load the GLFW library using a default set of system-specific library names to look for on the system search path. Overloads accept one or more custom library names to search for. See <a href="../using.html">the general documentation</a> on using Derelict for more information relevant to all shared libraries.</p>            
+        </div>
+    </div>
+</body>
+</html>
