@@ -29,7 +29,9 @@
         <div id="content">
             <h2>DerelictGLFW3</h2>
 
-            <p>DerelictGLFW3 provides both dynamic and static D bindings to the 3.x series of the <a href="http://www.glfw.org" target="_blank">GLFW</a> library. DerelictGLFW3 <tt>1.0.x</tt> is a dynamic binding to the <tt>3.0</tt> series of GLFW and DerelictGLFW3 <tt>1.1.x</tt> is a dynamic binding to the <tt>3.1</tt> series. DerelictGLF3 <tt>2.0.0</tt> provides both static and dynamic bindings to GLFW3 <tt>3.1</tt>. This is what new projects should be using, as all future bug fixes will be applied here. Derelict's <a href="../using/load.html#sharedlibversion">SharedLibVersion feature</a> is not currently supported for the dynamic bindings.
+            <p>DerelictGLFW3 provides both dynamic and static D bindings to the 3.x series of the <a href="http://www.glfw.org" target="_blank">GLFW</a> library. The current version is <tt>3.0.0</tt>.</p>
+
+            <p>DerelictGLFW3 <tt>1.0.x</tt> is a dynamic binding to the <tt>3.0</tt> series of GLFW and DerelictGLFW3 <tt>1.1.x</tt> is a dynamic binding to the <tt>3.1</tt> series. DerelictGLFW3 <tt>2.0.0</tt> provides both static and dynamic bindings to GLFW3 <tt>3.1</tt> and <tt>3.0.0</tt> provides the same for GLFW 3.2. The latter is what new projects should be using, as all future bug fixes will be applied here. Derelict's <a href="../using/load.html#sharedlibversion">SharedLibVersion feature</a> is not currently supported by DerelictGLFW3.
 
             <p>The following sections explain how to build and use DerelictGLFW3. See the page <a href="../using.html">Using Derelict</a> for more information on using the dynamic bindings. Note that precompiled binaries of GLFW3 are available from <a href="http://www.glfw.org/download.html">the GLFW3 download page</a> and can also be installed through your system's package manager on POSIX systems. When using the dynamic bindings, you only need the GLFW3 shared library (the .dll or .so) for your system.</p>
 
@@ -38,16 +40,16 @@
             <p>The easiest way to use DerelictGLFW3 is to use DUB to manage your project and add it as a dependency in your project configuration file. Those using <a href="http://code.dlang.org/package-format?lang=json" target="_blank">the JSON format</a> should add the following to the <em>"dependencies"</em> field of <em>dub.json</em>.</p>
 
             <pre>
-            "derelict-glfw3": "~>2.0.0"
+            "derelict-glfw3": "~>3.0.0"
             </pre>
 
             <p>Those using <a href="http://code.dlang.org/package-format?lang=sdl" target="_blank">the Simple Declarative Language (SDLang)</a> should add the following to <em>dub.sdl</em>.</p>
 
             <pre>
-            dependency "derelict-glfw3" version="~>2.0.0"
+            dependency "derelict-glfw3" version="~>3.0.0"
             </pre>
 
-            <p>Both of the above lines will add support for the most up-to-date binding to GLFW 3.1. For GLFW 3.0, use <tt>"~>1.0.0"</tt> instead. See <a href="../compiling#dub">the documentation</a> on using Derelict packages with DUB-managed projects for more information.</p>
+            <p>Both of the above lines will add support for the most up-to-date binding to GLFW 3.2. For GLFW 3.0, use <tt>"~>1.0.0"</tt>. For GLFW 3.1, use <tt>"~>2.0.0"</tt>. See <a href="../compiling#dub">the documentation</a> on using Derelict packages with DUB-managed projects for more information.</p>
 
             Static bindings require a link-time dep
 
@@ -58,26 +60,24 @@
             <h3>Loading -- Dynamic Bindings Only</h3>
             <p>Using the dynamic bindings requires you to load the GLFW3 shared library manually at runtime. To load the GLFW3 library with DerelictGLFW3, call one of the overloads of the load method on the DerelictGLFW3 instance.</p>
             <pre><code>
-            // This import syntax only works with DerelictGLFW3 2.x
+            // This syntax can be used with DerelictGLFW3 2.x and later
             import derelict.glfw3;
+
+            // Use this with DerelictGLFW3 1.x
+            // import derelict.glfw3.glfw3;
+
             DerelictGLFW3.load();
             </code></pre>
 
-            <p>Note that versions <tt>1.0</tt> and <tt>1.1</tt> of DerelictGLFW3 do not support the above import syntax. With those versions, you must use the following syntax.</p>
-            <pre><code>
-            // Works with DerelictGLFW3 1.x and 2.x
-            import derelict.glfw3.glfw3;
-            </code></pre>
-
-            <p>This no-argument version of <tt>load</tt> will attempt to load the GLFW3 library using a default set of system-specific library names to look for on the system search path. Overloads accept one or more custom library names to search for. See <a href="../using.html">the general documentation</a> on using Derelict for more information relevant to all shared libraries.</p>
+            <p>This no-argument version of <tt>load</tt> will attempt to load the GLFW3 library using a default set of system-specific library names that the loader will search for on the system search path. Overloads accept one or more custom library names to search for. See <a href="../using.html">the general documentation</a> on using Derelict for more information relevant to all shared libraries.</p>
 
             <a name="statbind"><h3>Static Bindings</h3></a>
 
-            <p>DerelictGLFW3 <tt>2.x</tt> provides the option to use a static binding to GLFW3. When doing so,you may link either dynamically or statically with GLFW3 (see <a href="../dynstat.html">this page</a> for an explanation of the difference between static and dynamic bindings and their relationship with static and dynamic linking). With this approach, it is no longer necessary to manually load the GLFW3 shared library at runtime with <tt>DerelictGLFW3.load</tt>.</p>
+            <p>DerelictGLFW3 <tt>2.x</tt> and later provide the option to use a static binding to GLFW3. With this option, you may link either dynamically or statically with GLFW3 (see <a href="../dynstat.html">this page</a> for an explanation of the difference between static and dynamic bindings and their relationship with static and dynamic linking). When using the static binding, it is not necessary to manually load the GLFW3 shared library at runtime with <tt>DerelictGLFW3.load</tt>, nor will your executable have a dependency on DerelictUtil (unless you are using other Derelict packages).</p>
 
             <p>Note that it is beyond the scope of this document to explain how to link dynamically or statically, the issues with object file formats, or which libraries you need to link with. If you are not comfortable with these topics, you'll probably be better served by using the dynamic bindings as explained above until you are.</p>
 
-            <p>When using DUB to manage your project (recommended), you can add the following to your project's <tt>dub.sdl</tt> file.
+            <p>When using DUB to manage your project (recommended), you can add the following to your project's <tt>dub.sdl</tt> file to enable the static binding.
 
             <pre>
             dependency "derelict-glfw3" version="~>2.0.0"
@@ -95,7 +95,7 @@
 
             <pre>
             "dependencies": {
-                "derelict-glfw3": "~>2.0.0"
+                "derelict-glfw3": "~>3.0.0"
             },
             "subConfigurations": {
                 "derelict-glfw3": "derelict-glfw3-static"
@@ -109,15 +109,12 @@
             <pre>
             mkdir derelict
             cd derelict
-            dub fetch --cache=local derelict-glfw3 --version=2.0.0
-            cd derelict-glfw3-2.0.0
+            dub fetch --cache=local derelict-glfw3 --version=3.0.0
+            cd derelict-glfw3-3.0.0
             dub build -brelease -cderelict-glfw3-static
             </pre>
 
-            <p>This will create a static library (<tt>DerelictGLFW3.lib</tt> or <tt>libDerelictGLFW3.a</tt>) in the <tt>derelict-glfw3-2.0.0/lib</tt> directory. When compiling your project, you will need to link with both this library and the appropriate GLFW3 library (statically or dynamically).</tt>
-
-            <p class="note">For Windows users, it is important that you pay attention to the object file formats when linking dynamically or statically with GLFW3. The precompiled binary packages at the GLFW3 website are built with MinGW and various versions of Microsoft Visual Studio. The MinGW binaries will not work with DMD, nor with a version of LDC that uses the Microsoft toolchain. They should work, however, with GDC or a MinGW-based version of LDC. The 32-bit binaries compiled with Visual Studio will also not work with DMD unless you use the -m32mscoff flag when compiling your program. For DUB-managed projects, this is problematic as DUB does not yet have built-in support for this flag. The 64-bit Visual Studio binaries will work with DMD when using the -m64 flag, which DUB supports via the -ax86_64 command line switch.</p>
-
+            <p>This will create a static library (<tt>DerelictGLFW3.lib</tt> or <tt>libDerelictGLFW3.a</tt>) in the <tt>derelict-glfw3-3.0.0/lib</tt> directory. When compiling your project, you will need to link with both this library and the appropriate GLFW3 library (statically or dynamically).</tt>
         </div>
     </div>
 </body>
