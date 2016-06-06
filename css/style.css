@@ -24,6 +24,38 @@ em.term { font-weight: 600; }
 pre { padding-top: 10px; background-color: #FFFFFF; }
 pre, tt { color: #454E53; font-weight: bold; font-size: .9em; }
 a { color: #B87333; }
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-style: solid;
+    border-width: 2px;
+}
+
+th,td {
+    border-style: solid;
+    border-width: 1px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+th {
+    text-align: center;
+    font-weight: 600;
+    background-color: #EFEFEF;
+}
+
+td {
+    text-align: left;
+    padding-left: 10px;
+}
+
+td.centered {
+    text-align: center;
+    padding-left: 0;
+}
+
+
 #content, .note, #navbar { padding: 10px 1em; margin: 5px; }
 #header { float: right; }
 #content { background-color: #FFFFFF; }

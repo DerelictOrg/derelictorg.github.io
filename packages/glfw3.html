@@ -29,9 +29,9 @@
         <div id="content">
             <h2>DerelictGLFW3</h2>
 
-            <p>DerelictGLFW3 provides both dynamic and static D bindings to the 3.x series of the <a href="http://www.glfw.org" target="_blank">GLFW</a> library. The current version is <tt>3.0.0</tt>.</p>
+            <p>DerelictGLFW3 provides both dynamic and static D bindings to the <tt>3.x</tt> series of the <a href="http://www.glfw.org" target="_blank">GLFW</a> library. The most recent version is <tt>3.1.0</tt>.</p>
 
-            <p>DerelictGLFW3 <tt>1.0.x</tt> is a dynamic binding to the <tt>3.0</tt> series of GLFW and DerelictGLFW3 <tt>1.1.x</tt> is a dynamic binding to the <tt>3.1</tt> series. DerelictGLFW3 <tt>2.0.0</tt> provides both static and dynamic bindings to GLFW3 <tt>3.1</tt> and <tt>3.0.0</tt> provides the same for GLFW 3.2. The latter is what new projects should be using, as all future bug fixes will be applied here. Derelict's <a href="../using/load.html#sharedlibversion">SharedLibVersion feature</a> is not currently supported by DerelictGLFW3.
+            <p>DerelictGLFW3 <tt>1.0.x</tt> is a dynamic binding to the <tt>3.0</tt> series of GLFW and DerelictGLFW3 <tt>1.1.x</tt> is a dynamic binding to the <tt>3.1</tt> series. DerelictGLFW3 <tt>2.0.x</tt> provides both static and dynamic bindings to GLFW3 <tt>3.1</tt>. DerelictGLFW3 <tt>3.0.x</tt> and <tt>3.1.x</tt> provide the same for GLFW 3.2. <tt>3.1.x</tt> includes support for all of the optional GLFW <tt>3.2</tt> functions that are conditionally compiled (<a href="#optional">see below</a>). New projects should be using <tt>3.1.x</tt>, as all future bug fixes will be applied here. Derelict's <a href="../using/load.html#sharedlibversion">SharedLibVersion feature</a> is not currently supported by DerelictGLFW3.
 
             <p>The following sections explain how to build and use DerelictGLFW3. See the page <a href="../using.html">Using Derelict</a> for more information on using the dynamic bindings. Note that precompiled binaries of GLFW3 are available from <a href="http://www.glfw.org/download.html">the GLFW3 download page</a> and can also be installed through your system's package manager on POSIX systems. When using the dynamic bindings, you only need the GLFW3 shared library (the .dll or .so) for your system.</p>
 
@@ -40,16 +40,16 @@
             <p>The easiest way to use DerelictGLFW3 is to use DUB to manage your project and add it as a dependency in your project configuration file. Those using <a href="http://code.dlang.org/package-format?lang=json" target="_blank">the JSON format</a> should add the following to the <em>"dependencies"</em> field of <em>dub.json</em>.</p>
 
             <pre>
-            "derelict-glfw3": "~>3.0.0"
+            "derelict-glfw3": "~>3.1.0"
             </pre>
 
             <p>Those using <a href="http://code.dlang.org/package-format?lang=sdl" target="_blank">the Simple Declarative Language (SDLang)</a> should add the following to <em>dub.sdl</em>.</p>
 
             <pre>
-            dependency "derelict-glfw3" version="~>3.0.0"
+            dependency "derelict-glfw3" version="~>3.1.0"
             </pre>
 
-            <p>Both of the above lines will add support for the most up-to-date binding to GLFW 3.2. For GLFW 3.0, use <tt>"~>1.0.0"</tt>. For GLFW 3.1, use <tt>"~>2.0.0"</tt>. See <a href="../compiling#dub">the documentation</a> on using Derelict packages with DUB-managed projects for more information.</p>
+            <p>Both of the above lines will add support for the most up-to-date binding to GLFW <tt>3.2</tt>. For GLFW <tt>3.0</tt>, use <tt>"~>1.0.0"</tt>. For GLFW <tt>3.1</tt>, use <tt>"~>2.0.0"</tt>. See <a href="../compiling#dub">the documentation</a> on using Derelict packages with DUB-managed projects for more information.</p>
 
             Static bindings require a link-time dep
 
@@ -71,7 +71,7 @@
 
             <p>This no-argument version of <tt>load</tt> will attempt to load the GLFW3 library using a default set of system-specific library names that the loader will search for on the system search path. Overloads accept one or more custom library names to search for. See <a href="../using.html">the general documentation</a> on using Derelict for more information relevant to all shared libraries.</p>
 
-            <a name="statbind"><h3>Static Bindings</h3></a>
+            <a name="statbind"></a><h3>Static Bindings</h3>
 
             <p>DerelictGLFW3 <tt>2.x</tt> and later provide the option to use a static binding to GLFW3. With this option, you may link either dynamically or statically with GLFW3 (see <a href="../dynstat.html">this page</a> for an explanation of the difference between static and dynamic bindings and their relationship with static and dynamic linking). When using the static binding, it is not necessary to manually load the GLFW3 shared library at runtime with <tt>DerelictGLFW3.load</tt>, nor will your executable have a dependency on DerelictUtil (unless you are using other Derelict packages).</p>
 
@@ -80,11 +80,11 @@
             <p>When using DUB to manage your project (recommended), you can add the following to your project's <tt>dub.sdl</tt> file to enable the static binding.
 
             <pre>
-            dependency "derelict-glfw3" version="~>2.0.0"
+            dependency "derelict-glfw3" version="~>3.1.0"
             subConfiguration "derelict-glfw3" "derelict-glfw3-static"
             </pre>
 
-            <p>You'll also need to make sure that the development libraries for GLFW3 are installed on your system. On POSIX systems, this can be done with the system package manager (assuming it has been updated with GLFW 3.1 or later), or by building the libraries manually from source. On Windows, you can download one of the binary packages from <a href="http://www.glfw.org/download.html">the GLFW3 download page</a> or build from source manually. Once they are installed, you can, for example, add the following to your <tt>dub.sdl</tt> to link dynamically with GLFW3.</p>
+            <p>You'll also need to make sure that the development libraries for GLFW3 are installed on your system. On POSIX systems, this can be done with the system package manager or by building the libraries manually from source. On Windows, you can download one of the binary packages from <a href="http://www.glfw.org/download.html">the GLFW3 download page</a> or build from source manually. Once they are installed, you can, for example, add the following to your <tt>dub.sdl</tt> to link dynamically with GLFW3.</p>
 
             <pre>
             libs "glfw3dll" platform="windows"
@@ -95,7 +95,7 @@
 
             <pre>
             "dependencies": {
-                "derelict-glfw3": "~>3.0.0"
+                "derelict-glfw3": "~>3.1.0"
             },
             "subConfigurations": {
                 "derelict-glfw3": "derelict-glfw3-static"
@@ -115,6 +115,95 @@
             </pre>
 
             <p>This will create a static library (<tt>DerelictGLFW3.lib</tt> or <tt>libDerelictGLFW3.a</tt>) in the <tt>derelict-glfw3-3.0.0/lib</tt> directory. When compiling your project, you will need to link with both this library and the appropriate GLFW3 library (statically or dynamically).</tt>
+
+            <a name="optional"></a><h3>Loading Optional Functions</h3>
+
+            <p>GLFW3 includes some functions that are conditionally compiled depending on the compile-time configuration of the host system. For example, if the Vulkan SDK is present, then GLFW <tt>3.2</tt> will support the Vulkan API and will expose a few functions the use Vulkan types. The GLFW API also includes functions using types from the following APIs: EGL, Cocoa, Win32, X11, Wayland and Mir.</p>
+
+            <p>DerelictGLFW3 does not declare these functions by default. Doing so would tie the declarations to specific type bindings for any given API. For example, the Win32 HWND, or the X11 Window. This can cause conflicts when clients make use of other API bindings that also declare those types.</p>
+
+            <p>Another issue is that, because the functions are conditionally compiled in GLFW, there is always a chance they will not be available. This is particularly problematic for the dynamic binding. A DerelictGLFW3 app running on a Linux system that does where GFLW3 was not compiled with Wayland or Mir support would fail to load the shared library, requiring the developer to make use of the Selective Loading API even if those functions are not used.</p>
+
+            <p>DerelictGLFW3 <tt>3.1.x</tt> solves this problem by making the bindings for those optional functions opt-in. This is done with a series of mixin templates intended to be instantiated in client code. For example, to bind the native GLFW functions on Windows, the following can be implemented.</p>
+
+            <pre><code>
+            import core.sys.windows.windows : HWND, HGLRC;
+            import derelict.glfw3;
+
+            mixin DerelictGLFW3_WindowsBind;
+            </code></pre>
+
+            <p>When using the static binding, this is all that is needed. When using the dynamic binding, the functions must be loaded at some point by calling the free function <tt>DerelictGLFW3_loadWindows</tt> after calling <tt>DerelictGLFW3.load</tt>.</p>
+
+            <pre><code>
+            void main() {
+                DerelictGLFW3.load();
+                DerelictGLFW3_loadWindows();
+            }
+            </code></pre>
+
+            <p>The following mixin templates and dynamic loaders are available.</p>
+
+            <table>
+                <tr>
+                    <th width=20%>Platform</th>
+                    <th width=20%>Mixin Template</th>
+                    <th width=20%>Mixin Template Alias</th>
+                    <th width=20%>Dynamic Loader</th>
+                    <th width=20%>Dynamic Loader Alias</th>
+                </tr>
+                <tr>
+                    <td width=20%>All</td>
+                    <td width=20%>DerelictGLFW3_VulkanBind</td>
+                    <td class="centered" width=20%>--</td>
+                    <td width=20%>DerelictGLFW3_loadVulkan</td>
+                    <td class="centered" width=20%>--</td>
+                </tr>
+                <tr>
+                    <td width=20%>All</td>
+                    <td width=20%>DerelictGLFW3_EGLBind</td>
+                    <td class="centered" width=20%>--</td>
+                    <td width=20%>DerelictGLFW3_loadEGL</td>
+                    <td class="centered" width=20%>--</td>
+                </tr>
+                <tr>
+                    <td width=20%>OSX</td>
+                    <td width=20%>DerelictGLFW3_MacBind</td>
+                    <td width=20%>DerelictGLFW3_NativeBind</td>
+                    <td width=20%>DerelictGLFW3_loadMac</td>
+                    <td width=20%>DerelictGLFW3_loadNative</td>
+                </tr>
+                <tr>
+                    <td width=20%>Windows</td>
+                    <td width=20%>DerelictGLFW3_WindowsBind</td>
+                    <td width=20%>DerelictGLFW3_NativeBind</td>
+                    <td width=20%>DerelictGLFW3_loadWindows</td>
+                    <td width=20%>DerelictGLFW3_loadNative</td>
+                </tr>
+                <tr>
+                    <td width=20%>Posix</td>
+                    <td width=20%>DerelictGLFW3_X11Bind</td>
+                    <td width=20%>DerelictGLFW3_NativeBind</td>
+                    <td width=20%>DerelictGLFW3_loadX11</td>
+                    <td width=20%>DerelictGLFW3_loadNative</td>
+                </tr>
+                <tr>
+                    <td width=20%>Posix</td>
+                    <td width=20%>DerelictGLFW3_WaylandBind</td>
+                    <td class="centered" width=20%>--</td>
+                    <td width=20%>DerelictGLFW3_loadWayland</td>
+                    <td class="centered" width=20%>--</td>
+                </tr>
+                <tr>
+                    <td width=20%>Posix</td>
+                    <td width=20%>DerelictGLFW3_MirBind</td>
+                    <td class="centered" width=20%>--</td>
+                    <td width=20%>DerelictGLFW3_loadMir</td>
+                    <td class="centered" width=20%>--</td>
+                </tr>
+            </table>
+
+
         </div>
     </div>
 </body>
