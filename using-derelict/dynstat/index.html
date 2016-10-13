@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Mike Parker">
+  
+  <title>About Bindings - Derelict Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../extra.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "About Bindings";
+    var mkdocs_page_input_path = "using-derelict/dynstat.md";
+    var mkdocs_page_url = "/using-derelict/dynstat/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Derelict Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Introduction</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Using Derelict</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../using/">Overview</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">About Bindings</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#bindings-defined">Bindings Defined</a></li>
+                
+                    <li><a class="toctree-l4" href="#terminology">Terminology</a></li>
+                
+                    <li><a class="toctree-l4" href="#dynamic-vs-static">Dynamic vs. Static</a></li>
+                
+                    <li><a class="toctree-l4" href="#conclusion">Conclusion</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../loading/">Loading Shared Libraries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../failure/">Load Failures</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Derelict Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Using Derelict &raquo;</li>
+        
+      
+    
+    <li>About Bindings</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/DerelictOrg" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="bindings-defined">Bindings Defined</h2>
+<p>The bindings in Derelict are primarily <em>dynamic bindings</em>, as opposed to those in the <a href="https://github.com/D-Programming-Deimos">Deimos project</a> which are all <em>static bindings</em>. This page aims to clarify the difference between static and dynamic bindings. It is important when starting a new project to understand the implications of each and selecting the right type of binding in order to avoid unnecessary frustration.</p>
+<h3 id="terminology">Terminology</h3>
+<p>Before getting to the differences between the two types of bindings, it would help to understand some relevant terminology as used throughout this documentation. This is especially important since the words <em>static</em> and <em>dynamic</em> are used in multiple contexts. Understanding the terminology will help to avoid confusion in online discussions or when asking for help.</p>
+<ul>
+<li><strong>binding</strong> -- an interface to a library in one language that enables the library to be used in another language. Typically, the binding provides a one-to-one mapping to the original interface. For example, all of the types and functions declared in the Derelict packages correspond exactly to the types and functions in the original C libraries, except in cases where the original API uses a variable or type name that is a keyword in D. Bindings are sometimes mistakenly referred to as <em>wrappers</em>.</li>
+<li><strong>wrapper</strong> -- a higher-level interface to a library. Wrappers are typically written in the same language as the underlying API, either that of the original library or a binding to that library. For example, a wrapper for OpenGL written in D would be written on top of an OpenGL binding. Wrappers typically provide functionality that makes using the library more convenient. For example, an OpenGL wrapper for D might use classes to represent OpenGL objects such as textures and shaders, encapsulating commonly grouped function calls into single class methods. None of the packages in Derelict are wrappers. They are all bindings. However, D wrappers can be made that use Derelict packages to interface with the C libraries. For example, an OpenGL wrapper can be written on top of <a href="https://github.com/DerelictOrg/DerelictGL3">DerelictGL3</a>.</li>
+<li><strong>static linking</strong> -- occurs at compile time when building an exectuable with a statically compiled language such as C, C++ or D. All of the object files generated by the compiler are fed to the <em>linker</em>, which <em>links</em> them together, along with any <em>static libraries</em> that the application may need, in order to generate the final executable. The static library is an archive containing precompiled object files that are all combined into the final executable. Static libraries on Windows tend to have the .lib file extension; static libraries on Posix systems tend to have .a extensions. Since the objects in the static library become a part of the executable, they add to its file size. When new versions of a static library are released with bug fixes and improvements, all applications that use it must be recompiled so that the new objects can become part of the exectuable.</li>
+<li><strong>dynamic linking</strong> -- as with static linking, this happens just after the compile step when buidling an executable with a statically compiled language such as C, C++ or D. However, instead of linking with a <em>static library</em>, the linker links with a <em>shared library</em> directly or, usually on Windows systems, with an <em>import library</em> (which, confusingly, have the .lib file extension like static libraries). Shared libraries are referred to as <em>dynamic link libraries</em> on Windows (usually with the .dll extension) and as <em>shared objects</em> on most Posix systems (with a .so extension). In addition to shared object, one can also find <em>dynamic libraries</em> with the .dylib extension on Mac OS X. Though the names and file formats may be different, all shared libraries are fundamentally the same. Like static libraries, shared libraries are archive files containing precompiled objects. The difference is that they <em>are not</em> combined into the final executable. Instead, information is inserted by the linker that the OS uses at run time to load the shared library into memory when the application starts. This allows a single library to be shared by multiple applications, which makes executables smaller and allows all applications using the same library to benefit when the library is updated with bug fixes or improvements. It also means that the shared library must be available on the end-user's system in a location on the system library search path.</li>
+<li><strong>dynamic loading</strong> -- like <em>dynamic linking</em>, this uses <em>shared libraries</em>, but there is no link step after compilation. Instead, the shared libraries are loaded manually by the executable at run time. To be clear, <em>dynamic linking</em> has a link-time dependency when the final executable is generated, then the OS will load the relevant shared libraries at run time; <em>dynamic loading</em> has no link-time dependency and the executable can be generated by the linker without the shared libraries being present on the system. In order for dynamic loading to work, the program must make use of OS-specific APIs (or third-party wrappers) to load the shared libraries into the process memory space and to assign the symbols in the library to pointers declared for that purpose. In other words, the shared library is loaded manually rather than automatically. The shared library must also be available on the end-user's system in a location that is on the system library search path. Aside from eliminating link-time dependencies, another benefit of this approach is that it allows different implementations of a shared library's interface to be easily swapped at run time.</li>
+</ul>
+<h3 id="dynamic-vs-static">Dynamic vs. Static</h3>
+<p>The primary difference between a dynamic and a static binding is that the former has no link-time dependency on the library to which it binds. Both types require that the bindings themselves be either linked with the executable or compiled along with the application. However, static bindings have the additional requirement that the bound library must be either statically linked (with a static library) or dynamically linked (with a shared library) when the executable is generated. Dynamic bindings make use of dynamic loading to load shared libraries at run time and, therefore, have no link-time dependencies beyond the binding itself. This is explained below.</p>
+<h4 id="static-bindings">Static Bindings</h4>
+<p>The source code for static bindings in D, like those found in the <a href="https://github.com/D-Programming-Deimos">Deimos project</a>, tends to look very similar to the C or C++ headers for the C library to which they bind. Functions can be declared as normal, simply with no implementation. For example:</p>
+<div class="code"><pre><span></span><span class="k">extern</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="kt">void</span> <span class="n">SomeFunction</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Given a C library, <strong>MyLib</strong>, which exposes the function SomeFunction declared above, the user of the D binding for <strong>MyLib</strong> must either statically link with the <strong>MyLib</strong> static library (<strong>MyLib.lib</strong> on Windows, <strong>libMylib.a</strong> elsewhere) or with the <strong>MyLib</strong> shared library (the import library <strong>MyLib.lib</strong> on Windows, or <strong>libMyLib.so</strong> elsewhere). Additionally, the user must also link with the <strong>MyLib</strong> binding itself, most often as a static library, if it contains anything more than delcarations.</p>
+<p>On Windows, there can be some effort required to link with the C library. At issue is the object file format used by different linkers. For example, when compiling on 32-bit Windows, DMD uses the OPTLINK linker by default, which only understands the <a href="http://en.wikipedia.org/wiki/Relocatable_Object_Module_Format">OMF object format</a>. This is the format that was commonly used on Windows back in the DOS days. Modern Windows compilers and linkers more typically use <a href="https://support.microsoft.com/en-us/kb/121460">COFF</a> instead. As such, most precompiled static and shared libraries available online are in COFF format. To be used with the default 32-bit DMD toolchain, they must either be converted to OMF using a conversion tool, or the source for the library must be compiled with a compiler that generates OMF files, such as the <a href="http://www.digitalmars.com/features.html">Digital Mars C &amp; C++ Compiler (DMC)</a>. However, when compiling with DMD in 64-bit mode, DMD makes use of the Visual C++ toolchain. In this case, the VS linker understands the COFF format, so the conversion step is not necessary. Detailing the object file formats used by every D compiler is beyond the scope of this documentation. It's up to the user to know the output of the tools being used.</p>
+<p>Different people may see different benefits and drawbacks to using static bindings. One of the biggest benefits, perhaps, is that a static binding offers a choice between statically linking with and dynamically linking with the C library. However, no matter the choice mad, there is no way to escape the link-time dependency imposed by a static binding.</p>
+<h4 id="dynamic-bindings">Dynamic Bindings</h4>
+<p>Not only are dynamic bindings used differently than static bindings, they are implemented differently. Normal function prototypes do not work with dynamic bindings because of the fact that such bindings make use of <em>dynamic loading</em>. All of the functions in the bound library must be declared in the binding as function pointers. The MyLib example above converted to a dynamic binding format in D might look something like this:</p>
+<div class="code"><pre><span></span><span class="k">extern</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="k">alias</span> <span class="n">p_SomeFunction</span> <span class="p">=</span> <span class="kt">void</span> <span class="k">function</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span>
+<span class="n">p_SomeFunction</span> <span class="n">SomeFunction</span><span class="p">;</span>
+</pre></div>
+
+
+<p>When an application using the MyLib dynamic binding is compiled, there is no link-time dependency beyond the binding itself. At run time, the dynamic binding will make a call into the OS API to load the MyLib shared library into the application's memory space. After that, it will again call into the OS API to fetch the address of the SomeFunction implementation and assign it to the SomeFunction variable declared above. From that point on, SomeFunction is ready to use.</p>
+<p>Aside from eliminating the link-time dependency on the bound library, dynamic bindings give the user control over the case when the shared library fails to load, typically because it is missing from the user's system, is an incompatible version, or is otherwise corrupt. When using a static binding with dynamic linking, the OS itself reports an error in these cases, which may not always be desirable. Because a dynamic binding uses dynamic loading, it  is possible for the application to detect such errors and react in a manner appropriate for the application, such as displaying a message box with a link to a tech support page.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>The information above is intended to shed light on the difference between static and dynamic bindings. Generally, neither type of binding is "better" than the other. For most applications, it probably doesn't matter which type is used as long as the application programmer is comfortable with the concepts of compiling, linking, and loading. The pros and cons of each approach can take on different weights in different contexts, but debating or explaining such is beyond the scope of this documentation.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../loading/" class="btn btn-neutral float-right" title="Loading Shared Libraries">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../using/" class="btn btn-neutral" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/DerelictOrg" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../using/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../loading/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
