@@ -1,3 +1,0 @@
-Using this approach, you never have to clone any of the Derelict packages in Git. DUB will take care of pulling down the source of any Derelict packages you need to use, compiling it, and linking it with your executable. It can also make sure that you have the very latest release of the packages you are using. You can find a great many DUB-enabled libraries other than Derelict in the [DUB Package Registry], all of which can also be automatically compiled and linked with your project just by editing a configuration file.
-
-[DUB Package Registry]: https://code.dlang.org/
