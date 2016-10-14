@@ -1,7 +1,7 @@
 site_name: Derelict Documentation
 site_url: http://derelictorg.github.io
 repo_url: https://github.com/DerelictOrg
-site_description: Documentation for the Derelict project, a collectiion of D bindings to C libraries commonly used in game developemnt.
+site_description: Documentation for the Derelict project, a collectiion of D bindings to C libraries commonly used in game development.
 site_author: Mike Parker
 theme: readthedocs
 extra_css: [extra.css]
@@ -9,8 +9,13 @@ markdown_extensions:
   - codehilite(css_class=code)
 pages:
   - 'Introduction' : 'index.md'
-  - 'Using Derelict' :
-      - 'Overview' : 'using-derelict/using.md'
-      - 'About Bindings' : 'using-derelict/dynstat.md'
-      - 'Loading Shared Libraries' : 'using-derelict/loading.md'
-      - 'Load Failures' : 'using-derelict/failure.md'
+  - 'Support' : 'support.md'
+  - 'Overview' : 'overview.md'
+  - 'About Bindings' : 'bindings.md'
+  - 'Compiling and Linking' :
+    - 'Overview' : 'building/overview.md'
+    - 'When Managing Projects with DUB' : 'building/with-dub.md'
+    - 'When Managing Projects without DUB' : 'building/without-dub.md'
+  - 'Loading Shared Libraries' :
+    - 'The Derelict Loader' : 'loading/loader.md'
+    - 'Load Failures' : 'loading/failure.md'

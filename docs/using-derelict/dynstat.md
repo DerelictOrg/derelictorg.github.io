@@ -1,5 +1,3 @@
-## Bindings Defined
-
 The bindings in Derelict are primarily _dynamic bindings_, as opposed to those in the [Deimos project] which are all _static bindings_. This page aims to clarify the difference between static and dynamic bindings. It is important when starting a new project to understand the implications of each and selecting the right type of binding in order to avoid unnecessary frustration.
 
 ### Terminology
