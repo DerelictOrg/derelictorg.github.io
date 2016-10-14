@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Mike Parker">
+  
+  <title>When Managing Projects without DUB - Derelict Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../extra.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "When Managing Projects without DUB";
+    var mkdocs_page_input_path = "building\without-dub.md";
+    var mkdocs_page_url = "/building/without-dub/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Derelict Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Introduction</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../support/">Support</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../overview/">Overview</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../bindings/">About Bindings</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Compiling and Linking</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../overview/">Overview</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../with-dub/">When Managing Projects with DUB</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">When Managing Projects without DUB</a>
+        
+            <ul>
+            
+            </ul>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Loading Shared Libraries</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../loading/loader/">The Derelict Loader</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../loading/failure/">Load Failures</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Derelict Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Compiling and Linking &raquo;</li>
+        
+      
+    
+    <li>When Managing Projects without DUB</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/DerelictOrg" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>When using a build system besides DUB, or an IDE, to manage a Derelict project, the first thing to do is to determine which Derelict packages are required. In the example to follow, a project using DerelictGLFW3 and DerelictGL3 is assumed. Both, like all Derelict packages, have a dependency on DerelictUtil. All three of these packages will need to be obtained manually. One way is to clone them from their git repositories, but then the correct branches must be selected for the specific versions of each package required by the project. It's much simpler to perform a manual fetch with DUB and let it grab the correct branches instead.</p>
+<p>It's probably best to use the latest version of DerelictGLFW3 and DerelictGL3. The latest version can be determined by visiting <a href="https://code.dlang.org">code.dlang.org</a> and searching for <code>derelict-glfw3</code> and <code>derelict-gl3</code> on that page. Currently, that is <code>3.1.0</code> for the former and <code>1.0.19</code> for the latter. It's also necessary to determine which version of DerelictUtil to build against. It should be a version compatible with all of the Derelict packages that will be used with the project. For this example, <code>2.0.4</code> is used.</p>
+<p>The following commands will manually fetch each package.</p>
+<pre class="code"><code>mkdir derelict
+cd derelict
+dub fetch --cache=local derelict-glfw3 --version=3.1.0
+dub fetch --cache=local derelict-gl3 --version=1.0.19
+dub fetch --cache=local derelict-util --version=2.0.4</code></pre>
+
+
+<p>This will install each package in subdirectories named using the <code>package-name-x.x.x</code> format, e.g. <code>derelict-glfw3-3.1.0</code>. Both DerelictGLFW3 and DerelictGL3 will need to know where to find the source for DerelictUtil. When manually fetching packages like this, they are not automatically added to the search path, so DUB must be told with the following command.</p>
+<pre class="code"><code>dub add-local derelict-util-2.0.4</code></pre>
+
+
+<p>With that, all three packages are ready to build.</p>
+<pre class="code"><code>cd derelict-glfw3-3.1.0
+dub build -brelease
+cd ../derelict-gl3-1.0.19
+dub build -brelease
+cd ../derelict-util-2.0.4
+dub build -brelease</code></pre>
+
+
+<p>This will build optimized versions of each library. To build debug versions, omit the <code>-brelease</code> flag. To explicitly build 64-bit binaries, add <code>-ax86_64</code> to each command line.</p>
+<p>From here on out, assume <strong>$DERELICT</strong> is the path to the derelict directory, whether that is <strong>C:\derelict</strong> or <strong>C:\dev\derelict</strong> or whatever on Windows, or <strong>~/dev/derelict</strong> or whatever on other platforms. Most IDEs and build tools on Windows can work with forward slashes, but change them to backslashes in the following paths if needed.</p>
+<p>At this point, a platform-specific library should exist in the <strong>lib</strong> sudirectory of each package. In order to compile a project using these libraries, the compiler will first need to be able to find the Derelict source modules so that it can parse the import statements it encounters. The following paths are the ones which must be configure in whatever build system is being used.</p>
+<pre class="code"><code>$DERELICT/derelict-glfw3-2.0.0/source
+$DERELICT/derelict-gl3-1.0.18/source
+$DERELICT/derelict-util-2.0.4/source</code></pre>
+
+
+<p>In order to link an executable, the linker will need to know which libraries to link with and where to find them. The libraries needed in this example are shown below, along with their full paths. These will need to be configured appropriately in the build system.</p>
+<p>On Windows the libraries are in the <strong>DerelictFoo.lib</strong> format.</p>
+<pre class="code"><code>$DERELICT\derelict-glfw3-2.0.0\lib\DerelictGLFW3.lib
+$DERELICT\derelict-gl3-1.0.18\lib\DerelictGL3.lib
+$DERELICT\derelict-util-2.0.4\lib\DerelictUtil.lib</code></pre>
+
+
+<p>On POSIX systems the libraries are in the <strong>libDerelictFoo.a</strong> format.</p>
+<pre class="code"><code>$DERELICT/DerelictSDL2/lib/libDerelictSDL2.a
+$DERELICT/DerelictGL3/lib/libDerelictGL3.a
+$DERELICT/DerelictUtil/lib/libDerelictUtil.a</code></pre>
+
+
+<p>It may prove convenient to create a common <strong>$DERELICT/lib</strong> directory, copy all of the libraries there, and then configure the build system to search for all libraries in that path. Then the path need not be included when specifying each library in the build system's configuration.</p>
+<p><strong>Note For Non-Windows Systems:</strong> When building on Mac, Linux, or one of the BSDs), it may also be necessary to link with <strong>libdl</strong>. This is used by DerelictUtil to load shared libraries dynamically at runtime.</p>
+<p>Failure to properly configure the build system will result in compilation or linker errors. It is beyond the scope of this documentation to describe how to configure the various IDEs and build tools people may use with D. Learning to do so is entirely up to the user.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../loading/loader/" class="btn btn-neutral float-right" title="The Derelict Loader">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../with-dub/" class="btn btn-neutral" title="When Managing Projects with DUB"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/DerelictOrg" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../with-dub/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../loading/loader/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

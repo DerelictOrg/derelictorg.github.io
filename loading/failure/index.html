@@ -25,8 +25,8 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Load Failures";
-    var mkdocs_page_input_path = "using-derelict/failure.md";
-    var mkdocs_page_url = "/using-derelict/failure/";
+    var mkdocs_page_input_path = "loading\failure.md";
+    var mkdocs_page_url = "/loading/failure/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -63,27 +63,63 @@
 <li>
           
             <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../support/">Support</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../overview/">Overview</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../bindings/">About Bindings</a>
+        
+    </li>
+<li>
+          
+            <li>
     <ul class="subnav">
-    <li><span>Using Derelict</span></li>
+    <li><span>Compiling and Linking</span></li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../using/">Overview</a>
+        <a class="" href="../../building/overview/">Overview</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../dynstat/">About Bindings</a>
+        <a class="" href="../../building/with-dub/">When Managing Projects with DUB</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../loading/">Loading Shared Libraries</a>
+        <a class="" href="../../building/without-dub/">When Managing Projects without DUB</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Loading Shared Libraries</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../loader/">The Derelict Loader</a>
         
     </li>
 
@@ -96,7 +132,8 @@
             
                 <li class="toctree-l3"><a href="#loader-exceptions">Loader Exceptions</a></li>
                 
-                    <li><a class="toctree-l4" href="#selective-symbol-loading">Selective Symbol Loading</a></li>
+            
+                <li class="toctree-l3"><a href="#selective-symbol-loading">Selective Symbol Loading</a></li>
                 
             
             </ul>
@@ -129,7 +166,7 @@
     
       
         
-          <li>Using Derelict &raquo;</li>
+          <li>Loading Shared Libraries &raquo;</li>
         
       
     
@@ -147,40 +184,39 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="loader-exceptions">Loader Exceptions</h2>
-<p>When a shared library cannot be loaded, the loader will throw a sublcass of <code>DerelictException</code>, which in turn is a subclass of D's <code>Exception</code>. More specifically, a <code>SymbolLoadException</code> is thrown when a function is not found in the shared library. A <code>SharedLibLoadException</code> is thrown when a shared library is not present on the system path, or fails to load into memory for some other reason. In each case, the exception contains a system-specific error message provided by the operating system API.</p>
-<p>The loader will attempt to load every library name that it is given. It will only throw a <code>SharedLibLoadException</code> when the last library name fails to load. When any given function fails to load, loading will be aborted and a <code>SymbolLoadException</code> thrown immediately. To catch and manipulate any of these excptions, import <code>derelict.util.exception</code>.</p>
-<p>In some cases, it may be desirable that the loader continue and no exception be thrown when a symbol is missing. For example, when a Derelict package has been updated to support the latest version of a C library, but the user wants to continue supporting the older version of the C library. One option is to use <code>SharedLibVersion</code> with any loaded that supports it. See <a href="../loading">Loading a Shared Library</a> for more information. Where <code>SharedLibVersion</code> is not supported, there are two possibilites. The recommended approach is to continue using the version of the Derelict package that supports the minimally required version of the C library. The other option is to use a library a feature called <em>selective symbol loading</em>.</p>
+                <h3 id="loader-exceptions">Loader Exceptions</h3>
+<p>When a shared library cannot be loaded, the loader will throw a sublcass of <code>DerelictException</code>, which in turn is a subclass of D's <code>Exception</code>. More specifically, a <code>SharedLibLoadException</code> is thrown when a shared library is not present on the system path, or fails to load into memory for some other reason. A <code>SymbolLoadException</code> is thrown when a function is not found in the shared library. In each case, the exception contains a system-specific error message provided by the operating system API.</p>
+<p>When given an array of library names, the loader will attempt to load each of them in turn. It will only throw a <code>SharedLibLoadException</code> when the last library name fails to load. When any given symbol fails to load, loading will be aborted and a <code>SymbolLoadException</code> thrown immediately. To catch and manipulate any of these excptions, import <code>derelict.util.exception</code>.</p>
+<p>In some cases, it may be desirable that the loader continue and no exception be thrown when a symbol is missing. For example, when a Derelict package has been updated to support the latest version of a C library, but the user wants to continue supporting the older version of the C library. One option is to use <code>SharedLibVersion</code> with any Derelict loader that supports it. See <a href="../loader">Loading a Shared Library</a> for more information. Where <code>SharedLibVersion</code> is not supported, there are two possibilites. The recommended approach is to continue using the version of the Derelict package that supports the minimally required version of the C library. The other option is to use a library a feature called <em>selective symbol loading</em>.</p>
 <h3 id="selective-symbol-loading">Selective Symbol Loading</h3>
 <p>Selective symbol loading is a means of telling a Derelict loader that it is okay to continue loading a library when a specific symbol is missing. Each loader has a <code>missingSymbolCallback</code> property which can be set to either a D delegate or function pointer. The signature in both cases is the same. An example usage follows.</p>
-<div class="code"><pre><span></span><span class="c1">// This is needed for the return type enum.</span>
-<span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">exception</span> <span class="p">:</span> <span class="n">ShouldThrow</span><span class="p">;</span>
+<pre class="code"><code class="language-d">// This is needed for the return type enum.
+import derelict.util.exception : ShouldThrow;
 
-<span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">sdl2</span><span class="p">.</span><span class="n">sdl</span><span class="p">;</span>
+import derelict.sdl2.sdl;
 
-<span class="n">ShouldThrow</span> <span class="n">myMissingSymCB</span><span class="p">(</span> <span class="nb">string</span> <span class="n">symbolName</span> <span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span> <span class="n">symbolName</span> <span class="p">==</span> <span class="s">&quot;SDL2_SomeFuncIDon&#39;tNeed&quot;</span> <span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="n">ShouldThrow</span><span class="p">.</span><span class="n">No</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="n">ShouldThrow</span><span class="p">.</span><span class="n">Yes</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+ShouldThrow myMissingSymCB( string symbolName )
+{
+    if( symbolName == &quot;SDL2_SomeFuncIDon'tNeed&quot; )
+    {
+        return ShouldThrow.No;
+    }
+    else
+    {
+        return ShouldThrow.Yes;
+    }
+}
 
-<span class="kt">void</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="c1">// Set the callback *before* calling load</span>
-    <span class="n">DerelictSDL2</span><span class="p">.</span><span class="n">missingSymbolCallback</span> <span class="p">=</span> <span class="p">&amp;</span><span class="n">myMissingSymCB</span><span class="p">;</span>
-    <span class="n">DerelictSDL2</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
+void main()
+{
+    // Set the callback *before* calling load
+    DerelictSDL2.missingSymbolCallback = &amp;myMissingSymCB;
+    DerelictSDL2.load();
+}</code></pre>
 
 
 <p>The use of the <code>ShouldThrow</code> enum makes it easier to remember which value to return when implementing the callback. A simple <code>true</code> or <code>false</code> can sometimes be confusing: does <code>true</code> mean throw or don't throw? Because of the enum, <code>derelict.util.exception</code> must be imported, but there is no confusion.</p>
-<p>The important point here is that the callback must be set <em>before</em> calling the <code>load</code> method. Otherwise, the loader will have no callback to call. Also note that this is a basic example. There is usually more than one function that must be ignored. When using a <code>MissingSymbolCallback</code>, it is imperative to check the change log for each new version of the C library to understand what has changed between versions so that a complete set of symbol names can be covered. The <code>SharedLibVersion</code> feature, where supported, uses selective symbol loading internally.</p>
+<p>The important point here is that the callback must be set <em>before</em> calling the <code>load</code> method. Otherwise, the loader will have no callback to call. Also note that this is a basic example. There is usually more than one function that must be ignored. When using a <code>MissingSymbolCallback</code>, it is imperative to check the change log for each new version of the bound C library to understand what has changed between versions so that a complete set of symbol names can be covered. The <code>SharedLibVersion</code> feature, where supported, uses selective symbol loading internally.</p>
               
             </div>
           </div>
@@ -189,7 +225,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../loading/" class="btn btn-neutral" title="Loading Shared Libraries"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../loader/" class="btn btn-neutral" title="The Derelict Loader"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -217,7 +253,7 @@
           <a href="https://github.com/DerelictOrg" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../loading/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../loader/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>

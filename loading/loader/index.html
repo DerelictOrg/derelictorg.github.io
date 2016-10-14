@@ -8,7 +8,7 @@
   
   <meta name="author" content="Mike Parker">
   
-  <title>Loading Shared Libraries - Derelict Documentation</title>
+  <title>The Derelict Loader - Derelict Documentation</title>
   
 
   <link rel="shortcut icon" href="../../img/favicon.ico">
@@ -24,9 +24,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Loading Shared Libraries";
-    var mkdocs_page_input_path = "using-derelict/loading.md";
-    var mkdocs_page_url = "/using-derelict/loading/";
+    var mkdocs_page_name = "The Derelict Loader";
+    var mkdocs_page_input_path = "loading\loader.md";
+    var mkdocs_page_url = "/loading/loader/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -63,37 +63,73 @@
 <li>
           
             <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../support/">Support</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../overview/">Overview</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../bindings/">About Bindings</a>
+        
+    </li>
+<li>
+          
+            <li>
     <ul class="subnav">
-    <li><span>Using Derelict</span></li>
+    <li><span>Compiling and Linking</span></li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../using/">Overview</a>
+        <a class="" href="../../building/overview/">Overview</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../dynstat/">About Bindings</a>
+        <a class="" href="../../building/with-dub/">When Managing Projects with DUB</a>
         
     </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../building/without-dub/">When Managing Projects without DUB</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Loading Shared Libraries</span></li>
 
         
             
     <li class="toctree-l1 current">
-        <a class="current" href="./">Loading Shared Libraries</a>
+        <a class="current" href="./">The Derelict Loader</a>
         
             <ul>
             
-                <li class="toctree-l3"><a href="#loading-a-shared-library">Loading a Shared Library</a></li>
+                <li class="toctree-l3"><a href="#a-normal-load">A Normal Load</a></li>
                 
-                    <li><a class="toctree-l4" href="#a-normal-load">A Normal Load</a></li>
+            
+                <li class="toctree-l3"><a href="#custom-library-path">Custom Library Path</a></li>
                 
-                    <li><a class="toctree-l4" href="#custom-library-path">Custom Library Path</a></li>
-                
-                    <li><a class="toctree-l4" href="#sharedlibversion">SharedLibVersion</a></li>
+            
+                <li class="toctree-l3"><a href="#sharedlibversion">SharedLibVersion</a></li>
                 
             
             </ul>
@@ -133,11 +169,11 @@
     
       
         
-          <li>Using Derelict &raquo;</li>
+          <li>Loading Shared Libraries &raquo;</li>
         
       
     
-    <li>Loading Shared Libraries</li>
+    <li>The Derelict Loader</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -151,41 +187,37 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="loading-a-shared-library">Loading a Shared Library</h2>
-<p>All Derelict packages have one thing in common. Because each package is a dynamic binding, it must be loaded at runtime. The interface for this is the same across all packages.</p>
+                <p>All Derelict packages have one thing in common. Because each package is a dynamic binding, it must be loaded at runtime. The interface for this is the same across all packages.</p>
 <p>The <strong>DerelictUtil</strong> package contains all of the functionality needed to load a dynamic library at runtime. Each binding contains a loader class that extends from <code>SharedLibLoader</code>, a class found in <code>derelict.util.loader</code>. This class exposes two methods for dynamically loading shared libraries.</p>
 <h3 id="a-normal-load">A Normal Load</h3>
 <p>The method that most developers will use is called <code>load</code> and takes no arguments. The specific loader on which this method is called will attempt to find and load a shared library, using a predefined set of library names, on the default system shared library path. Loader instances are created automatically in module constructors and, by convention and with few exceptions, are named according to the Derelict package to which they belong. The following example shows how to load the <a href="http://libsdl.org">SDL2 library</a> via <strong>DerelictSDL2</strong>.</p>
-<div class="code"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">sdl2</span><span class="p">.</span><span class="n">sdl</span><span class="p">;</span>
+<pre class="code"><code class="language-D">import derelict.sdl2.sdl;
 
-<span class="kt">void</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">DerelictSDL2</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
+void main()
+{
+    DerelictSDL2.load();
+}</code></pre>
 
 
 <h3 id="custom-library-path">Custom Library Path</h3>
 <p>It is important to understand the system library path for each system an application is intended to support. For example, on Windows the system loader will search for the SDL DLL first in the application directory, then in the current working directory, then in a couple of predefined system directories before falling back on those specified in the <strong>PATH</strong> environment variable (see <a href="http://msdn.microsoft.com/en-us/library/7d83bc18.aspx">MSDN</a> for more details). On other platforms, the application directory and current working directory typically are not searched at all (see <a href="http://tldp.org/HOWTO/Program-Library-HOWTO/dl-libraries.html">this page</a> for Linux and <a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/dlopen.3.html">this one</a> for Mac OS X).</p>
 <p>The default library names are selected for each Derelict package based on common formats for each operating system. Sometimes, it is necessary to bypass the default names. For example, a developer may decide to ship special copies of a shared library using a non-standard name, or storing them in a subdirectory under the application directory. In such a case, an overload of the <code>load</code> method should be used. One form accepts an array of strings, each a library name. Another overload takes single string containing a comma-separated list of library names. Each name can include a path. If no path is specified, the default search path will be used.</p>
-<div class="code"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">sdl2</span><span class="p">.</span><span class="n">sdl</span><span class="p">;</span>
+<pre class="code"><code class="language-D">import derelict.sdl2.sdl;
 
-<span class="k">version</span> <span class="n">Windows</span> <span class="n">libName</span> <span class="p">=</span> <span class="s">&quot;dlls\\MySDL2.dll&quot;</span><span class="p">;</span>
-<span class="k">else</span> <span class="n">libName</span> <span class="p">=</span> <span class="s">&quot;MySDL2.so&quot;</span><span class="p">;</span>
+version Windows libName = &quot;dlls\\MySDL2.dll&quot;;
+else libName = &quot;MySDL2.so&quot;;
 
-<span class="kt">void</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">DerelictSDL2</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">libName</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
+void main()
+{
+    DerelictSDL2.load(libName);
+}</code></pre>
 
 
 <h3 id="sharedlibversion">SharedLibVersion</h3>
 <p>Some Derelict loaders, but not all, support version-specific loading. In other words, it's possible to tell the loader to attempt to load a lower version of a shared library than the highest version it supports. An example is <strong>DerelictFI</strong>.</p>
 <p><strong>DerelictFI</strong> is a binding to the <a href="http://freeimage.sourceforge.net">FreeImage library</a>. <strong>FreeImage</strong> is supported on every major platform. Most Linux distributions make it available through the system package manager, but the version available is always behind the highest version supported by <strong>DerelictFI</strong>. A program that simply calls <code>DerelictFI.load()</code> on these systems will fail to load the library.</p>
 <p>To work around this, a user can choose the minimum required version of <strong>FreeImage</strong>. The lowest supported by <strong>DerelictFI</strong> is <strong>3.15.0</strong>. If none of the functions added in later versions of FreeImage are needed, then the call to <code>DerelictFI.load</code> can be made like so:</p>
-<div class="code"><pre><span></span><span class="n">DerelictFI</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">SharedLibVersion</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
-</pre></div>
+<pre class="code"><code class="language-D">DerelictFI.load(SharedLibVersion(3, 15, 0));</code></pre>
 
 
 <p>Check the documentation for any Derelict package you use to determine if it supports loading with <code>SharedLibVersion</code> and, if so, which versions are available as arguments. To future-proof your program, it's a good idea to always use <code>SharedLibVersion</code> where supported. Simply calling <code>load()</code> will always attempt to load the highest version supported. If a Derelict package is updated and you release a new version of your app, the app can fail if your users haven't yet updated the library on their system. By always specifying the version of the library that you need, your app will always load newer releases of a library (though you shouldn't expect a <strong>3.x</strong> loader to load a <strong>4.x</strong> library).</p>
@@ -199,7 +231,7 @@
         <a href="../failure/" class="btn btn-neutral float-right" title="Load Failures">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../dynstat/" class="btn btn-neutral" title="About Bindings"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../building/without-dub/" class="btn btn-neutral" title="When Managing Projects without DUB"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -227,7 +259,7 @@
           <a href="https://github.com/DerelictOrg" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../dynstat/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../building/without-dub/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../failure/" style="color: #fcfcfc">Next &raquo;</a></span>
