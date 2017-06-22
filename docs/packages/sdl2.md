@@ -150,7 +150,7 @@ libs "SDL2" "SDL2_image"
 
 By default, this will link dynamically on non-Windows systems. Please see your system compiler documentation for information on how to link statically, though it's strongly recommended to link dynamically.
 
-On Windows sytems, the above may link statically or dynamically, depending on how the libraries are named and which are on the library path.
+On Windows systems, the above may link statically or dynamically, depending on how the libraries are named and which are on the library path.
 
 Linking statically will require linking with additional system libraries.
 
@@ -164,11 +164,11 @@ Development and runtime binaries for Linux and *BSD distributions can be obtaine
 * [SDL_net]
 * [SDL_ttf]
 
-For the dynamic binding configuration, only the runtime binaries are required. For the static binding configuration, the development binaries are required (the develpoment packages include the runtime binaries).
+For the dynamic binding configuration, only the runtime binaries are required. For the static binding configuration, the development binaries are required (the development packages include the runtime binaries).
 
-For Windows, the `*-VC.zip` package should be downloaded for both DMD and LDC. This includes both the DLL and the import library, but no static library. When using DMD, this will require compiling your project with `-m32mscoff` or `-m64`, which uses the Microsoft linker and the Windows SDK libraries. Using vanilla DMD requires converting the format of the import libraries from COFF to OMF, which is beyond the scope of this documentation.
+For Windows, the `*-VC.zip` package should be downloaded for both DMD and LDC. This includes both the DLL and the import library, but no static library.
 
-Windows binaries can also be obtained through [vcpkg], but this includes only the DLL and import library. No static libraries are installed.
+Windows binaries can also be obtained through [vcpkg] and [NuGet].
 
 Mac OS X binaries can also be obtained through [Homebrew] and [MacPorts].
 
@@ -183,6 +183,7 @@ Finally, it possible on every platform to obtain the source for the SDL2 librari
 [without DUB]: ../building/without-dub
 [file system API]: https://wiki.libsdl.org/CategoryFilesystem
 [vcpkg]: https://github.com/Microsoft/vcpkg
+[NuGet]: https://www.nuget.org/
 [Homebrew]: https://brew.sh/
 [Macports]: https://www.macports.org/
 [SDL mercurial repository]: https://libsdl.org/hg.php
