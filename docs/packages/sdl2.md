@@ -37,7 +37,7 @@ The package is configured to use dynamic bindings by default. In order to enable
 subConfiguration "derelict-sdl2" "derelict-sdl2-static"
 ```
 
-Alternatively, the static bindings can be enabled by adding either the `Derelict_Static` version or the `DerelictSDL2_Static` version to your project configuration. The former will enable static binding for all Derelict packages in your project that support it. The latter will enable them only for DerelictSDL2.
+Alternatively, the static bindings can be enabled by adding either the `Derelict_Static` version or the `DerelictSDL2_Static` version to your project configuration. The former will enable static binding for all Derelict packages in your project that support it. The latter will enable them only for DerelictSDL2, including the bindings to the SDL satellite libraries.
 
 **dub.json**
 ```json
