@@ -1,7 +1,7 @@
 site_name: Derelict Documentation
 site_url: http://derelictorg.github.io
 repo_url: https://github.com/DerelictOrg
-edit_uri: edit/mkdocs/docs
+edit_uri: derelictorg.github.io/edit/mkdocs/docs
 site_description: Documentation for the Derelict project, a collectiion of D bindings to C libraries commonly used in game development.
 site_author: Mike Parker
 theme: material
