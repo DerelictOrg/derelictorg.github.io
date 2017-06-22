@@ -53,7 +53,7 @@ Using the subconfiguration is the preferred approach, as it completely eliminate
 
 ### With non-DUB projects
 
-It is not required to use DUB to manage your project in order to use DerelictSDL2, but DUB is the only supported option for building the DerelictSDL2 library. To do so, first ensure that DUB, a D compiler, and git are all available on your system path. Then see the documentation on compiling any Derelict package without DUB, substituting `derelict-sdl2` and `3.0.0-beta` where appropriate in the example commands.
+It is not required to use DUB to manage your project in order to use DerelictSDL2, but DUB is the only supported option for building the DerelictSDL2 library. To do so, first ensure that DUB, a D compiler, and git are all available on your system path. Then see the documentation on compiling any Derelict package [without DUB], substituting `derelict-sdl2` and `3.0.0-beta` where appropriate in the example commands.
 
 ### Loading
 
@@ -178,6 +178,7 @@ Finally, it possible on every platform to obtain the source for the SDL2 librari
 [static and dynamic bindings]: ../bindings
 [DUB]: https://code.dlang.org/getting_started
 [Compiling and Linking]: ../building/overview
+[without DUB]: ../building/without-dub
 [file system API]: https://wiki.libsdl.org/CategoryFilesystem
 [vcpkg]: https://github.com/Microsoft/vcpkg
 [Homebrew]: https://brew.sh/
