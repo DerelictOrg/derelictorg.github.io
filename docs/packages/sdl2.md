@@ -152,6 +152,8 @@ By default, this will link dynamically on non-Windows systems. Please see your s
 
 On Windows sytems, the above may link statically or dynamically, depending on how the libraries are named and which are on the library path.
 
+Linking statically will require linking with additional system libraries.
+
 ### Getting the libraries
 
 Development and runtime binaries for Linux and *BSD distributions can be obtained through the system package manager. Binaries for Windows and Mac OS X can be obtained at the following links:
