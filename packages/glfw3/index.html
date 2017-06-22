@@ -10,7 +10,7 @@
         <meta name="description" content="Documentation for the Derelict project, a collectiion of D bindings to C libraries commonly used in game development.">
       
       
-        <link rel="canonical" href="http://derelictorg.github.io/loading/loader/">
+        <link rel="canonical" href="http://derelictorg.github.io/packages/glfw3/">
       
       
         <meta name="author" content="Mike Parker">
@@ -22,7 +22,7 @@
     
     
       
-        <title>The Derelict Loader - Derelict Documentation</title>
+        <title>DerelictGLFW3 - Derelict Documentation</title>
       
     
     
@@ -81,11 +81,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  Loading Shared Libraries
+                  Packages
                 </span>
               
             
-            The Derelict Loader
+            DerelictGLFW3
           
         </span>
       </div>
@@ -298,12 +298,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       Loading Shared Libraries
@@ -311,6 +309,56 @@
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-6">
         Loading Shared Libraries
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../loading/loader/" title="The Derelict Loader" class="md-nav__link">
+      The Derelict Loader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../loading/failure/" title="Load Failures" class="md-nav__link">
+      Load Failures
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+    
+    <label class="md-nav__link" for="nav-7">
+      Packages
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Packages
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -328,11 +376,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        The Derelict Loader
+        DerelictGLFW3
       </label>
     
-    <a href="./" title="The Derelict Loader" class="md-nav__link md-nav__link--active">
-      The Derelict Loader
+    <a href="./" title="DerelictGLFW3" class="md-nav__link md-nav__link--active">
+      DerelictGLFW3
     </a>
     
       
@@ -344,22 +392,36 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-normal-load" title="A normal load" class="md-nav__link">
-    A normal load
+  <a href="#with-dub-projects" title="With DUB projects" class="md-nav__link">
+    With DUB projects
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#custom-library-path" title="Custom library path" class="md-nav__link">
-    Custom library path
+  <a href="#with-non-dub-projects" title="With non-DUB projects" class="md-nav__link">
+    With non-DUB projects
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#sharedlibversion" title="SharedLibVersion" class="md-nav__link">
-    SharedLibVersion
+  <a href="#loading" title="Loading" class="md-nav__link">
+    Loading
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linking" title="Linking" class="md-nav__link">
+    Linking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-the-libraries" title="Getting the libraries" class="md-nav__link">
+    Getting the libraries
   </a>
   
 </li>
@@ -379,55 +441,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../failure/" title="Load Failures" class="md-nav__link">
-      Load Failures
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
-    
-    <label class="md-nav__link" for="nav-7">
-      Packages
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
-        Packages
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../packages/glfw3/" title="DerelictGLFW3" class="md-nav__link">
-      DerelictGLFW3
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../packages/sdl2/" title="DerelictSDL2" class="md-nav__link">
+    <a href="../sdl2/" title="DerelictSDL2" class="md-nav__link">
       DerelictSDL2
     </a>
   </li>
@@ -457,22 +471,36 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-normal-load" title="A normal load" class="md-nav__link">
-    A normal load
+  <a href="#with-dub-projects" title="With DUB projects" class="md-nav__link">
+    With DUB projects
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#custom-library-path" title="Custom library path" class="md-nav__link">
-    Custom library path
+  <a href="#with-non-dub-projects" title="With non-DUB projects" class="md-nav__link">
+    With non-DUB projects
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#sharedlibversion" title="SharedLibVersion" class="md-nav__link">
-    SharedLibVersion
+  <a href="#loading" title="Loading" class="md-nav__link">
+    Loading
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linking" title="Linking" class="md-nav__link">
+    Linking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-the-libraries" title="Getting the libraries" class="md-nav__link">
+    Getting the libraries
   </a>
   
 </li>
@@ -491,48 +519,88 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/DerelictOrg/edit/master/docs/loading\loader.md" title="Edit this page" class="md-icon md-content__icon">edit</a>
+                  <a href="https://github.com/DerelictOrg/edit/master/docs/packages\glfw3.md" title="Edit this page" class="md-icon md-content__icon">edit</a>
                 
                 
-                  <h1>The Derelict Loader</h1>
+                  <h1>DerelictGLFW3</h1>
                 
-                <p>All Derelict packages have one thing in common. Because each package is a dynamic binding, it must be loaded at runtime. The interface for this is the same across all packages.</p>
-<p>The <strong>DerelictUtil</strong> package contains all of the functionality needed to load a dynamic library at runtime. Each binding contains a loader class that extends from <code>SharedLibLoader</code>, a class found in <code>derelict.util.loader</code>. This class exposes two methods for dynamically loading shared libraries.</p>
-<h3 id="a-normal-load">A normal load<a class="headerlink" href="#a-normal-load" title="Permanent link">&para;</a></h3>
-<p>The method that most developers will use is called <code>load</code> and takes no arguments. The specific loader on which this method is called will attempt to find and load a shared library, using a predefined set of library names, on the default system shared library path. Loader instances are created automatically in module constructors and, by convention and with few exceptions, are named according to the Derelict package to which they belong. The following example shows how to load the <a href="http://libsdl.org">SDL2 library</a> via <strong>DerelictSDL2</strong>.</p>
-<div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">sdl2</span><span class="p">.</span><span class="n">sdl</span><span class="p">;</span>
+                <p>DerelictGLFW3 provides both <a href="../../bindings">static and dynamic bindings</a> to the <a href="http://www.glfw.org/">GLFW3</a> library. DerelictGLFW3 4.0.x supports GLFW3 version 3.2.x. Older versions of GLFW3 are supported by versions of DerelictGLFW3 lower than 4.0, but those DerelictGLFW3 versions use an older version of DerelictUtil that will be incompatible with the latest version of other Derelict packages you may use in your project (such as DerelictGL3). Keep this in mind if you need to use GLFW3 3.1 or lower in the dynamic binding configuration (this does not apply to the static binding).</p>
+<p>The following sections show how to use DerelictGLFW3 in your own projects. See the pages under <a href="../../building/overview">Compiling and Linking</a> Derelict packages for more details.</p>
+<h3 id="with-dub-projects">With DUB projects<a class="headerlink" href="#with-dub-projects" title="Permanent link">&para;</a></h3>
+<p>The simplest way to use DerelictGLFW3 is to use <a href="https://code.dlang.org/getting_started">DUB</a> to manage your project. Projects configured via <code>dub.json</code> should add the package name and minimum desired version to the <code>dependencies</code> block:</p>
+<div class="codehilite"><pre><span></span><span class="s2">&quot;dependencies&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&quot;derelict-glfw3&quot;</span><span class="p">:</span> <span class="s2">&quot;~&gt;4.0.0-beta&quot;</span>
+<span class="p">}</span> 
+</pre></div>
 
-<span class="kt">void</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">DerelictSDL2</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
+
+<p>Projects configured via <code>dub.sdl</code> should add the following line:</p>
+<div class="codehilite"><pre><span></span>dependency <span class="s2">&quot;derelict-glfw3&quot;</span> <span class="nv">version</span><span class="o">=</span><span class="s2">&quot;~&gt;4.0.0-beta&quot;</span>
+</pre></div>
+
+
+<p>The package is configured to use the dynamic binding by default. In order to enable static binding, add the <code>derelict-glfw3-static</code> subconfiguration:</p>
+<p><strong>dub.json</strong></p>
+<div class="codehilite"><pre><span></span><span class="s2">&quot;subConfigurations&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&quot;derelict-sdl2&quot;</span><span class="p">:</span> <span class="s2">&quot;derelict-glfw3-static&quot;</span>
 <span class="p">}</span>
 </pre></div>
 
 
-<h3 id="custom-library-path">Custom library path<a class="headerlink" href="#custom-library-path" title="Permanent link">&para;</a></h3>
-<p>It is important to understand the system library path for each system an application is intended to support. For example, on Windows the system loader will search for the SDL DLL first in the application directory, then in the current working directory, then in a couple of predefined system directories before falling back on those specified in the <strong>PATH</strong> environment variable (see <a href="http://msdn.microsoft.com/en-us/library/7d83bc18.aspx">MSDN</a> for more details). On other platforms, the application directory and current working directory typically are not searched at all (see <a href="http://tldp.org/HOWTO/Program-Library-HOWTO/dl-libraries.html">this page</a> for Linux and <a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/dlopen.3.html">this one</a> for Mac OS X).</p>
-<p>The default library names are selected for each Derelict package based on common formats for each operating system. Sometimes, it is necessary to bypass the default names. For example, a developer may decide to ship special copies of a shared library using a non-standard name, or storing them in a subdirectory under the application directory. In such a case, an overload of the <code>load</code> method should be used. One form accepts an array of strings, each a library name. Another overload takes single string containing a comma-separated list of library names. Each name can include a path. If no path is specified, the default search path will be used.</p>
-<div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">sdl2</span><span class="p">.</span><span class="n">sdl</span><span class="p">;</span>
+<p><strong>dub.sdl</strong></p>
+<div class="codehilite"><pre><span></span>subConfiguration <span class="s2">&quot;derelict-sdl2&quot;</span> <span class="s2">&quot;derelict-glfw3-static&quot;</span>
+</pre></div>
 
-<span class="k">version</span> <span class="n">Windows</span> <span class="n">libName</span> <span class="p">=</span> <span class="s">&quot;dlls\\MySDL2.dll&quot;</span><span class="p">;</span>
-<span class="k">else</span> <span class="n">libName</span> <span class="p">=</span> <span class="s">&quot;MySDL2.so&quot;</span><span class="p">;</span>
 
-<span class="kt">void</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">DerelictSDL2</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">libName</span><span class="p">);</span>
+<p>Alternatively, the static binding can be enabled by adding either the <code>Derelict_Static</code> version or the <code>DerelictGLFW3_Static</code> version to your project configuration. The former will enable static binding for all Derelict packages in your project that support it. The latter will enable them only for DerelictGLFW3.</p>
+<p><strong>dub.json</strong></p>
+<div class="codehilite"><pre><span></span><span class="s2">&quot;versions&quot;</span><span class="err">:</span> <span class="p">[</span><span class="s2">&quot;DerelictGLFW3_Static&quot;</span><span class="p">]</span>
+</pre></div>
+
+
+<p><strong>dub.sdl</strong></p>
+<div class="codehilite"><pre><span></span>versions <span class="s2">&quot;DerelictGLFW3_Static&quot;</span>
+</pre></div>
+
+
+<p>Using the subconfiguration is the preferred approach, as it completely eliminates all unneeded modules from the build.</p>
+<h3 id="with-non-dub-projects">With non-DUB projects<a class="headerlink" href="#with-non-dub-projects" title="Permanent link">&para;</a></h3>
+<p>It is not required to use DUB to manage your project in order to use DerelictGLFW3, but DUB is the only supported option for building the DerelictGLFW3 library. To do so, first ensure that DUB, a D compiler, and git are all available on your system path. Then see the documentation on compiling any Derelict package <a href="../../building/without-dub">without DUB</a>, substituting <code>derelict-glfw3</code> and <code>4.0.0-beta</code> where appropriate in the example commands.</p>
+<h3 id="loading">Loading<a class="headerlink" href="#loading" title="Permanent link">&para;</a></h3>
+<p>When DerelictGLFW3 is configured to produce a dynamic binding, the GLFW3 shared library must be loaded manually by calling the <code>DerelictGLFW3.load</code>. There is no link-time dependency on the GLFW3 library, only a runtime dependency. See the section further down on [obtaining the binaries] for information on how to obtain the GLFW3 runtime binaries.</p>
+<p>The following code demonstrates how to load the GLFW3 library:</p>
+<div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">glfw3</span><span class="p">;</span>
+<span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">DerelictGLFW3</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
 
-<h3 id="sharedlibversion">SharedLibVersion<a class="headerlink" href="#sharedlibversion" title="Permanent link">&para;</a></h3>
-<p>Some Derelict loaders, but not all, support version-specific loading. In other words, it's possible to tell the loader to attempt to load a lower version of a shared library than the highest version it supports. An example is <strong>DerelictFI</strong>.</p>
-<p><strong>DerelictFI</strong> is a binding to the <a href="http://freeimage.sourceforge.net">FreeImage library</a>. <strong>FreeImage</strong> is supported on every major platform. Most Linux distributions make it available through the system package manager, but the version available is always behind the highest version supported by <strong>DerelictFI</strong>. A program that simply calls <code>DerelictFI.load()</code> on these systems will fail to load the library.</p>
-<p>To work around this, a user can choose the minimum required version of <strong>FreeImage</strong>. The lowest supported by <strong>DerelictFI</strong> is <strong>3.15.0</strong>. If none of the functions added in later versions of FreeImage are needed, then the call to <code>DerelictFI.load</code> can be made like so:</p>
-<div class="codehilite"><pre><span></span><span class="n">DerelictFI</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">SharedLibVersion</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+<h3 id="linking">Linking<a class="headerlink" href="#linking" title="Permanent link">&para;</a></h3>
+<p>Configuring DerelictGLFW3 as a static binding eliminates the need to manually load the GLFW3 library at runtime. However, it introduces a link-time dependency and still has a runtime dependency when linking dynamically. See the page on <a href="../../bindings">static and dynamic bindings</a> if the difference between static/dynamic bindings and static/dynamic linking is not clear to you.</p>
+<p>To use the GLFW3 library with the static DerelictGLFW3 binding, it's necessary to install the appropriate development packages. <a href="#getting-the-libraries">See below</a> for information on how to obtain the GLFW3 development binaries.</p>
+<p>Once the development binaries are installed on your system, you can link to them by adding the appropriate library name to your config file. The following example shows how to link with GLFW3.</p>
+<p><strong>dub.json</strong></p>
+<div class="codehilite"><pre><span></span><span class="s2">&quot;libs&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&quot;GLFW3&quot;</span>
+<span class="p">}</span>
 </pre></div>
 
 
-<p>Check the documentation for any Derelict package you use to determine if it supports loading with <code>SharedLibVersion</code> and, if so, which versions are available as arguments. To future-proof your program, it's a good idea to always use <code>SharedLibVersion</code> where supported. Simply calling <code>load()</code> will always attempt to load the highest version supported. If a Derelict package is updated and you release a new version of your app, the app can fail if your users haven't yet updated the library on their system. By always specifying the version of the library that you need, your app will always load newer releases of a library (though you shouldn't expect a <strong>3.x</strong> loader to load a <strong>4.x</strong> library).</p>
+<p><strong>dub.sdl</strong></p>
+<div class="codehilite"><pre><span></span>libs <span class="s2">&quot;GLFW3&quot;</span>
+</pre></div>
+
+
+<p>By default, this will link dynamically on non-Windows systems. Please see your system compiler documentation for information on how to link statically, though it's strongly recommended to link dynamically.</p>
+<p>On Windows systems, the above may link statically or dynamically, depending on how the libraries are named and which is on the library path.</p>
+<p>Linking statically will require linking with additional system libraries.</p>
+<h3 id="getting-the-libraries">Getting the libraries<a class="headerlink" href="#getting-the-libraries" title="Permanent link">&para;</a></h3>
+<p>Development and runtime binaries for Linux and *BSD distributions can be obtained through the system package manager, though they may not be the latest version. For the dynamic binding configuration, only the runtime package is needed. For the static binding configuration, the development package is required.</p>
+<p>The latest binaries for Windows can be obtained at the [GLFW3 download page]. </p>
+<p>Windows binaries can also be obtained through <a href="https://github.com/Microsoft/vcpkg">vcpkg</a> and <a href="https://www.nuget.org/">NuGet</a>.</p>
+<p>Mac OS X binaries can also be obtained through <a href="https://brew.sh/">Homebrew</a> and <a href="https://www.macports.org/">MacPorts</a>.</p>
+<p>Finally, it possible on every platform to obtain the source for the and build the binaries manually on all supported platforms. The latest source release is available at the [GLFW3 download page]. All source releases and the current development version can be obtained through the <a href="https://github.com/glfw/glfw">GLFW GitHub repository</a>.</p>
                 
                   
                 
@@ -551,7 +619,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../building/without-dub/" title="With Non-DUB Projects" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../loading/failure/" title="Load Failures" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -560,19 +628,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                With Non-DUB Projects
+                Load Failures
               </span>
             </div>
           </a>
         
         
-          <a href="../failure/" title="Load Failures" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../sdl2/" title="DerelictSDL2" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Load Failures
+                DerelictSDL2
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
