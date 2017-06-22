@@ -33,7 +33,7 @@ void main()
 }
 ```
 
-### SharedLibVersion
+### [SharedLibVersion](#SharedLibVersion)
 
 Some Derelict loaders, but not all, support version-specific loading. In other words, it's possible to tell the loader to attempt to load a lower version of a shared library than the highest version it supports. An example is **DerelictFI**.
 
