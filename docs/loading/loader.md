@@ -2,7 +2,7 @@ All Derelict packages have one thing in common. Because each package is a dynami
 
 The **DerelictUtil** package contains all of the functionality needed to load a dynamic library at runtime. Each binding contains a loader class that extends from `SharedLibLoader`, a class found in `derelict.util.loader`. This class exposes two methods for dynamically loading shared libraries.
 
-### [A normal load](#a-normal-load)
+### A normal load
 
 The method that most developers will use is called `load` and takes no arguments. The specific loader on which this method is called will attempt to find and load a shared library, using a predefined set of library names, on the default system shared library path. Loader instances are created automatically in module constructors and, by convention and with few exceptions, are named according to the Derelict package to which they belong. The following example shows how to load the [SDL2 library] via **DerelictSDL2**.
 
@@ -15,7 +15,7 @@ void main()
 }
 ```
 
-### [Custom library path](#custom-library-path)
+### Custom library path
 
 It is important to understand the system library path for each system an application is intended to support. For example, on Windows the system loader will search for the SDL DLL first in the application directory, then in the current working directory, then in a couple of predefined system directories before falling back on those specified in the **PATH** environment variable (see [MSDN] for more details). On other platforms, the application directory and current working directory typically are not searched at all (see [this page] for Linux and [this one] for Mac OS X).
 
@@ -33,7 +33,7 @@ void main()
 }
 ```
 
-### [SharedLibVersion](#SharedLibVersion)
+### SharedLibVersion
 
 Some Derelict loaders, but not all, support version-specific loading. In other words, it's possible to tell the loader to attempt to load a lower version of a shared library than the highest version it supports. An example is **DerelictFI**.
 
