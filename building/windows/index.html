@@ -10,7 +10,7 @@
         <meta name="description" content="Documentation for the Derelict project, a collectiion of D bindings to C libraries commonly used in game development.">
       
       
-        <link rel="canonical" href="http://derelictorg.github.io/building/with-dub/">
+        <link rel="canonical" href="http://derelictorg.github.io/building/windows/">
       
       
         <meta name="author" content="Mike Parker">
@@ -22,7 +22,7 @@
     
     
       
-        <title>With DUB Projects - Derelict Documentation</title>
+        <title>Compiling on Windows - Derelict Documentation</title>
       
     
     
@@ -85,7 +85,7 @@
                 </span>
               
             
-            With DUB Projects
+            Compiling on Windows
           
         </span>
       </div>
@@ -271,57 +271,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        With DUB Projects
-      </label>
-    
-    <a href="./" title="With DUB Projects" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../with-dub/" title="With DUB Projects" class="md-nav__link">
       With DUB Projects
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#general-configuration" title="General configuration" class="md-nav__link">
-    General configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dynamic-bindings" title="Dynamic bindings" class="md-nav__link">
-    Dynamic bindings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#static-bindings" title="Static bindings" class="md-nav__link">
-    Static bindings
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -341,11 +295,77 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../windows/" title="Compiling on Windows" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Compiling on Windows
+      </label>
+    
+    <a href="./" title="Compiling on Windows" class="md-nav__link md-nav__link--active">
       Compiling on Windows
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dmd" title="DMD" class="md-nav__link">
+    DMD
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coff" title="COFF" class="md-nav__link">
+    COFF
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#omf" title="OMF" class="md-nav__link">
+    OMF
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ldc" title="LDC" class="md-nav__link">
+    LDC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gdc" title="GDC" class="md-nav__link">
+    GDC
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -493,22 +513,42 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#general-configuration" title="General configuration" class="md-nav__link">
-    General configuration
+  <a href="#dmd" title="DMD" class="md-nav__link">
+    DMD
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coff" title="COFF" class="md-nav__link">
+    COFF
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#omf" title="OMF" class="md-nav__link">
+    OMF
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ldc" title="LDC" class="md-nav__link">
+    LDC
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#dynamic-bindings" title="Dynamic bindings" class="md-nav__link">
-    Dynamic bindings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#static-bindings" title="Static bindings" class="md-nav__link">
-    Static bindings
+  <a href="#gdc" title="GDC" class="md-nav__link">
+    GDC
   </a>
   
 </li>
@@ -527,67 +567,34 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/DerelictOrg/derelictorg.github.io/edit/mkdocs/docs/building\with-dub.md" title="Edit this page" class="md-icon md-content__icon">edit</a>
+                  <a href="https://github.com/DerelictOrg/derelictorg.github.io/edit/mkdocs/docs/building\windows.md" title="Edit this page" class="md-icon md-content__icon">edit</a>
                 
                 
-                  <h1>With DUB Projects</h1>
+                  <h1>Compiling on Windows</h1>
                 
-                <p>When using DUB to manage a project, it is not neccesary to clone any of the Derelict packages with git. DUB will take care of pulling down the source of the Derelict dependencies, compiling them, and linking them with the executable. A number of DUB-enabled libraries other than Derelict can be found in the <a href="https://code.dlang.org/">DUB Package Registry</a>, all of which can also be automatically compiled and linked with a project simply by editing a configuration file.</p>
-<h3 id="general-configuration">General configuration<a class="headerlink" href="#general-configuration" title="Permanent link">&para;</a></h3>
+                <p>On all of the systems D supports but one, developers can rely on a standard ecosystem of compiler toolchains, including linkers. The three major D compilers all use the system linker on those systems. The outlier is Windows. </p>
+<p>When using any Derelict package as a dynamic binding, none of the information on this page applies. It only applies when using any static binding, whether it be one of the Derelict packages that supports such a configuration or a non-Derelict library. In other words, when developing D programs that have a link-time dependency with third-party libraries on Windows, a few prerequisites need to be understood.</p>
+<p>Of the three main compilers, only DMD and LDC actively support Windows. GDC has not had a Windows release for some time (though that will likely change now that the compiler has been accepted into the GCC compiler suite). The following sections look at each compiler in turn.</p>
+<p>Download links for all three compilers can be found at the <a href="https://dlang.org/download.html">dlang.org downloads page</a>.</p>
+<h3 id="dmd">DMD<a class="headerlink" href="#dmd" title="Permanent link">&para;</a></h3>
+<p>DMD is the reference D compiler, developed primarily by D's creator and <a href="https://digitalmars.com/">Digital Mars</a> owner, <a href="http://walterbright.com/">Walter Bright</a>.</p>
+<p>DMD is built on top of the same compiler backend as the Digital Mars C/C++ compiler, <a href="https://digitalmars.com/download/freecompiler.html">DMC</a>. It ships with <a href="http://www.digitalmars.com/ctg/optlink.html">OPTLINK</a>, an ancient linker that only knows how to link 32-bit executables composed of object files in the <a href="https://en.wikipedia.org/wiki/Relocatable_Object_Module_Format">OMF</a> format. When passing the <code>-m32</code> command line switch (the default for the 32-bit version of DMD, currently the only version distributed in binary form on Windows), DMD's object output will be in the OMF format and it will use the OPTLINK linker to create executables.</p>
+<p>Thankfully, DMD also supports generating object files in the <a href="https://en.wikipedia.org/wiki/COFF">COFF</a> format and linking using the Microsoft linker. This is enabled via the <code>-m32mscoff</code> command line switch for 32-bit binaries, and <code>-m64</code> for 64-bit binaries.This requires the installation of either the Microsoft Build Tools and the Windows SDK, or a supported version of Visual Studio. If you do not already have any of these installed, the easiest thing to do is to install the latest Visual Studio <a href="https://www.visualstudio.com/downloads/">Visual Studio Community Edition</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>None of the C libraries to which the Derelict libraries bind are bundled with the packages. The binaries for the C libraries must be obtained separately, either through downloading precompiled binaries from project websites, repositories, or third-party packagers, or by downloading and obtaining the source. Where possible, suggestions on how to obtain binaries and/or source are included in the package-specific documentation.</p>
+<p>Generally, you can expect Visual Studio versions 2012 and later to be supported, though sometimes new versions may temporarily break support in some way. For example, due to changes in the path structure in VS 2017, the DMD installer could not automatically identify it for a time, so it could not properly configure DMD. Paths can always be configured manually, but VS 2015 renamed the C runtime library, a breakage that can only be fixed by the DMD developers. Any breakage is generally fixed within a DMD release or two. In the interim, the previous Visual Studio version should continue to work.</p>
 </div>
-<p>When creating a project for DUB to manage, a configuration file of the name <strong>dub.json</strong> or <strong>dub.sdl</strong> must be provided. This documentation is not a tutorial on general DUB use, so to learn more about using DUB from the command line and configuring DUB packages, please see the <a href="https://code.dlang.org/getting_started">DUB documentation</a>. For more DUB assitance, visit the <a href="../forum.rejectedsoftware.com/groups/rejectedsoftware.dub/">DUB forums</a>.</p>
-<p>To use any package from the DerelictOrg collection in your project, you'll simply need to add it to your project configuration as a dependency. When you execute <code>dub</code> or <code>dub build</code> in your project configuration's root directory, DUB will make sure that the dependencies are installed, compiled and linked. You can upgrade to the latest version of each of your project's dependencies by executing <code>dub upgrade</code> in the same directory.</p>
-<p>All packages from DerelictOrg are registered in the DUB registry under names that are formatted in a specific format derived from the package name. For example, the package DerelictSDL2 is registered as <code>derelict-sdl2</code> and the package DerelictGL3 as <code>derelict-gl3</code>. Every Derelict package under the DerelictOrg umbrella follows that pattern.</p>
-<p>Some people maintain third-party Derelict-style packages, using DerelictUtil as a foundation, outside of the DerelictOrg group. Some of these packages are registred with names using a format that puts <code>derelict-extras</code> in front of the package name. For example, a third-party package called DerelictFoo might be registered as <code>derelict-extras-foo</code>. While this approach is encouraged, many such packages are still registered as <code>derelict-foo</code>. Still others might use another format entirely. Please be aware that the DerelictOrg maintainers are not responsible for such packages and any support requests should be directed to the person or persons who are via the links to their source repositories from the package pages at the <a href="https://code.dlang.org/">DUB Package Registry</a>.</p>
-<p>To enable any package from the DUB registry, including the Derelict packages, in a DUB-managed project, simply add the registered package name, coupled with a version string, as a dependency in the project configuration. For example, a project using both DerelictSDL2 and DerelictGL3 would have something like the following in its configuration:</p>
-<p><strong>dub.json</strong></p>
-<div class="codehilite"><pre><span></span><span class="s2">&quot;dependencies&quot;</span><span class="err">:</span> <span class="p">{</span>
-    <span class="nt">&quot;derelict-sdl2&quot;</span><span class="p">:</span> <span class="s2">&quot;~&gt;3.0.0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;derelict-gl3&quot;</span><span class="p">:</span> <span class="s2">&quot;~&gt;2.0.0&quot;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p><strong>dub.sdl</strong></p>
-<div class="codehilite"><pre><span></span>dependency <span class="s2">&quot;derelict-sdl2&quot;</span> <span class="nv">version</span><span class="o">=</span><span class="s2">&quot;~&gt;3.0.0&quot;</span>
-dependency <span class="s2">&quot;derelict-gl3&quot;</span> <span class="nv">version</span><span class="o">=</span><span class="s2">&quot;~&gt;2.0.0&quot;</span>
-</pre></div>
-
-
-<p>This specifies a version of DerelictSDL2 <em>greater than or equal to</em> <code>2.0.0</code> and <em>less than</em> <code>2.1.0</code>, and similarly for DerelictGL3 <code>1.0.18</code> - <code>1.1.0</code>. When compiling a project for the first time, DUB will check the local system for any version matching the constraints and, if none is found, will fetch the latest from git that does match. Later, when running <code>dub upgrade</code>, DUB will look to see if a newer version which matches the constraints is available. For more information on DUB dependencies, see the <a href="https://code.dlang.org/getting_started">DUB documentation</a> and the <a href="https://github.com/dlang/dub/wiki/Version-management">DUB Wiki page</a> on version management. See the page <a href="../../packages/latest">Latest Versions</a> for a table of all of the latest release version tags for the supported DerelictOrg packages.</p>
-<h3 id="dynamic-bindings">Dynamic bindings<a class="headerlink" href="#dynamic-bindings" title="Permanent link">&para;</a></h3>
-<p>All Derelict packages are configured as dynamic bindings by default (see <a href="../../bindings">this page</a> to understand the difference between static and dynamic bindings). This does not mean they require dynamic linking. There is no link-time dependency at all. Instead, the C shared library is loaded manually at runtime with a call to a <code>load</code> function on a loader instance, e.g. <code>DerelictSDL2.load</code>.</p>
-<p>For this to work, the shared library needs to be on the system path. On Posix systems, that usually means installing from the package manager. It is not necessary to install the development packages for this to work, given the lack of a link-time dependency. For example, Ubuntu users can install SDL via <code>sudo apt-get install libsdl2-2.0</code>, but need not install <code>libsdl2-dev</code>. On Windows, this usually means placing the C DLL in the executable's directory, though <a href="../../loading/loader">Derelict loaders</a> support loading from custom locations, e.g. <code>DerelictSDL2.load("dlls/SDL2.dll")</code>.</p>
-<h3 id="static-bindings">Static bindings<a class="headerlink" href="#static-bindings" title="Permanent link">&para;</a></h3>
-<p>Derelict packages that support a static binding configuration can be configured using a <code>subConfiguration</code> entry in the project config, or a <code>versions</code> entry. The subconfigurations are in the format of <code>package-name-static</code>, e.g. <code>derelict-sdl2-static</code>. This is the preferred approach, as it completely eliminates the dynamic binding modules from the build.</p>
-<p><strong>dub.json</strong></p>
-<div class="codehilite"><pre><span></span><span class="s2">&quot;subConfigurations&quot;</span><span class="err">:</span> <span class="p">{</span>
-    <span class="nt">&quot;derelict-sdl2&quot;</span><span class="p">:</span> <span class="s2">&quot;derelict-sdl2-static&quot;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p><strong>dub.sdl</strong></p>
-<div class="codehilite"><pre><span></span>subConfiguration <span class="s2">&quot;derelict-sdl2&quot;</span> <span class="s2">&quot;derelict-sdl2-static&quot;</span>
-</pre></div>
-
-
-<p>Versions can be <code>Derelict_Static</code>, which enables the static binding configuration for all packages in a project that support it, or <code>PackageName_Static</code>, e.g. <code>DerelictSDL2_Static</code> which enables it for the specific package.</p>
-<p><strong>dub.json</strong></p>
-<div class="codehilite"><pre><span></span><span class="s2">&quot;versions&quot;</span><span class="err">:</span> <span class="p">[</span><span class="s2">&quot;DerelictSDL2_Static&quot;</span><span class="p">]</span>
-</pre></div>
-
-
-<p><strong>dub.sdl</strong></p>
-<div class="codehilite"><pre><span></span>versions <span class="s2">&quot;DerelictSDL2_Static&quot;</span>
-</pre></div>
-
-
-<p>Static binding configurations require linking either dynamically or statically with the library at runtime. Generally, on Posix systems this requires installing the development version of the C library through a package manager or compiling from source. The appropriate libraries will be installed on the system path. On Windows, it requires downloading the precompiled development packages or compiling from source, making sure the linker can find the library, and, when linking dynamically, ensuring the DLL is in the compiled executable's directory.</p>
-<p>The documentation for each package that supports static binding provides package-specific details.</p>
+<p>To reiterate, when using the dynamic binding configuration of a Derelict package, the DLL can be in any format and compiled with any Windows compiler. As long as 32-bit executables are loading 32-bit DLLs, and 64-bit executables are loading 64-bit DLLs, the object file format is irrelevant. It only applies when linking in a static binding configuration.</p>
+<h4 id="coff">COFF<a class="headerlink" href="#coff" title="Permanent link">&para;</a></h4>
+<p>Once the Microsoft linker and libraries are installed, DMD needs to be told where to find them. While it's possible to edit the DMD configuration file (<code>sc.ini</code> in the <code>dmd2\windows\bin</code> directory), it's much easier to let the DMD Windows installer handle it automatically. When everything is configured, any libraries that have a link-time dependency must be in the COFF format.</p>
+<p>Effectively, this means that when using a Derelict package in a static binding configuration (where supported), you should always either choose binary packages compiled with Visual C++, or use Visual C++ to compile the library yourself. For example, to use the <a href="../../packages/sdl2">DerelictSDL2</a> static binding configuration, go to <a href="https://www.libsdl.org/download-2.0.php">libsdl.org</a> and download the appropriate SDL development libraries for Visual C++, e.g. <code>SDL-devel-2.0.5-VC.zip</code>.</p>
+<h4 id="omf">OMF<a class="headerlink" href="#omf" title="Permanent link">&para;</a></h4>
+<p>Why are you even thinking about compiling in OMF format? Just don't! But if you must, don't even bother to look for precompiled OMF binaries for any library to which Derelict binds. They may be out there somewhere, but you're better off either running an object converter or compiling yourself with DMC. The former is the recommended approach, as few libraries have a build system that supports DMC out of the box.</p>
+<p>The first thing to do is to head to the Digital Mars site to download the Extended Utility Package (<a href="https://digitalmars.com/eup.html">EUP</a>). This contains two tools that will do the job. When you are linking dynamically with a DLL import library, run the <code>coffimplib</code> utility on the COFF DLL (such as the <code>SDL2.dll</code> obtained in the VC development archive from the SDL downloads page). This will produce an import library in OMF format that will link with the COFF DLL. When linking statically, run <code>coff2omf</code> on the COFF static library or any COFF object files you need to link with. This will produce libraries or object files in the OMF format.</p>
+<h3 id="ldc">LDC<a class="headerlink" href="#ldc" title="Permanent link">&para;</a></h3>
+<p>Older LDC releases for Windows were built on top of <a href="https://mingw-w64.org/doku.php">mingw-w64</a>, but recent releases require the Microsoft tools and libraries. The same COFF instructions in the DMD section above apply here.</p>
+<h3 id="gdc">GDC<a class="headerlink" href="#gdc" title="Permanent link">&para;</a></h3>
+<p>There has not been a GDC release for Windows in some time. If there eventually is, it will assumedly be built on top of mingw-w64. In that case, only binaries compiled with mingw-w64, either downloaded in precompiled packages or compiled yourself, will be compatible. While the MinGW linker does support COFF, and can sometimes link with binaries compiled with Visual C++, there are often linker errors that need to be worked around. Best not to mix them. </p>
                 
                   
                 
@@ -606,7 +613,7 @@ dependency <span class="s2">&quot;derelict-gl3&quot;</span> <span class="nv">ver
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../without-dub/" title="With Non-DUB Projects" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -615,19 +622,19 @@ dependency <span class="s2">&quot;derelict-gl3&quot;</span> <span class="nv">ver
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Overview
+                With Non-DUB Projects
               </span>
             </div>
           </a>
         
         
-          <a href="../without-dub/" title="With Non-DUB Projects" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../loading/loader/" title="The Derelict Loader" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                With Non-DUB Projects
+                The Derelict Loader
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

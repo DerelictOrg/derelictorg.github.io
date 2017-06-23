@@ -289,6 +289,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../building/windows/" title="Compiling on Windows" class="md-nav__link">
+      Compiling on Windows
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -367,6 +379,30 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../latest-versions/" title="Latest Versions" class="md-nav__link">
+      Latest Versions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../gl3/" title="DerelictGL3" class="md-nav__link">
+      DerelictGL3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -392,37 +428,43 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#with-dub-projects" title="With DUB projects" class="md-nav__link">
-    With DUB projects
+  <a href="#releases" title="Releases" class="md-nav__link">
+    Releases
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#with-non-dub-projects" title="With non-DUB projects" class="md-nav__link">
-    With non-DUB projects
+  <a href="#using-derelictglfw3" title="Using DerelictGLFW3" class="md-nav__link">
+    Using DerelictGLFW3
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obtaining-the-glfw-binaries" title="Obtaining the GLFW binaries" class="md-nav__link">
+    Obtaining the GLFW binaries
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#loading" title="Loading" class="md-nav__link">
-    Loading
+        
+          <li class="md-nav__item">
+  <a href="#choosing-the-configuration" title="Choosing the configuration" class="md-nav__link">
+    Choosing the configuration
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#linking" title="Linking" class="md-nav__link">
-    Linking
+        
+          <li class="md-nav__item">
+  <a href="#loading-the-glfw-library" title="Loading the GLFW library" class="md-nav__link">
+    Loading the GLFW library
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#getting-the-libraries" title="Getting the libraries" class="md-nav__link">
-    Getting the libraries
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -471,37 +513,43 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#with-dub-projects" title="With DUB projects" class="md-nav__link">
-    With DUB projects
+  <a href="#releases" title="Releases" class="md-nav__link">
+    Releases
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#with-non-dub-projects" title="With non-DUB projects" class="md-nav__link">
-    With non-DUB projects
+  <a href="#using-derelictglfw3" title="Using DerelictGLFW3" class="md-nav__link">
+    Using DerelictGLFW3
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obtaining-the-glfw-binaries" title="Obtaining the GLFW binaries" class="md-nav__link">
+    Obtaining the GLFW binaries
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#loading" title="Loading" class="md-nav__link">
-    Loading
+        
+          <li class="md-nav__item">
+  <a href="#choosing-the-configuration" title="Choosing the configuration" class="md-nav__link">
+    Choosing the configuration
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#linking" title="Linking" class="md-nav__link">
-    Linking
+        
+          <li class="md-nav__item">
+  <a href="#loading-the-glfw-library" title="Loading the GLFW library" class="md-nav__link">
+    Loading the GLFW library
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#getting-the-libraries" title="Getting the libraries" class="md-nav__link">
-    Getting the libraries
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -524,83 +572,131 @@
                 
                   <h1>DerelictGLFW3</h1>
                 
-                <p>DerelictGLFW3 provides both <a href="../../bindings">static and dynamic bindings</a> to the <a href="http://www.glfw.org/">GLFW3</a> library. DerelictGLFW3 4.0.x supports GLFW3 version 3.2.x. Older versions of GLFW3 are supported by versions of DerelictGLFW3 lower than 4.0, but those DerelictGLFW3 versions use an older version of DerelictUtil that will be incompatible with the latest version of other Derelict packages you may use in your project (such as DerelictGL3). Keep this in mind if you need to use GLFW3 3.1 or lower in the dynamic binding configuration (this does not apply to the static binding).</p>
-<p>The following sections show how to use DerelictGLFW3 in your own projects. See the pages under <a href="../../building/overview">Compiling and Linking</a> Derelict packages for more details.</p>
-<h3 id="with-dub-projects">With DUB projects<a class="headerlink" href="#with-dub-projects" title="Permanent link">&para;</a></h3>
-<p>The simplest way to use DerelictGLFW3 is to use <a href="https://code.dlang.org/getting_started">DUB</a> to manage your project. Projects configured via <code>dub.json</code> should add the package name and minimum desired version to the <code>dependencies</code> block:</p>
+                <p>DerelictGLFW3 provides both <a href="../../bindings">static and dynamic bindings</a> to the <a href="http://www.glfw.org/">GLFW</a> library.</p>
+<h3 id="releases">Releases<a class="headerlink" href="#releases" title="Permanent link">&para;</a></h3>
+<p>The DUB package name of DerelictGLFW3 is <code>derelict-glfw3</code>.</p>
+<p>The following table shows the correlation between DerelictGLFW3 releases (the most recent patch release of each <code>major.minor</code> series), its corresponding git branch, GLFW versions, and DerelictUtil versions. The latest release is listed at the top and is the recommended version. When using DerelictGLFW3 with other Derelict packages, please ensure all of the Derelict packages use the same DerelictUtil <code>major.minor</code> series.</p>
+<table>
+<thead>
+<tr>
+<th>DerelictGLFW3 Version</th>
+<th>git Branch</th>
+<th>GLFW Version</th>
+<th>DerelictUtil Version</th>
+<th>Supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.0.0-beta.1</td>
+<td><a href="https://github.com/DerelictOrg/DerelictGLFW3/tree/master">master</a>/<a href="https://github.com/DerelictOrg/DerelictGLFW3/tree/4.0">4.0</a></td>
+<td>3.2.x</td>
+<td>3.0.x</td>
+<td>&#x2714;</td>
+</tr>
+<tr>
+<td>3.1.3</td>
+<td><a href="https://github.com/DerelictOrg/DerelictGLFW3/tree/3.2">3.2</a></td>
+<td>3.2.x</td>
+<td>2.0.x</td>
+<td>&#x2714; (bugfix only)</td>
+</tr>
+<tr>
+<td>3.0.1</td>
+<td><a href="https://github.com/DerelictOrg/DerelictGLFW3/tree/3.1">3.1</a></td>
+<td>3.2.x</td>
+<td>2.0.x</td>
+<td>&#x2716;</td>
+</tr>
+<tr>
+<td>2.0.0</td>
+<td><a href="https://github.com/DerelictOrg/DerelictGLFW3/tree/3.0">3.0</a></td>
+<td>3.1.x</td>
+<td>2.0.x</td>
+<td>&#x2716;</td>
+</tr>
+<tr>
+<td>1.1.1</td>
+<td>n/a</td>
+<td>3.1.x</td>
+<td>1.0.x</td>
+<td>&#x2716;</td>
+</tr>
+<tr>
+<td>1.0.2</td>
+<td>n/a</td>
+<td>3.0.x</td>
+<td>1.0.x</td>
+<td>&#x2716;</td>
+</tr>
+</tbody>
+</table>
+<p>All new development happens on the master branch. Pull requests and issues reported on unsupported branches will be ignored. Both the 4.0.x series and the 3.1.x series support the static binding configuration, but the 3.1.x series should be preferred only for compatibility with other Derelict packages that require DerelictUtil 2.0.x.</p>
+<h3 id="using-derelictglfw3">Using DerelictGLFW3<a class="headerlink" href="#using-derelictglfw3" title="Permanent link">&para;</a></h3>
+<p>See the generic documentation on [Compiling and Linuking] for generic information on incorporating any Derelict package in your project.</p>
+<h4 id="obtaining-the-glfw-binaries">Obtaining the GLFW binaries<a class="headerlink" href="#obtaining-the-glfw-binaries" title="Permanent link">&para;</a></h4>
+<p>Precompiled binaries for Windows can be downloaded from the <a href="http://www.glfw.org/download.html">GLFW download page</a>. The zip archive contains binaries for MinGW, and Visual Studio 2012, 2013, and 2015. When using the dynamic binding configuration, any of the DLLs from this archive can be loaded at runtime. When using the static binding configuration, only the Visual Studio binaries should be used. To link statically, use <code>glfw3.lib</code>. To link dynamically, use <code>glfw3dll.lib</code> and distribute the corresponding DLL with your executable. See the documentation on <a href="../../building/windows">Windows-specific compilation</a> for more details.</p>
+<p>Windows binaries for Visual Studio are also available via <a href="https://www.nuget.org/">NuGet</a> and <a href="https://github.com/Microsoft/vcpkg">vcpkg</a>.</p>
+<p>Binaries Mac OS X can be obtained through <a href="https://brew.sh/">Homebrew</a> or <a href="https://www.macports.org/">MacPorts</a>, though they may not always be the latest release.</p>
+<p>Binaries for other systems can be obtained through the system package manager.</p>
+<p>The GLFW source can be downloaded from the download page or cloned from the <a href="https://github.com/glfw/glfw">GLFW GitHub repository</a>.</p>
+<h4 id="choosing-the-configuration">Choosing the configuration<a class="headerlink" href="#choosing-the-configuration" title="Permanent link">&para;</a></h4>
+<p>By default, DerelictGLFW3 will be configured as a dynamic binding. There are two ways to enable the static binding configuration. The recommended way is to add a <code>subConfiguration</code> entry to your project configuration with the value <code>derelict-glfw3-static</code> and the appropriate library, as in the following examples. Note that the example assumes linking dynamically, using the precompiled binaries from the GLFW website on Windows. In other binary distributions on Windows, the dynamic import library may simply be named <code>glfw3.lib</code> instead. In that case, a single <code>libs</code> entry with no platform suffix will suffice.  </p>
+<p><strong>dub.json</strong></p>
 <div class="codehilite"><pre><span></span><span class="s2">&quot;dependencies&quot;</span><span class="err">:</span> <span class="p">{</span>
     <span class="nt">&quot;derelict-glfw3&quot;</span><span class="p">:</span> <span class="s2">&quot;~&gt;4.0.0-beta&quot;</span>
-<span class="p">}</span> 
-</pre></div>
-
-
-<p>Projects configured via <code>dub.sdl</code> should add the following line:</p>
-<div class="codehilite"><pre><span></span>dependency <span class="s2">&quot;derelict-glfw3&quot;</span> <span class="nv">version</span><span class="o">=</span><span class="s2">&quot;~&gt;4.0.0-beta&quot;</span>
-</pre></div>
-
-
-<p>The package is configured to use the dynamic binding by default. In order to enable static binding, add the <code>derelict-glfw3-static</code> subconfiguration:</p>
-<p><strong>dub.json</strong></p>
-<div class="codehilite"><pre><span></span><span class="s2">&quot;subConfigurations&quot;</span><span class="err">:</span> <span class="p">{</span>
-    <span class="nt">&quot;derelict-sdl2&quot;</span><span class="p">:</span> <span class="s2">&quot;derelict-glfw3-static&quot;</span>
+<span class="p">}</span><span class="err">,</span>
+<span class="s2">&quot;subConfigurations&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&quot;derelict-glfw3&quot;</span><span class="p">:</span> <span class="s2">&quot;derelict-glfw3-static&quot;</span>
+<span class="p">}</span><span class="err">,</span>
+<span class="s2">&quot;libs-windows&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&quot;glfw3dll&quot;</span>
+<span class="p">}</span><span class="err">,</span>
+<span class="s2">&quot;libs-posix&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&quot;glfw3&quot;</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p><strong>dub.sdl</strong></p>
-<div class="codehilite"><pre><span></span>subConfiguration <span class="s2">&quot;derelict-sdl2&quot;</span> <span class="s2">&quot;derelict-glfw3-static&quot;</span>
+<div class="codehilite"><pre><span></span>dependency <span class="s2">&quot;derelict-glfw3&quot;</span> <span class="s2">&quot;~&gt;4.0.0-beta&quot;</span>
+subConfiguration <span class="s2">&quot;derelict-glfw3&quot;</span> <span class="s2">&quot;derelict-glfw3-static&quot;</span>
+libs <span class="s2">&quot;glfw3dll&quot;</span> <span class="nv">platform</span><span class="o">=</span><span class="s2">&quot;windows&quot;</span>
+libs <span class="s2">&quot;glfw3&quot;</span> <span class="nv">platform</span><span class="o">=</span><span class="s2">&quot;posix&quot;</span>
 </pre></div>
 
 
-<p>Alternatively, the static binding can be enabled by adding either the <code>Derelict_Static</code> version or the <code>DerelictGLFW3_Static</code> version to your project configuration. The former will enable static binding for all Derelict packages in your project that support it. The latter will enable them only for DerelictGLFW3.</p>
+<p>The alternative is to replace the <code>subConfiguration</code> with a <code>versions</code> entry and give it one of two values, either <code>Derelict_Static</code> or <code>DerelictGLFW3_Static</code>. The former will enable the static binding configuration of any other Derelict packages in your project that support it. The latter will enable it only for DerelictGLFW3.</p>
 <p><strong>dub.json</strong></p>
-<div class="codehilite"><pre><span></span><span class="s2">&quot;versions&quot;</span><span class="err">:</span> <span class="p">[</span><span class="s2">&quot;DerelictGLFW3_Static&quot;</span><span class="p">]</span>
+<div class="codehilite"><pre><span></span><span class="s2">&quot;dependencies&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&quot;derelict-glfw3&quot;</span><span class="p">:</span> <span class="s2">&quot;~&gt;4.0.0-beta&quot;</span>
+<span class="p">}</span><span class="err">,</span>
+<span class="s2">&quot;versions&quot;</span><span class="err">:</span> <span class="p">[</span><span class="s2">&quot;DerelictGLFW3_Static&quot;</span><span class="p">]</span><span class="err">,</span>
+<span class="s2">&quot;libs-windows&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&quot;glfw3dll&quot;</span>
+<span class="p">}</span><span class="err">,</span>
+<span class="s2">&quot;libs-posix&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&quot;glfw3&quot;</span>
+<span class="p">}</span>
 </pre></div>
 
 
 <p><strong>dub.sdl</strong></p>
-<div class="codehilite"><pre><span></span>versions <span class="s2">&quot;DerelictGLFW3_Static&quot;</span>
+<div class="codehilite"><pre><span></span>dependency <span class="s2">&quot;derelict-glfw3&quot;</span> <span class="s2">&quot;~&gt;4.0.0-beta&quot;</span>
+versions <span class="s2">&quot;DerelictGLFW3_Static&quot;</span>
+libs <span class="s2">&quot;glfw3dll&quot;</span> <span class="nv">platform</span><span class="o">=</span><span class="s2">&quot;windows&quot;</span>
+libs <span class="s2">&quot;glfw3&quot;</span> <span class="nv">platform</span><span class="o">=</span><span class="s2">&quot;posix&quot;</span>
 </pre></div>
 
 
-<p>Using the subconfiguration is the preferred approach, as it completely eliminates all unneeded modules from the build.</p>
-<h3 id="with-non-dub-projects">With non-DUB projects<a class="headerlink" href="#with-non-dub-projects" title="Permanent link">&para;</a></h3>
-<p>It is not required to use DUB to manage your project in order to use DerelictGLFW3, but DUB is the only supported option for building the DerelictGLFW3 library. To do so, first ensure that DUB, a D compiler, and git are all available on your system path. Then see the documentation on compiling any Derelict package <a href="../../building/without-dub">without DUB</a>, substituting <code>derelict-glfw3</code> and <code>4.0.0-beta</code> where appropriate in the example commands.</p>
-<h3 id="loading">Loading<a class="headerlink" href="#loading" title="Permanent link">&para;</a></h3>
-<p>When DerelictGLFW3 is configured to produce a dynamic binding, the GLFW3 shared library must be loaded manually by calling the <code>DerelictGLFW3.load</code>. There is no link-time dependency on the GLFW3 library, only a runtime dependency. See the section further down on [obtaining the binaries] for information on how to obtain the GLFW3 runtime binaries.</p>
-<p>The following code demonstrates how to load the GLFW3 library:</p>
+<h4 id="loading-the-glfw-library">Loading the GLFW library<a class="headerlink" href="#loading-the-glfw-library" title="Permanent link">&para;</a></h4>
+<p>When using the static binding configuration, you must link with either the static or dynamic library at link-time. In that case, all GLFW functions can be called directly and nothing special need be done at runtime to use them. </p>
+<p>When using the dynamic binding configuration, the functions must be loaded at runtime via a call to <code>DerelictGLFW3.load</code>, as shown in the following example.</p>
 <div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">glfw3</span><span class="p">;</span>
 <span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">DerelictGLFW3</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
-
-
-<h3 id="linking">Linking<a class="headerlink" href="#linking" title="Permanent link">&para;</a></h3>
-<p>Configuring DerelictGLFW3 as a static binding eliminates the need to manually load the GLFW3 library at runtime. However, it introduces a link-time dependency and still has a runtime dependency when linking dynamically. See the page on <a href="../../bindings">static and dynamic bindings</a> if the difference between static/dynamic bindings and static/dynamic linking is not clear to you.</p>
-<p>To use the GLFW3 library with the static DerelictGLFW3 binding, it's necessary to install the appropriate development packages. <a href="#getting-the-libraries">See below</a> for information on how to obtain the GLFW3 development binaries.</p>
-<p>Once the development binaries are installed on your system, you can link to them by adding the appropriate library name to your config file. The following example shows how to link with GLFW3.</p>
-<p><strong>dub.json</strong></p>
-<div class="codehilite"><pre><span></span><span class="s2">&quot;libs&quot;</span><span class="err">:</span> <span class="p">{</span>
-    <span class="nt">&quot;GLFW3&quot;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p><strong>dub.sdl</strong></p>
-<div class="codehilite"><pre><span></span>libs <span class="s2">&quot;GLFW3&quot;</span>
-</pre></div>
-
-
-<p>By default, this will link dynamically on non-Windows systems. Please see your system compiler documentation for information on how to link statically, though it's strongly recommended to link dynamically.</p>
-<p>On Windows systems, the above may link statically or dynamically, depending on how the libraries are named and which is on the library path.</p>
-<p>Linking statically will require linking with additional system libraries.</p>
-<h3 id="getting-the-libraries">Getting the libraries<a class="headerlink" href="#getting-the-libraries" title="Permanent link">&para;</a></h3>
-<p>Development and runtime binaries for Linux and *BSD distributions can be obtained through the system package manager, though they may not be the latest version. For the dynamic binding configuration, only the runtime package is needed. For the static binding configuration, the development package is required.</p>
-<p>The latest binaries for Windows can be obtained at the [GLFW3 download page]. </p>
-<p>Windows binaries can also be obtained through <a href="https://github.com/Microsoft/vcpkg">vcpkg</a> and <a href="https://www.nuget.org/">NuGet</a>.</p>
-<p>Mac OS X binaries can also be obtained through <a href="https://brew.sh/">Homebrew</a> and <a href="https://www.macports.org/">MacPorts</a>.</p>
-<p>Finally, it possible on every platform to obtain the source for the and build the binaries manually on all supported platforms. The latest source release is available at the [GLFW3 download page]. All source releases and the current development version can be obtained through the <a href="https://github.com/glfw/glfw">GLFW GitHub repository</a>.</p>
                 
                   
                 
@@ -619,7 +715,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../loading/failure/" title="Load Failures" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../gl3/" title="DerelictGL3" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -628,7 +724,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Load Failures
+                DerelictGL3
               </span>
             </div>
           </a>

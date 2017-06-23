@@ -289,6 +289,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../building/windows/" title="Compiling on Windows" class="md-nav__link">
+      Compiling on Windows
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -415,6 +427,30 @@
 
 
   <li class="md-nav__item">
+    <a href="../../packages/latest-versions/" title="Latest Versions" class="md-nav__link">
+      Latest Versions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../packages/gl3/" title="DerelictGL3" class="md-nav__link">
+      DerelictGL3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../packages/glfw3/" title="DerelictGLFW3" class="md-nav__link">
       DerelictGLFW3
     </a>
@@ -496,10 +532,10 @@
                 
                   <h1>The Derelict Loader</h1>
                 
-                <p>All Derelict packages have one thing in common. Because each package is a dynamic binding, it must be loaded at runtime. The interface for this is the same across all packages.</p>
-<p>The <strong>DerelictUtil</strong> package contains all of the functionality needed to load a dynamic library at runtime. Each binding contains a loader class that extends from <code>SharedLibLoader</code>, a class found in <code>derelict.util.loader</code>. This class exposes two methods for dynamically loading shared libraries.</p>
+                <p>All Derelict packages have one thing in common. Because each package is a <a href="../../binding">dynamic binding</a>, it must be loaded at runtime. The interface for this is the same across all packages. The DerelictUtil package contains all of the functionality needed to load a dynamic library at runtime. Each binding contains a loader class that extends from <code>SharedLibLoader</code>, a class found in <code>derelict.util.loader</code>. This class exposes two methods for dynamically loading shared libraries.</p>
+<p>Some of the Derelict packages support a static binding configuration that eliminates the need to use a <code>SharedLibLoader</code>. Instead, the C library is linked either statically or dynamically when compiling the executable. This page is exclusively about using Derelict packages in the dynamic binding configuration.</p>
 <h3 id="a-normal-load">A normal load<a class="headerlink" href="#a-normal-load" title="Permanent link">&para;</a></h3>
-<p>The method that most developers will use is called <code>load</code> and takes no arguments. The specific loader on which this method is called will attempt to find and load a shared library, using a predefined set of library names, on the default system shared library path. Loader instances are created automatically in module constructors and, by convention and with few exceptions, are named according to the Derelict package to which they belong. The following example shows how to load the <a href="http://libsdl.org">SDL2 library</a> via <strong>DerelictSDL2</strong>.</p>
+<p>The method that most developers will use is called <code>load</code> and takes no arguments. The specific loader on which this method is called will attempt to find and load a shared library, using a predefined set of library names, on the default system shared library path. Loader instances are created automatically in module constructors and, by convention and with few exceptions, are named according to the Derelict package to which they belong. The following example shows how to load the <a href="https://www.libsdl.org">SDL library</a> via <a href="../../packages/sdl2">DerelictSDL2</a>.</p>
 <div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">sdl2</span><span class="p">.</span><span class="n">sdl</span><span class="p">;</span>
 
 <span class="kt">void</span> <span class="n">main</span><span class="p">()</span>
@@ -525,9 +561,9 @@
 
 
 <h3 id="sharedlibversion">SharedLibVersion<a class="headerlink" href="#sharedlibversion" title="Permanent link">&para;</a></h3>
-<p>Some Derelict loaders, but not all, support version-specific loading. In other words, it's possible to tell the loader to attempt to load a lower version of a shared library than the highest version it supports. An example is <strong>DerelictFI</strong>.</p>
-<p><strong>DerelictFI</strong> is a binding to the <a href="http://freeimage.sourceforge.net">FreeImage library</a>. <strong>FreeImage</strong> is supported on every major platform. Most Linux distributions make it available through the system package manager, but the version available is always behind the highest version supported by <strong>DerelictFI</strong>. A program that simply calls <code>DerelictFI.load()</code> on these systems will fail to load the library.</p>
-<p>To work around this, a user can choose the minimum required version of <strong>FreeImage</strong>. The lowest supported by <strong>DerelictFI</strong> is <strong>3.15.0</strong>. If none of the functions added in later versions of FreeImage are needed, then the call to <code>DerelictFI.load</code> can be made like so:</p>
+<p>Some Derelict loaders, but not all, support version-specific loading. In other words, it's possible to tell the loader to attempt to load a lower version of a shared library than the highest version it supports. An example is DerelictFI.</p>
+<p>DerelictFI is a binding to the <a href="http://freeimage.sourceforge.net">FreeImage library</a>. FreeImage is supported on every major platform. Most Linux distributions make it available through the system package manager, but the version available is always behind the highest version supported by DerelictFI. A program that simply calls <code>DerelictFI.load()</code> on such systems will fail to load the library.</p>
+<p>To work around this, a user can choose the minimum required version of FreeImage. The lowest supported by DerelictFI is <code>3.15.0</code>. If none of the functions added in later versions of FreeImage are needed, then the call to <code>DerelictFI.load</code> can be made like so:</p>
 <div class="codehilite"><pre><span></span><span class="n">DerelictFI</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">SharedLibVersion</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
 </pre></div>
 
@@ -551,7 +587,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../building/without-dub/" title="With Non-DUB Projects" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../building/windows/" title="Compiling on Windows" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -560,7 +596,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                With Non-DUB Projects
+                Compiling on Windows
               </span>
             </div>
           </a>

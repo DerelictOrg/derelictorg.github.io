@@ -10,7 +10,7 @@
         <meta name="description" content="Documentation for the Derelict project, a collectiion of D bindings to C libraries commonly used in game development.">
       
       
-        <link rel="canonical" href="http://derelictorg.github.io/loading/failure/">
+        <link rel="canonical" href="http://derelictorg.github.io/packages/gl3/">
       
       
         <meta name="author" content="Mike Parker">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Load Failures - Derelict Documentation</title>
+        <title>DerelictGL3 - Derelict Documentation</title>
       
     
     
@@ -81,11 +81,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  Loading Shared Libraries
+                  Packages
                 </span>
               
             
-            Load Failures
+            DerelictGL3
           
         </span>
       </div>
@@ -310,12 +310,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       Loading Shared Libraries
@@ -333,7 +331,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../loader/" title="The Derelict Loader" class="md-nav__link">
+    <a href="../../loading/loader/" title="The Derelict Loader" class="md-nav__link">
       The Derelict Loader
     </a>
   </li>
@@ -343,50 +341,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        Load Failures
-      </label>
-    
-    <a href="./" title="Load Failures" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../loading/failure/" title="Load Failures" class="md-nav__link">
       Load Failures
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#loader-exceptions" title="Loader Exceptions" class="md-nav__link">
-    Loader Exceptions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#selective-symbol-loading" title="Selective Symbol Loading" class="md-nav__link">
-    Selective Symbol Loading
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -399,10 +358,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
     <label class="md-nav__link" for="nav-7">
       Packages
@@ -420,7 +381,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../packages/latest-versions/" title="Latest Versions" class="md-nav__link">
+    <a href="../latest-versions/" title="Latest Versions" class="md-nav__link">
       Latest Versions
     </a>
   </li>
@@ -430,11 +391,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../packages/gl3/" title="DerelictGL3" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="DerelictGL3" class="md-nav__link md-nav__link--active">
       DerelictGL3
     </a>
+    
   </li>
 
         
@@ -444,7 +412,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../packages/glfw3/" title="DerelictGLFW3" class="md-nav__link">
+    <a href="../glfw3/" title="DerelictGLFW3" class="md-nav__link">
       DerelictGLFW3
     </a>
   </li>
@@ -456,7 +424,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../packages/sdl2/" title="DerelictSDL2" class="md-nav__link">
+    <a href="../sdl2/" title="DerelictSDL2" class="md-nav__link">
       DerelictSDL2
     </a>
   </li>
@@ -482,27 +450,6 @@
   
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#loader-exceptions" title="Loader Exceptions" class="md-nav__link">
-    Loader Exceptions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#selective-symbol-loading" title="Selective Symbol Loading" class="md-nav__link">
-    Selective Symbol Loading
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -513,45 +460,15 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/DerelictOrg/derelictorg.github.io/edit/mkdocs/docs/loading\failure.md" title="Edit this page" class="md-icon md-content__icon">edit</a>
+                  <a href="https://github.com/DerelictOrg/derelictorg.github.io/edit/mkdocs/docs/packages\gl3.md" title="Edit this page" class="md-icon md-content__icon">edit</a>
                 
                 
-                  <h1>Load Failures</h1>
+                  <h1>DerelictGL3</h1>
                 
-                <h3 id="loader-exceptions">Loader Exceptions<a class="headerlink" href="#loader-exceptions" title="Permanent link">&para;</a></h3>
-<p>When a shared library cannot be loaded, the loader will throw a sublcass of <code>DerelictException</code>, which in turn is a subclass of D's <code>Exception</code>. More specifically, a <code>SharedLibLoadException</code> is thrown when a shared library is not present on the system path, or fails to load into memory for some other reason. A <code>SymbolLoadException</code> is thrown when a function is not found in the shared library. In each case, the exception contains a system-specific error message provided by the operating system API.</p>
-<p>When given an array of library names, the loader will attempt to load each of them in turn. It will only throw a <code>SharedLibLoadException</code> when the last library name fails to load. When any given symbol fails to load, loading will be aborted and a <code>SymbolLoadException</code> thrown immediately. To catch and manipulate any of these excptions, import <code>derelict.util.exception</code>.</p>
-<p>In some cases, it may be desirable that the loader continue and no exception be thrown when a symbol is missing. For example, when a Derelict package has been updated to support the latest version of a C library, but the user wants to continue supporting the older version of the C library. One option is to use <code>SharedLibVersion</code> with any Derelict loader that supports it. See <a href="../loader">Loading a Shared Library</a> for more information. Where <code>SharedLibVersion</code> is not supported, there are two possibilites. The recommended approach is to continue using the version of the Derelict package that supports the minimally required version of the C library. The other option is to use a library a feature called <em>selective symbol loading</em>.</p>
-<h3 id="selective-symbol-loading">Selective Symbol Loading<a class="headerlink" href="#selective-symbol-loading" title="Permanent link">&para;</a></h3>
-<p>Selective symbol loading is a means of telling a Derelict loader that it is okay to continue loading a library when a specific symbol is missing. Each loader has a <code>missingSymbolCallback</code> property which can be set to either a D delegate or function pointer. The signature in both cases is the same. An example usage follows.</p>
-<div class="codehilite"><pre><span></span><span class="c1">// This is needed for the return type enum.</span>
-<span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">exception</span> <span class="p">:</span> <span class="n">ShouldThrow</span><span class="p">;</span>
-
-<span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">sdl2</span><span class="p">.</span><span class="n">sdl</span><span class="p">;</span>
-
-<span class="n">ShouldThrow</span> <span class="n">myMissingSymCB</span><span class="p">(</span> <span class="nb">string</span> <span class="n">symbolName</span> <span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span> <span class="n">symbolName</span> <span class="p">==</span> <span class="s">&quot;SDL2_SomeFuncIDon&#39;tNeed&quot;</span> <span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="n">ShouldThrow</span><span class="p">.</span><span class="n">No</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="n">ShouldThrow</span><span class="p">.</span><span class="n">Yes</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="c1">// Set the callback *before* calling load</span>
-    <span class="n">DerelictSDL2</span><span class="p">.</span><span class="n">missingSymbolCallback</span> <span class="p">=</span> <span class="p">&amp;</span><span class="n">myMissingSymCB</span><span class="p">;</span>
-    <span class="n">DerelictSDL2</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>The use of the <code>ShouldThrow</code> enum makes it easier to remember which value to return when implementing the callback. A simple <code>true</code> or <code>false</code> can sometimes be confusing: does <code>true</code> mean throw or don't throw? Because of the enum, <code>derelict.util.exception</code> must be imported, but there is no confusion.</p>
-<p>The important point here is that the callback must be set <em>before</em> calling the <code>load</code> method. Otherwise, the loader will have no callback to call. Also note that this is a basic example. There is usually more than one function that must be ignored. When using a <code>MissingSymbolCallback</code>, it is imperative to check the change log for each new version of the bound C library to understand what has changed between versions so that a complete set of symbol names can be covered. The <code>SharedLibVersion</code> feature, where supported, uses selective symbol loading internally.</p>
+                <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This package will be documented by June 25th, 2017.</p>
+</div>
                 
                   
                 
@@ -570,7 +487,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../loader/" title="The Derelict Loader" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../latest-versions/" title="Latest Versions" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -579,19 +496,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                The Derelict Loader
+                Latest Versions
               </span>
             </div>
           </a>
         
         
-          <a href="../../packages/latest-versions/" title="Latest Versions" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../glfw3/" title="DerelictGLFW3" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Latest Versions
+                DerelictGLFW3
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

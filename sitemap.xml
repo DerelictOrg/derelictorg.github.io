@@ -53,6 +53,12 @@
      <changefreq>daily</changefreq>
     </url>
         
+    <url>
+     <loc>http://derelictorg.github.io/building/windows/</loc>
+     <lastmod>2017-06-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
     
@@ -72,6 +78,18 @@
     
 
     
+        
+    <url>
+     <loc>http://derelictorg.github.io/packages/latest-versions/</loc>
+     <lastmod>2017-06-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://derelictorg.github.io/packages/gl3/</loc>
+     <lastmod>2017-06-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
         
     <url>
      <loc>http://derelictorg.github.io/packages/glfw3/</loc>

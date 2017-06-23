@@ -289,6 +289,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../building/windows/" title="Compiling on Windows" class="md-nav__link">
+      Compiling on Windows
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -369,6 +381,30 @@
 
 
   <li class="md-nav__item">
+    <a href="../latest-versions/" title="Latest Versions" class="md-nav__link">
+      Latest Versions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../gl3/" title="DerelictGL3" class="md-nav__link">
+      DerelictGL3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../glfw3/" title="DerelictGLFW3" class="md-nav__link">
       DerelictGLFW3
     </a>
@@ -404,37 +440,50 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#with-dub-projects" title="With DUB projects" class="md-nav__link">
-    With DUB projects
+  <a href="#releases" title="Releases" class="md-nav__link">
+    Releases
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#with-non-dub-projects" title="With non-DUB projects" class="md-nav__link">
-    With non-DUB projects
+  <a href="#using-derelictsdl2" title="Using DerelictSDL2" class="md-nav__link">
+    Using DerelictSDL2
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obtaining-the-sdl-binaries" title="Obtaining the SDL binaries" class="md-nav__link">
+    Obtaining the SDL binaries
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#loading" title="Loading" class="md-nav__link">
-    Loading
+        
+          <li class="md-nav__item">
+  <a href="#choosing-the-configuration" title="Choosing the configuration" class="md-nav__link">
+    Choosing the configuration
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#linking" title="Linking" class="md-nav__link">
-    Linking
+        
+          <li class="md-nav__item">
+  <a href="#loading-the-sdl-libraries" title="Loading the SDL libraries" class="md-nav__link">
+    Loading the SDL libraries
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#getting-the-libraries" title="Getting the libraries" class="md-nav__link">
-    Getting the libraries
+        
+          <li class="md-nav__item">
+  <a href="#sharedlibversion" title="SharedLibVersion" class="md-nav__link">
+    SharedLibVersion
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -471,37 +520,50 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#with-dub-projects" title="With DUB projects" class="md-nav__link">
-    With DUB projects
+  <a href="#releases" title="Releases" class="md-nav__link">
+    Releases
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#with-non-dub-projects" title="With non-DUB projects" class="md-nav__link">
-    With non-DUB projects
+  <a href="#using-derelictsdl2" title="Using DerelictSDL2" class="md-nav__link">
+    Using DerelictSDL2
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obtaining-the-sdl-binaries" title="Obtaining the SDL binaries" class="md-nav__link">
+    Obtaining the SDL binaries
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#loading" title="Loading" class="md-nav__link">
-    Loading
+        
+          <li class="md-nav__item">
+  <a href="#choosing-the-configuration" title="Choosing the configuration" class="md-nav__link">
+    Choosing the configuration
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#linking" title="Linking" class="md-nav__link">
-    Linking
+        
+          <li class="md-nav__item">
+  <a href="#loading-the-sdl-libraries" title="Loading the SDL libraries" class="md-nav__link">
+    Loading the SDL libraries
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#getting-the-libraries" title="Getting the libraries" class="md-nav__link">
-    Getting the libraries
+        
+          <li class="md-nav__item">
+  <a href="#sharedlibversion" title="SharedLibVersion" class="md-nav__link">
+    SharedLibVersion
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -531,50 +593,127 @@
 <li><a href="https://www.libsdl.org/projects/SDL_net/">SDL_net</a></li>
 <li><a href="https://www.libsdl.org/projects/SDL_ttf/">SDL_ttf</a></li>
 </ul>
-<p>The following sections show how to use DerelictSDL2 in your own projects. See the pages under <a href="../../building/overview">Compiling and Linking</a> Derelict packages for more details.</p>
-<h3 id="with-dub-projects">With DUB projects<a class="headerlink" href="#with-dub-projects" title="Permanent link">&para;</a></h3>
-<p>The simplest way to use DerelictSDL2 is to use <a href="https://code.dlang.org/getting_started">DUB</a> to manage your project. Projects configured via <code>dub.json</code> should add the package name and minimum desired version to the <code>dependencies</code> block:</p>
+<h3 id="releases">Releases<a class="headerlink" href="#releases" title="Permanent link">&para;</a></h3>
+<p>The DUB package name of DerelictSDL2 is <code>derelict-sdl2</code>.</p>
+<p>The following table shows the correlation between DerelictSDL2 releases (the most recent patch release of each <code>major.minor</code> series), its corresponding git branch, GLFW versions, and DerelictUtil versions. The latest release is listed at the top and is the recommended version. When using DerelictSDL2 with other Derelict packages, please ensure all of the Derelict packages use the same DerelictUtil <code>major.minor</code> series.</p>
+<table>
+<thead>
+<tr>
+<th>DerelictSDL2 Version</th>
+<th>git Branch</th>
+<th>SDL  Version</th>
+<th>DerelictUtil Version</th>
+<th>Supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.0.0-beta.2</td>
+<td><a href="https://github.com/DerelictOrg/DerelictSDL2/tree/master">master</a>/<a href="https://github.com/DerelictOrg/DerelictSDL2/tree/3.0">3.0</a></td>
+<td>2.0.0 - 2.0.5</td>
+<td>3.0.x</td>
+<td>&#x2714;</td>
+</tr>
+<tr>
+<td>2.1.4</td>
+<td><a href="https://github.com/DerelictOrg/DerelictSDL2/tree/2.1">2.1</a></td>
+<td>2.0.0 - 2.0.4</td>
+<td>2.0.x</td>
+<td>&#x2714; (bugfix only)</td>
+</tr>
+<tr>
+<td>2.0.2</td>
+<td>[2.0.2]</td>
+<td>2.0.0 - 2.0.4</td>
+<td>2.0.x</td>
+<td>&#x2716;</td>
+</tr>
+<tr>
+<td>1.9.7</td>
+<td>n/a</td>
+<td>2.0.2 - 2.0.3</td>
+<td>2.0.x</td>
+<td>&#x2716;</td>
+</tr>
+<tr>
+<td>1.2.16</td>
+<td>n/a</td>
+<td>2.0.2 - 2.0.3</td>
+<td>1.0.x</td>
+<td>&#x2716;</td>
+</tr>
+<tr>
+<td>1.1.17</td>
+<td>n/a</td>
+<td>2.0.0</td>
+<td>1.0.x</td>
+<td>&#x2716;</td>
+</tr>
+</tbody>
+</table>
+<p>All new development happens on the master branch. Pull requests and issues reported on unsupported branches will be ignored. Only the 3.0.x series supports the static binding configuration. The 2.1.x series should be preferred only for compatibility with other Derelict packages that require DerelictUtil 2.0.x.</p>
+<p>[2.0.2] https://github.com/DerelictOrg/DerelictSDL2/tree/2.0.2</p>
+<h3 id="using-derelictsdl2">Using DerelictSDL2<a class="headerlink" href="#using-derelictsdl2" title="Permanent link">&para;</a></h3>
+<p>See the generic documentation on [Compiling and Linuking] for generic information on incorporating any Derelict package in your project.</p>
+<h4 id="obtaining-the-sdl-binaries">Obtaining the SDL binaries<a class="headerlink" href="#obtaining-the-sdl-binaries" title="Permanent link">&para;</a></h4>
+<p>Precompiled binaries for Windows and Mac OS X can be downloaded from the the following pages:</p>
+<ul>
+<li><a href="https://www.libsdl.org/download-2.0.php">SDL2</a></li>
+<li><a href="https://www.libsdl.org/projects/SDL_image/">SDL_image</a></li>
+<li><a href="https://www.libsdl.org/projects/SDL_mixer/">SDL_mixer</a></li>
+<li><a href="https://www.libsdl.org/projects/SDL_net/">SDL_net</a></li>
+<li><a href="https://www.libsdl.org/projects/SDL_ttf/">SDL_ttf</a></li>
+</ul>
+<p>For the dynamic binding configuration, either the Runtime Binaries or the Development Libraries will suffice. They all contain the shared libraries. For the static binding configuration, the Development Libraries should be used, the Visual C++ version on Windows (see the page on <a href="../../building/windows">Windows-specific compilation</a> for more information).</p>
+<p>Windows binaries for Visual Studio are also available via <a href="https://www.nuget.org/">NuGet</a> and <a href="https://github.com/Microsoft/vcpkg">vcpkg</a>.</p>
+<p>Binaries Mac OS X can be obtained through <a href="https://brew.sh/">Homebrew</a> or <a href="https://www.macports.org/">MacPorts</a>.</p>
+<p>Binaries for other systems can be obtained through the system package manager.</p>
+<p>The SDL source can be downloaded from the download page or cloned from the <a href="https://libsdl.org/hg.php">SDL mercurial repository</a>.</p>
+<h4 id="choosing-the-configuration">Choosing the configuration<a class="headerlink" href="#choosing-the-configuration" title="Permanent link">&para;</a></h4>
+<p>By default, DerelictSDL2 will be configured as a dynamic binding. There are two ways to enable the static binding configuration. The recommended way is to add a <code>subConfiguration</code> entry to your project configuration with the value <code>derelict-sdl2-static</code> and the appropriate library, as in the following examples. </p>
+<p><strong>dub.json</strong></p>
 <div class="codehilite"><pre><span></span><span class="s2">&quot;dependencies&quot;</span><span class="err">:</span> <span class="p">{</span>
     <span class="nt">&quot;derelict-sdl2&quot;</span><span class="p">:</span> <span class="s2">&quot;~&gt;3.0.0-beta&quot;</span>
-<span class="p">}</span> 
-</pre></div>
-
-
-<p>Projects configured via <code>dub.sdl</code> should add the following line:</p>
-<div class="codehilite"><pre><span></span>dependency <span class="s2">&quot;derelict-sdl2&quot;</span> <span class="nv">version</span><span class="o">=</span><span class="s2">&quot;~&gt;3.0.0-beta&quot;</span>
-</pre></div>
-
-
-<p>The package is configured to use dynamic bindings by default. In order to enable static binding, add the <code>derelict-sdl2-static</code> subconfiguration:</p>
-<p><strong>dub.json</strong></p>
-<div class="codehilite"><pre><span></span><span class="s2">&quot;subConfigurations&quot;</span><span class="err">:</span> <span class="p">{</span>
+<span class="p">}</span><span class="err">,</span>
+<span class="s2">&quot;subConfigurations&quot;</span><span class="err">:</span> <span class="p">{</span>
     <span class="nt">&quot;derelict-sdl2&quot;</span><span class="p">:</span> <span class="s2">&quot;derelict-sdl2-static&quot;</span>
+<span class="p">}</span><span class="err">,</span>
+<span class="s2">&quot;libs&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&quot;sdl2&quot;</span>
+<span class="p">}</span><span class="err">,</span>
+</pre></div>
+
+
+<p><strong>dub.sdl</strong></p>
+<div class="codehilite"><pre><span></span>dependency <span class="s2">&quot;derelict-sdl2&quot;</span> <span class="s2">&quot;~&gt;3.0.0-beta&quot;</span>
+subConfiguration <span class="s2">&quot;derelict-sdl2&quot;</span> <span class="s2">&quot;derelict-sdl2-static&quot;</span>
+libs <span class="s2">&quot;sdl2&quot;</span>
+</pre></div>
+
+
+<p>The alternative is to replace the <code>subConfiguration</code> with a <code>versions</code> entry and give it one of two values, either <code>Derelict_Static</code> or <code>DerelictSDL2_Static</code>. The former will enable the static binding configuration of any other Derelict packages in your project that support it. The latter will enable it only for DerelictSDL2.</p>
+<p><strong>dub.json</strong></p>
+<div class="codehilite"><pre><span></span><span class="s2">&quot;dependencies&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&quot;derelict-sdl2&quot;</span><span class="p">:</span> <span class="s2">&quot;~&gt;3.0.0-beta&quot;</span>
+<span class="p">}</span><span class="err">,</span>
+<span class="s2">&quot;versions&quot;</span><span class="err">:</span> <span class="p">[</span><span class="s2">&quot;DerelictSDL2_Static&quot;</span><span class="p">]</span><span class="err">,</span>
+<span class="s2">&quot;libs&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&quot;sdl2&quot;</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p><strong>dub.sdl</strong></p>
-<div class="codehilite"><pre><span></span>subConfiguration <span class="s2">&quot;derelict-sdl2&quot;</span> <span class="s2">&quot;derelict-sdl2-static&quot;</span>
+<div class="codehilite"><pre><span></span>dependency <span class="s2">&quot;derelict-sdl2&quot;</span> <span class="s2">&quot;~&gt;3.0.0-beta&quot;</span>
+versions <span class="s2">&quot;DerelictSDL2_Static&quot;</span>
+libs <span class="s2">&quot;sdl2dll&quot;</span> <span class="nv">platform</span><span class="o">=</span><span class="s2">&quot;windows&quot;</span>
+libs <span class="s2">&quot;sdl2&quot;</span> <span class="nv">platform</span><span class="o">=</span><span class="s2">&quot;posix&quot;</span>
 </pre></div>
 
 
-<p>Alternatively, the static bindings can be enabled by adding either the <code>Derelict_Static</code> version or the <code>DerelictSDL2_Static</code> version to your project configuration. The former will enable static binding for all Derelict packages in your project that support it. The latter will enable them only for DerelictSDL2, including the bindings to the SDL satellite libraries.</p>
-<p><strong>dub.json</strong></p>
-<div class="codehilite"><pre><span></span><span class="s2">&quot;versions&quot;</span><span class="err">:</span> <span class="p">[</span><span class="s2">&quot;DerelictSDL2_Static&quot;</span><span class="p">]</span>
-</pre></div>
-
-
-<p><strong>dub.sdl</strong></p>
-<div class="codehilite"><pre><span></span>versions <span class="s2">&quot;DerelictSDL2_Static&quot;</span>
-</pre></div>
-
-
-<p>Using the subconfiguration is the preferred approach, as it completely eliminates all unneeded modules from the build.</p>
-<h3 id="with-non-dub-projects">With non-DUB projects<a class="headerlink" href="#with-non-dub-projects" title="Permanent link">&para;</a></h3>
-<p>It is not required to use DUB to manage your project in order to use DerelictSDL2, but DUB is the only supported option for building the DerelictSDL2 library. To do so, first ensure that DUB, a D compiler, and git are all available on your system path. Then see the documentation on compiling any Derelict package <a href="../../building/without-dub">without DUB</a>, substituting <code>derelict-sdl2</code> and <code>3.0.0-beta</code> where appropriate in the example commands.</p>
-<h3 id="loading">Loading<a class="headerlink" href="#loading" title="Permanent link">&para;</a></h3>
-<p>When DerelictSDL2 is configured to produce dynamic bindings, the SDL shared libraries must be loaded manually by calling the <code>load</code> method on the appropriate loader instance. There is no link-time dependency on the SDL libraries, only a runtime dependency. See the section further down on [obtaining the libraries]  for information on how to obtaint he SDL runtime binaries. </p>
-<p>The following code demonstrates how to load the SDL2 library:</p>
+<h4 id="loading-the-sdl-libraries">Loading the SDL libraries<a class="headerlink" href="#loading-the-sdl-libraries" title="Permanent link">&para;</a></h4>
+<p>When using the static binding configuration, you must link with either the static or dynamic libraries at link-time. In that case, all SDL functions can be called directly and nothing special need be done at runtime to use them. </p>
+<p>When using the dynamic binding configuration, the functions must be loaded at runtime via a call to the appropriate loader, such as <code>DerelictSDL2.load</code>, as shown in the following example.</p>
 <div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">sdl2</span><span class="p">.</span><span class="n">sdl</span><span class="p">;</span>
 <span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">DerelictSDL2</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
@@ -582,40 +721,19 @@
 </pre></div>
 
 
-<p>Each satellite library must be loaded independently:</p>
+<p>Each of the satellite libraries has its own module and its own loader:</p>
 <div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">sdl2</span><span class="p">.</span><span class="n">image</span><span class="p">,</span>
        <span class="n">derelict</span><span class="p">.</span><span class="n">sdl2</span><span class="p">.</span><span class="n">sdl</span><span class="p">;</span>
-
-<span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">DerelictSDL2</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
-    <span class="n">DerelictSDLImage</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>The following loads all of the supported libraries:</p>
-<div class="codehilite"><pre><span></span><span class="c1">// Import all of the loaders, types and functions at once</span>
-<span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">sdl2</span><span class="p">;</span>
-
-<span class="cm">/* Alternatively:</span>
-<span class="cm">import derelict.sdl2.image,</span>
-<span class="cm">       derelict.sdl2.mixer,</span>
-<span class="cm">       derelict.sdl2.net,</span>
-<span class="cm">       derelict.sdl2.sdl,</span>
-<span class="cm">       derelict.sdl2.ttf;</span>
-<span class="cm">*/</span>
-
 <span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">DerelictSDL2</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
     <span class="n">DerelictSDL2Image</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
-    <span class="n">DerelictSDL2Mixer</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
-    <span class="n">DerelictSDL2Net</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
-    <span class="n">DerelictSDL2TTF</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
 
-<p>DerelictSDL2 also supports the <code>SharedLibVersion</code> feature for the SDL library, but not for the satellite libraries. By default, the loader attempts to load the highest supported version of SDL and will fail if it that version is unavailable. By using <code>SharedLibVersion</code>, you can specify a minimum required version of SDL. All higher versions will still load, but all lower versions will fail. For example:</p>
+<p>All of the loaders and bindings in the DerelictSDL2 package can be imported at once via <code>import derelict.sdl2</code>.</p>
+<h4 id="sharedlibversion">SharedLibVersion<a class="headerlink" href="#sharedlibversion" title="Permanent link">&para;</a></h4>
+<p>Since version <code>2.0.2</code>, the DerelictSDL2 loader (but none of the satellite loaders) has supported loading the shared library with the <code>SharedLibVersion</code> structure (see the table at the top of the page to see which versions are available in each release). By default, the loader attempts to load the highest supported version of SDL and will fail if that version is unavailable. By using <code>SharedLibVersion</code>, you can specify a minimum required version of SDL. All higher versions will still load, but all lower versions will fail. For example:</p>
 <div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">sdl2</span><span class="p">.</span><span class="n">sdl</span><span class="p">;</span>
 <span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">loader</span> <span class="p">:</span> <span class="n">SharedLibVersion</span><span class="p">;</span>
 
@@ -625,7 +743,7 @@
 </pre></div>
 
 
-<p><strong>Note:</strong> If you want to use SDL 2.0.1 as a minimum version to take advantage of the <a href="https://wiki.libsdl.org/CategoryFilesystem">file system API</a> that was not available in 2.0.0, then be aware that there was a bug in version 2.0.1 on Windows that prevented the preference path from being created on the user's system. The bug was fixed in SDL 2.0.2. In this case, the following code will do the right thing:</p>
+<p><strong>Note:</strong> If you want to use SDL 2.0.1 as a minimum version to take advantage of the [file system API] that was not available in 2.0.0, then be aware that there was a bug in version 2.0.1 on Windows that prevented the preference path from being created on the user's system. The bug was fixed in SDL 2.0.2. In this case, the following code will do the right thing:</p>
 <div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">sdl2</span><span class="p">.</span><span class="n">sdl</span><span class="p">;</span>
 <span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">loader</span> <span class="p">:</span> <span class="n">SharedLibVersion</span><span class="p">;</span>
 
@@ -637,40 +755,7 @@
 </pre></div>
 
 
-<h3 id="linking">Linking<a class="headerlink" href="#linking" title="Permanent link">&para;</a></h3>
-<p>Configuring DerelictSDL2 as a static binding eliminates the need to manually load any of the SDL libraries at runtime. However, it introduces a link-time dependency and still has a runtime dependency when linking dynamically. See the page on <a href="../../bindings">static and dynamic bindings</a> if the difference between static/dynamic bindings and static/dynamic linking is not clear to you.</p>
-<p>To use the SDL libraries with the static DerelictSDL2 binding, it's necessary to install the appropriate development packages. <a href="#getting-the-libraries">See below</a> for information on how to obtain the SDL2 development binaries.</p>
-<p>Once the development binaries are installed on your system, you can link to them by adding the appropriate library names to your config file. The following example shows how to link with SDL2 and SDL2_image.</p>
-<p><strong>dub.json</strong></p>
-<div class="codehilite"><pre><span></span><span class="s2">&quot;libs&quot;</span><span class="err">:</span> <span class="p">{</span>
-    <span class="nt">&quot;SDL2&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;SDL2_image&quot;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p><strong>dub.sdl</strong></p>
-<div class="codehilite"><pre><span></span>libs <span class="s2">&quot;SDL2&quot;</span> <span class="s2">&quot;SDL2_image&quot;</span>
-</pre></div>
-
-
-<p>By default, this will link dynamically on non-Windows systems. Please see your system compiler documentation for information on how to link statically, though it's strongly recommended to link dynamically.</p>
-<p>On Windows systems, the above may link statically or dynamically, depending on how the libraries are named and which are on the library path.</p>
-<p>Linking statically will require linking with additional system libraries.</p>
-<h3 id="getting-the-libraries">Getting the libraries<a class="headerlink" href="#getting-the-libraries" title="Permanent link">&para;</a></h3>
-<p>Development and runtime binaries for Linux and *BSD distributions can be obtained through the system package manager. Binaries for Windows and Mac OS X can be obtained at the following links:</p>
-<ul>
-<li><a href="https://www.libsdl.org/download-2.0.php">SDL2</a></li>
-<li><a href="https://www.libsdl.org/projects/SDL_image/">SDL_image</a></li>
-<li><a href="https://www.libsdl.org/projects/SDL_mixer/">SDL_mixer</a></li>
-<li><a href="https://www.libsdl.org/projects/SDL_net/">SDL_net</a></li>
-<li><a href="https://www.libsdl.org/projects/SDL_ttf/">SDL_ttf</a></li>
-</ul>
-<p>For the dynamic binding configuration, only the runtime binaries are required. For the static binding configuration, the development binaries are required (the development packages include the runtime binaries).</p>
-<p>For Windows, the <code>*-VC.zip</code> package should be downloaded for both DMD and LDC. This includes both the DLL and the import library, but no static library.</p>
-<p>Windows binaries can also be obtained through <a href="https://github.com/Microsoft/vcpkg">vcpkg</a> and <a href="https://www.nuget.org/">NuGet</a>.</p>
-<p>Mac OS X binaries can also be obtained through <a href="https://brew.sh/">Homebrew</a> and <a href="https://www.macports.org/">MacPorts</a>.</p>
-<p>Finally, it possible on every platform to obtain the source for the SDL2 libraries and build the binaries manually on all supported platforms. The latest source releases are avaliable at the links above. All the latest source releases and the current development version can be obtained through the <a href="https://libsdl.org/hg.php">SDL mercurial repository</a>.</p>
+<p>See the loader documentation for more info.</p>
                 
                   
                 
