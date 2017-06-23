@@ -1,60 +1,114 @@
-DerelictGLFW3 provides both [static and dynamic bindings] to the [GLFW3] library. DerelictGLFW3 4.0.x supports GLFW3 version 3.2.x. Older versions of GLFW3 are supported by versions of DerelictGLFW3 lower than 4.0, but those DerelictGLFW3 versions use an older version of DerelictUtil that will be incompatible with the latest version of other Derelict packages you may use in your project (such as DerelictGL3). Keep this in mind if you need to use GLFW3 3.1 or lower in the dynamic binding configuration (this does not apply to the static binding).
+DerelictGLFW3 provides both [static and dynamic bindings] to the [GLFW] library.
 
-The following sections show how to use DerelictGLFW3 in your own projects. See the pages under [Compiling and Linking] Derelict packages for more details.
+[GLFW]: http://www.glfw.org/
+[static and dynamic bindings]: ../bindings
 
-### With DUB projects
+### Releases
 
-The simplest way to use DerelictGLFW3 is to use [DUB] to manage your project. Projects configured via `dub.json` should add the package name and minimum desired version to the `dependencies` block:
+The DUB package name of DerelictGLFW3 is `derelict-glfw3`.
 
-```json
-"dependencies": {
-    "derelict-glfw3": "~>4.0.0-beta"
-} 
-```
+The following table shows the correlation between DerelictGLFW3 releases (the most recent patch release of each `major.minor` series), its corresponding git branch, GLFW versions, and DerelictUtil versions. The latest release is listed at the top and is the recommended version. When using DerelictGLFW3 with other Derelict packages, please ensure all of the Derelict packages use the same DerelictUtil `major.minor` series.
 
-Projects configured via `dub.sdl` should add the following line:
+| DerelictGLFW3 Version | git Branch     | GLFW Version | DerelictUtil Version | Supported |
+| --------------------- | ----------     | ------------ | -------------------- | --------- |
+| 4.0.0-beta.1          | [master]/[4.0] | 3.2.x        | 3.0.x                | &#x2714;  |
+| 3.1.3                 | [3.2]          | 3.2.x        | 2.0.x                | &#x2714; (bugfix only)  |
+| 3.0.1                 | [3.1]          | 3.2.x        | 2.0.x                | &#x2716;  |
+| 2.0.0                 | [3.0]          | 3.1.x        | 2.0.x                | &#x2716;  |
+| 1.1.1                 | n/a            | 3.1.x        | 1.0.x                | &#x2716;  |
+| 1.0.2                 | n/a            | 3.0.x        | 1.0.x                | &#x2716;  |
 
-```bash
-dependency "derelict-glfw3" version="~>4.0.0-beta"
-```
+All new development happens on the master branch. Pull requests and issues reported on unsupported branches will be ignored. Both the 4.0.x series and the 3.1.x series support the static binding configuration, but the 3.1.x series should be preferred only for compatibility with other Derelict packages that require DerelictUtil 2.0.x.
 
-The package is configured to use the dynamic binding by default. In order to enable static binding, add the `derelict-glfw3-static` subconfiguration:
+[master]: https://github.com/DerelictOrg/DerelictGLFW3/tree/master
+[4.0]: https://github.com/DerelictOrg/DerelictGLFW3/tree/4.0
+[3.2]: https://github.com/DerelictOrg/DerelictGLFW3/tree/3.2
+[3.1]: https://github.com/DerelictOrg/DerelictGLFW3/tree/3.1
+[3.0]: https://github.com/DerelictOrg/DerelictGLFW3/tree/3.0
+
+### Using DerelictGLFW3
+
+See the generic documentation on [Compiling and Linuking] for generic information on incorporating any Derelict package in your project.
+
+[Compiling and Linking]: ../building/overview
+
+#### Obtaining the GLFW binaries
+
+Precompiled binaries for Windows can be downloaded from the [GLFW download page]. The zip archive contains binaries for MinGW, and Visual Studio 2012, 2013, and 2015. When using the dynamic binding configuration, any of the DLLs from this archive can be loaded at runtime. When using the static binding configuration, only the Visual Studio binaries should be used. To link statically, use `glfw3.lib`. To link dynamically, use `glfw3dll.lib` and distribute the corresponding DLL with your executable. See the documentation on [Windows-specific compilation] for more details.
+
+Windows binaries for Visual Studio are also available via [NuGet] and [vcpkg].
+
+Binaries Mac OS X can be obtained through [Homebrew] or [MacPorts], though they may not always be the latest release.
+
+Binaries for other systems can be obtained through the system package manager.
+
+The GLFW source can be downloaded from the download page or cloned from the [GLFW GitHub repository].
+
+[GLFW download page]: http://www.glfw.org/download.html
+[Windows-specific compilation]: ../building/windows
+[Homebrew]: https://brew.sh/
+[Macports]: https://www.macports.org/
+[GLFW GitHub repository]: https://github.com/glfw/glfw
+[vcpkg]: https://github.com/Microsoft/vcpkg
+[NuGet]: https://www.nuget.org/
+
+#### Choosing the configuration
+
+By default, DerelictGLFW3 will be configured as a dynamic binding. There are two ways to enable the static binding configuration. The recommended way is to add a `subConfiguration` entry to your project configuration with the value `derelict-glfw3-static` and the appropriate library, as in the following examples. Note that the example assumes linking dynamically, using the precompiled binaries from the GLFW website on Windows. In other binary distributions on Windows, the dynamic import library may simply be named `glfw3.lib` instead. In that case, a single `libs` entry with no platform suffix will suffice.  
 
 **dub.json**
 ```json
+"dependencies": {
+    "derelict-glfw3": "~>4.0.0-beta"
+},
 "subConfigurations": {
-    "derelict-sdl2": "derelict-glfw3-static"
+    "derelict-glfw3": "derelict-glfw3-static"
+},
+"libs-windows": {
+    "glfw3dll"
+},
+"libs-posix": {
+    "glfw3"
 }
 ```
 
 **dub.sdl**
 ```bash
-subConfiguration "derelict-sdl2" "derelict-glfw3-static"
+dependency "derelict-glfw3" "~>4.0.0-beta"
+subConfiguration "derelict-glfw3" "derelict-glfw3-static"
+libs "glfw3dll" platform="windows"
+libs "glfw3" platform="posix"
 ```
 
-Alternatively, the static binding can be enabled by adding either the `Derelict_Static` version or the `DerelictGLFW3_Static` version to your project configuration. The former will enable static binding for all Derelict packages in your project that support it. The latter will enable them only for DerelictGLFW3.
+The alternative is to replace the `subConfiguration` with a `versions` entry and give it one of two values, either `Derelict_Static` or `DerelictGLFW3_Static`. The former will enable the static binding configuration of any other Derelict packages in your project that support it. The latter will enable it only for DerelictGLFW3.
 
 **dub.json**
 ```json
-"versions": ["DerelictGLFW3_Static"]
+"dependencies": {
+    "derelict-glfw3": "~>4.0.0-beta"
+},
+"versions": ["DerelictGLFW3_Static"],
+"libs-windows": {
+    "glfw3dll"
+},
+"libs-posix": {
+    "glfw3"
+}
 ```
 
 **dub.sdl**
 ```bash
+dependency "derelict-glfw3" "~>4.0.0-beta"
 versions "DerelictGLFW3_Static"
+libs "glfw3dll" platform="windows"
+libs "glfw3" platform="posix"
 ```
 
-Using the subconfiguration is the preferred approach, as it completely eliminates all unneeded modules from the build.
+#### Loading the GLFW library
 
-### With non-DUB projects
+When using the static binding configuration, you must link with either the static or dynamic library at link-time. In that case, all GLFW functions can be called directly and nothing special need be done at runtime to use them. 
 
-It is not required to use DUB to manage your project in order to use DerelictGLFW3, but DUB is the only supported option for building the DerelictGLFW3 library. To do so, first ensure that DUB, a D compiler, and git are all available on your system path. Then see the documentation on compiling any Derelict package [without DUB], substituting `derelict-glfw3` and `4.0.0-beta` where appropriate in the example commands.
-
-### Loading
-
-When DerelictGLFW3 is configured to produce a dynamic binding, the GLFW3 shared library must be loaded manually by calling the `DerelictGLFW3.load`. There is no link-time dependency on the GLFW3 library, only a runtime dependency. See the section further down on [obtaining the binaries] for information on how to obtain the GLFW3 runtime binaries.
-
-The following code demonstrates how to load the GLFW3 library:
+When using the dynamic binding configuration, the functions must be loaded at runtime via a call to `DerelictGLFW3.load`, as shown in the following example.
 
 ```d
 import derelict.glfw3;
@@ -62,53 +116,3 @@ void main() {
     DerelictGLFW3.load();
 }
 ```
-
-### Linking
-
-Configuring DerelictGLFW3 as a static binding eliminates the need to manually load the GLFW3 library at runtime. However, it introduces a link-time dependency and still has a runtime dependency when linking dynamically. See the page on [static and dynamic bindings] if the difference between static/dynamic bindings and static/dynamic linking is not clear to you.
-
-To use the GLFW3 library with the static DerelictGLFW3 binding, it's necessary to install the appropriate development packages. [See below](#getting-the-libraries) for information on how to obtain the GLFW3 development binaries.
-
-Once the development binaries are installed on your system, you can link to them by adding the appropriate library name to your config file. The following example shows how to link with GLFW3.
-
-**dub.json**
-```json
-"libs": {
-    "GLFW3"
-}
-```
-
-**dub.sdl**
-```bash
-libs "GLFW3"
-```
-
-By default, this will link dynamically on non-Windows systems. Please see your system compiler documentation for information on how to link statically, though it's strongly recommended to link dynamically.
-
-On Windows systems, the above may link statically or dynamically, depending on how the libraries are named and which is on the library path.
-
-Linking statically will require linking with additional system libraries.
-
-### Getting the libraries
-
-Development and runtime binaries for Linux and *BSD distributions can be obtained through the system package manager, though they may not be the latest version. For the dynamic binding configuration, only the runtime package is needed. For the static binding configuration, the development package is required.
-
-The latest binaries for Windows can be obtained at the [GLFW3 download page]. 
-
-Windows binaries can also be obtained through [vcpkg] and [NuGet].
-
-Mac OS X binaries can also be obtained through [Homebrew] and [MacPorts].
-
-Finally, it possible on every platform to obtain the source for the and build the binaries manually on all supported platforms. The latest source release is available at the [GLFW3 download page]. All source releases and the current development version can be obtained through the [GLFW GitHub repository].
-
-
-[GLFW3]: http://www.glfw.org/
-[static and dynamic bindings]: ../bindings
-[DUB]: https://code.dlang.org/getting_started
-[Compiling and Linking]: ../building/overview
-[without DUB]: ../building/without-dub
-[vcpkg]: https://github.com/Microsoft/vcpkg
-[NuGet]: https://www.nuget.org/
-[Homebrew]: https://brew.sh/
-[Macports]: https://www.macports.org/
-[GLFW GitHub repository]: https://github.com/glfw/glfw

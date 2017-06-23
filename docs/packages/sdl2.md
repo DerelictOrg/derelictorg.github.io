@@ -5,61 +5,121 @@ DerelictSDL2 provides both [static and dynamic bindings] the 2.x series of the [
 * [SDL_net]
 * [SDL_ttf]
 
-The following sections show how to use DerelictSDL2 in your own projects. See the pages under [Compiling and Linking] Derelict packages for more details.
+[SDL (Simple Direct Media Layer)]: https://www.libsdl.org/
+[static and dynamic bindings]: ../bindings
+[SharedLibVersion]: ../loading/loader/#ShaderLibVersion
 
-### With DUB projects
+### Releases
 
-The simplest way to use DerelictSDL2 is to use [DUB] to manage your project. Projects configured via `dub.json` should add the package name and minimum desired version to the `dependencies` block:
+The DUB package name of DerelictSDL2 is `derelict-sdl2`.
 
-```json
-"dependencies": {
-    "derelict-sdl2": "~>3.0.0-beta"
-} 
-```
+The following table shows the correlation between DerelictSDL2 releases (the most recent patch release of each `major.minor` series), its corresponding git branch, GLFW versions, and DerelictUtil versions. The latest release is listed at the top and is the recommended version. When using DerelictSDL2 with other Derelict packages, please ensure all of the Derelict packages use the same DerelictUtil `major.minor` series.
 
-Projects configured via `dub.sdl` should add the following line:
+| DerelictSDL2 Version  | git Branch     | SDL  Version | DerelictUtil Version | Supported |
+| --------------------- | ----------     | ------------ | -------------------- | --------- |
+| 3.0.0-beta.2          | [master]/[3.0] | 2.0.0 - 2.0.5| 3.0.x                | &#x2714;  |
+| 2.1.4                 | [2.1]          | 2.0.0 - 2.0.4| 2.0.x                | &#x2714; (bugfix only)  |
+| 2.0.2                 | [2.0.2]        | 2.0.0 - 2.0.4| 2.0.x                | &#x2716;  |
+| 1.9.7                 | n/a            | 2.0.2 - 2.0.3| 2.0.x                | &#x2716;  |
+| 1.2.16                | n/a            | 2.0.2 - 2.0.3| 1.0.x                | &#x2716;  |
+| 1.1.17                | n/a            | 2.0.0        | 1.0.x                | &#x2716;  |
 
-```bash
-dependency "derelict-sdl2" version="~>3.0.0-beta"
-```
+All new development happens on the master branch. Pull requests and issues reported on unsupported branches will be ignored. Only the 3.0.x series supports the static binding configuration. The 2.1.x series should be preferred only for compatibility with other Derelict packages that require DerelictUtil 2.0.x.
 
-The package is configured to use dynamic bindings by default. In order to enable static binding, add the `derelict-sdl2-static` subconfiguration:
+[master]: https://github.com/DerelictOrg/DerelictSDL2/tree/master
+[3.0]: https://github.com/DerelictOrg/DerelictSDL2/tree/3.0
+[2.1]: https://github.com/DerelictOrg/DerelictSDL2/tree/2.1
+[2.0.2] https://github.com/DerelictOrg/DerelictSDL2/tree/2.0.2
+
+### Using DerelictSDL2
+
+See the generic documentation on [Compiling and Linuking] for generic information on incorporating any Derelict package in your project.
+
+[Compiling and Linking]: ../building/overview
+
+#### Obtaining the SDL binaries
+
+Precompiled binaries for Windows and Mac OS X can be downloaded from the the following pages:
+
+* [SDL2]
+* [SDL_image]
+* [SDL_mixer]
+* [SDL_net]
+* [SDL_ttf]
+
+For the dynamic binding configuration, either the Runtime Binaries or the Development Libraries will suffice. They all contain the shared libraries. For the static binding configuration, the Development Libraries should be used, the Visual C++ version on Windows (see the page on [Windows-specific compilation] for more information).
+
+Windows binaries for Visual Studio are also available via [NuGet] and [vcpkg].
+
+Binaries Mac OS X can be obtained through [Homebrew] or [MacPorts].
+
+Binaries for other systems can be obtained through the system package manager.
+
+The SDL source can be downloaded from the download page or cloned from the [SDL mercurial repository].
+
+[SDL2]: https://www.libsdl.org/download-2.0.php
+[SDL_image]: https://www.libsdl.org/projects/SDL_image/
+[SDL_mixer]: https://www.libsdl.org/projects/SDL_mixer/
+[SDL_net]: https://www.libsdl.org/projects/SDL_net/
+[SDL_ttf]: https://www.libsdl.org/projects/SDL_ttf/
+
+[Windows-specific compilation]: ../building/windows
+[NuGet]: https://www.nuget.org/
+[vcpkg]: https://github.com/Microsoft/vcpkg
+[Homebrew]: https://brew.sh/
+[Macports]: https://www.macports.org/
+[SDL mercurial repository]: https://libsdl.org/hg.php
+
+#### Choosing the configuration
+
+By default, DerelictSDL2 will be configured as a dynamic binding. There are two ways to enable the static binding configuration. The recommended way is to add a `subConfiguration` entry to your project configuration with the value `derelict-sdl2-static` and the appropriate library, as in the following examples. 
 
 **dub.json**
 ```json
+"dependencies": {
+    "derelict-sdl2": "~>3.0.0-beta"
+},
 "subConfigurations": {
     "derelict-sdl2": "derelict-sdl2-static"
+},
+"libs": {
+    "sdl2"
+},
+```
+
+**dub.sdl**
+```bash
+dependency "derelict-sdl2" "~>3.0.0-beta"
+subConfiguration "derelict-sdl2" "derelict-sdl2-static"
+libs "sdl2"
+```
+
+The alternative is to replace the `subConfiguration` with a `versions` entry and give it one of two values, either `Derelict_Static` or `DerelictSDL2_Static`. The former will enable the static binding configuration of any other Derelict packages in your project that support it. The latter will enable it only for DerelictSDL2.
+
+**dub.json**
+```json
+"dependencies": {
+    "derelict-sdl2": "~>3.0.0-beta"
+},
+"versions": ["DerelictSDL2_Static"],
+"libs": {
+    "sdl2"
 }
 ```
 
 **dub.sdl**
 ```bash
-subConfiguration "derelict-sdl2" "derelict-sdl2-static"
-```
-
-Alternatively, the static bindings can be enabled by adding either the `Derelict_Static` version or the `DerelictSDL2_Static` version to your project configuration. The former will enable static binding for all Derelict packages in your project that support it. The latter will enable them only for DerelictSDL2, including the bindings to the SDL satellite libraries.
-
-**dub.json**
-```json
-"versions": ["DerelictSDL2_Static"]
-```
-
-**dub.sdl**
-```bash
+dependency "derelict-sdl2" "~>3.0.0-beta"
 versions "DerelictSDL2_Static"
+libs "sdl2dll" platform="windows"
+libs "sdl2" platform="posix"
 ```
 
-Using the subconfiguration is the preferred approach, as it completely eliminates all unneeded modules from the build.
+#### Loading the SDL libraries
 
-### With non-DUB projects
+When using the static binding configuration, you must link with either the static or dynamic libraries at link-time. In that case, all SDL functions can be called directly and nothing special need be done at runtime to use them. 
 
-It is not required to use DUB to manage your project in order to use DerelictSDL2, but DUB is the only supported option for building the DerelictSDL2 library. To do so, first ensure that DUB, a D compiler, and git are all available on your system path. Then see the documentation on compiling any Derelict package [without DUB], substituting `derelict-sdl2` and `3.0.0-beta` where appropriate in the example commands.
-
-### Loading
-
-When DerelictSDL2 is configured to produce dynamic bindings, the SDL shared libraries must be loaded manually by calling the `load` method on the appropriate loader instance. There is no link-time dependency on the SDL libraries, only a runtime dependency. See the section further down on [obtaining the libraries]  for information on how to obtaint he SDL runtime binaries. 
-
-The following code demonstrates how to load the SDL2 library:
+When using the dynamic binding configuration, the functions must be loaded at runtime via a call to the appropriate loader, such as `DerelictSDL2.load`, as shown in the following example.
 
 ```d
 import derelict.sdl2.sdl;
@@ -68,42 +128,22 @@ void main() {
 }
 ```
 
-Each satellite library must be loaded independently:
+Each of the satellite libraries has its own module and its own loader:
 
 ```d
 import derelict.sdl2.image,
        derelict.sdl2.sdl;
-
-void main() {
-    DerelictSDL2.load();
-    DerelictSDLImage.load();
-}
-```
-
-The following loads all of the supported libraries:
-
-```d
-// Import all of the loaders, types and functions at once
-import derelict.sdl2;
-
-/* Alternatively:
-import derelict.sdl2.image,
-       derelict.sdl2.mixer,
-       derelict.sdl2.net,
-       derelict.sdl2.sdl,
-       derelict.sdl2.ttf;
-*/
-
 void main() {
     DerelictSDL2.load();
     DerelictSDL2Image.load();
-    DerelictSDL2Mixer.load();
-    DerelictSDL2Net.load();
-    DerelictSDL2TTF.load();
 }
 ```
 
-DerelictSDL2 also supports the `SharedLibVersion` feature for the SDL library, but not for the satellite libraries. By default, the loader attempts to load the highest supported version of SDL and will fail if it that version is unavailable. By using `SharedLibVersion`, you can specify a minimum required version of SDL. All higher versions will still load, but all lower versions will fail. For example:
+All of the loaders and bindings in the DerelictSDL2 package can be imported at once via `import derelict.sdl2`.
+
+#### SharedLibVersion
+
+Since version `2.0.2`, the DerelictSDL2 loader (but none of the satellite loaders) has supported loading the shared library with the `SharedLibVersion` structure (see the table at the top of the page to see which versions are available in each release). By default, the loader attempts to load the highest supported version of SDL and will fail if that version is unavailable. By using `SharedLibVersion`, you can specify a minimum required version of SDL. All higher versions will still load, but all lower versions will fail. For example:
 
 ```d
 import derelict.sdl2.sdl;
@@ -127,70 +167,6 @@ void main() {
 }
 ```
 
-### Linking
+See the loader documentation for more info.
 
-Configuring DerelictSDL2 as a static binding eliminates the need to manually load any of the SDL libraries at runtime. However, it introduces a link-time dependency and still has a runtime dependency when linking dynamically. See the page on [static and dynamic bindings] if the difference between static/dynamic bindings and static/dynamic linking is not clear to you.
-
-To use the SDL libraries with the static DerelictSDL2 binding, it's necessary to install the appropriate development packages. [See below](#getting-the-libraries) for information on how to obtain the SDL2 development binaries.
-
-Once the development binaries are installed on your system, you can link to them by adding the appropriate library names to your config file. The following example shows how to link with SDL2 and SDL2_image.
-
-**dub.json**
-```json
-"libs": {
-    "SDL2",
-    "SDL2_image"
-}
-```
-
-**dub.sdl**
-```bash
-libs "SDL2" "SDL2_image"
-```
-
-By default, this will link dynamically on non-Windows systems. Please see your system compiler documentation for information on how to link statically, though it's strongly recommended to link dynamically.
-
-On Windows systems, the above may link statically or dynamically, depending on how the libraries are named and which are on the library path.
-
-Linking statically will require linking with additional system libraries.
-
-### Getting the libraries
-
-Development and runtime binaries for Linux and *BSD distributions can be obtained through the system package manager. Binaries for Windows and Mac OS X can be obtained at the following links:
-
-* [SDL2]
-* [SDL_image]
-* [SDL_mixer]
-* [SDL_net]
-* [SDL_ttf]
-
-For the dynamic binding configuration, only the runtime binaries are required. For the static binding configuration, the development binaries are required (the development packages include the runtime binaries).
-
-For Windows, the `*-VC.zip` package should be downloaded for both DMD and LDC. This includes both the DLL and the import library, but no static library.
-
-Windows binaries can also be obtained through [vcpkg] and [NuGet].
-
-Mac OS X binaries can also be obtained through [Homebrew] and [MacPorts].
-
-Finally, it possible on every platform to obtain the source for the SDL2 libraries and build the binaries manually on all supported platforms. The latest source releases are avaliable at the links above. All the latest source releases and the current development version can be obtained through the [SDL mercurial repository].
-
-
-[SDL (Simple Direct Media Layer)]: https://www.libsdl.org/
-[SharedLibVersion]: ../loading/loader/#ShaderLibVersion
-[static and dynamic bindings]: ../bindings
-[DUB]: https://code.dlang.org/getting_started
-[Compiling and Linking]: ../building/overview
-[without DUB]: ../building/without-dub
-[file system API]: https://wiki.libsdl.org/CategoryFilesystem
-[vcpkg]: https://github.com/Microsoft/vcpkg
-[NuGet]: https://www.nuget.org/
-[Homebrew]: https://brew.sh/
-[Macports]: https://www.macports.org/
-[SDL mercurial repository]: https://libsdl.org/hg.php
-
-
-[SDL2]: https://www.libsdl.org/download-2.0.php
-[SDL_image]: https://www.libsdl.org/projects/SDL_image/
-[SDL_mixer]: https://www.libsdl.org/projects/SDL_mixer/
-[SDL_net]: https://www.libsdl.org/projects/SDL_net/
-[SDL_ttf]: https://www.libsdl.org/projects/SDL_ttf/
+[loader]: ../loading/loader
