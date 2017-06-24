@@ -27,4 +27,5 @@ pages:
     - 'Latest Versions': 'packages/latest-versions.md'
     - 'DerelictGL3': 'packages/gl3.md'
     - 'DerelictGLFW3': 'packages/glfw3.md'
-    - 'DerelictSDL2' : 'packages/sdl2.md'
+    - 'DerelictSDL2': 'packages/sdl2.md'
+    - 'DerelictSFML2': 'packages/sfml2.md'

@@ -7,6 +7,8 @@ DerelictGLFW3 provides both [static and dynamic bindings] to the [GLFW] library.
 
 The DUB package name of DerelictGLFW3 is `derelict-glfw3`.
 
+The current DUB package version is `~>4.0.0-beta`.
+
 The following table shows the correlation between DerelictGLFW3 releases (the most recent patch release of each `major.minor` series), its corresponding git branch, GLFW versions, and DerelictUtil versions. The latest release is listed at the top and is the recommended version. When using DerelictGLFW3 with other Derelict packages, please ensure all of the Derelict packages use the same DerelictUtil `major.minor` series.
 
 | DerelictGLFW3 Version | git Branch     | GLFW Version | DerelictUtil Version | Supported |

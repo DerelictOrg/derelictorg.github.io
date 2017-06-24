@@ -13,6 +13,8 @@ DerelictSDL2 provides both [static and dynamic bindings] the 2.x series of the [
 
 The DUB package name of DerelictSDL2 is `derelict-sdl2`.
 
+The current DUB package version is `~>3.0.0-beta`.
+
 The following table shows the correlation between DerelictSDL2 releases (the most recent patch release of each `major.minor` series), its corresponding git branch, GLFW versions, and DerelictUtil versions. The latest release is listed at the top and is the recommended version. When using DerelictSDL2 with other Derelict packages, please ensure all of the Derelict packages use the same DerelictUtil `major.minor` series.
 
 | DerelictSDL2 Version  | git Branch     | SDL  Version | DerelictUtil Version | Supported |
@@ -154,7 +156,8 @@ void main() {
 }
 ```
 
-**Note:** If you want to use SDL 2.0.1 as a minimum version to take advantage of the [file system API] that was not available in 2.0.0, then be aware that there was a bug in version 2.0.1 on Windows that prevented the preference path from being created on the user's system. The bug was fixed in SDL 2.0.2. In this case, the following code will do the right thing:
+!!! note 
+    If you want to use SDL 2.0.1 as a minimum version to take advantage of the [file system API] that was not available in 2.0.0, then be aware that there was a bug in version 2.0.1 on Windows that prevented the preference path from being created on the user's system. The bug was fixed in SDL 2.0.2. In this case, the following code will do the right thing:
 
 ```d
 import derelict.sdl2.sdl;
