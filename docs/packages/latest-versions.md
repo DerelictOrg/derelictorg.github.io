@@ -14,7 +14,7 @@ The following table shows the latest release version of every supported package 
 | DerelictENet      | 4.1.0          | [ENet]                                   | [Guillaume Piolat] |
 | DerelictFI        | 3.0.0-beta.1   | [FreeImage]                              | [Mike Parker]      |
 | DerelictFT        | 2.0.0-beta.1   | [FreeType]                               | [Mike Parker]      |
-| DerelictGL3       | 2.0.0-beta.1   | [OpenGL]                                 | [Mike Parker]      |
+| [DerelictGL3]     | 2.0.0-beta.1   | [OpenGL]                                 | [Mike Parker]      |
 | [DerelictGLFW3]   | 4.0.0-beta.1   | [GLFW]                                   | [Mike Parker]      |
 | DerelictIL        | 2.0.0-beta.1   | [DevIL]                                  | [Mike Parker]      |
 | DerelictLua       | 2.0.0-beta.1   | [Lua]                                    | [Mike Parker]      |
@@ -23,14 +23,16 @@ The following table shows the latest release version of every supported package 
 | DerelictPHYSFS    | 3.0.0-beta.1   | [PhysicsFS]                              | [Mike Parker]      |
 | DerelictPQ        | 3.0.0-beta.2   | [libpq]                                  | [Mike Parker]      |
 | [DerelictSDL2]    | 3.0.0-beta.2   | [SDL (Simple DirectMedia Layer)]         | [Mike Parker]      |
-| DerelictSFML2     | 4.0.0-beta.1   | [SFML]                                   | [Mike Parker]      |
+| [DerelictSFML2]   | 4.0.0-beta.1   | [SFML]                                   | [Mike Parker]      |
 | DerelictTheora    | 2.0.0-beta.1   | [libtheora]                              | [Mike Parker]      |
 | DerelictUtil      | 3.0.0-beta.1   | n/a                                      | [Mike Parker]      |
 | DerelictVorbis    | 2.0.0-beta.1   | [libvorbis]                              | [Mike Parker]      |
 
 
+[DerelictGL3]: gl3
 [DerelictGLFW3]: glfw3
 [DerelictSDL2]: sdl2
+[DerelictSFML2]: sfml2
 
 [OpenAL]: http://www.openal.org/
 [ALURE (AL Utilities REtooled)]: http://kcat.strangesoft.net/alure.html
