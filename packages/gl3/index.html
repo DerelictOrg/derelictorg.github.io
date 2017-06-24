@@ -399,9 +399,81 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        DerelictGL3
+      </label>
+    
     <a href="./" title="DerelictGL3" class="md-nav__link md-nav__link--active">
       DerelictGL3
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#releases" title="Releases" class="md-nav__link">
+    Releases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-derelictgl3" title="Using DerelictGL3" class="md-nav__link">
+    Using DerelictGL3
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obtaining-the-binaries" title="Obtaining the binaries" class="md-nav__link">
+    Obtaining the binaries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-opengl-versions" title="Configuring OpenGL versions" class="md-nav__link">
+    Configuring OpenGL versions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-the-opengl-library" title="Loading the OpenGL library" class="md-nav__link">
+    Loading the OpenGL library
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extensions" title="Extensions" class="md-nav__link">
+    Extensions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -430,6 +502,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sfml2/" title="DerelictSFML2" class="md-nav__link">
+      DerelictSFML2
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -450,6 +534,67 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#releases" title="Releases" class="md-nav__link">
+    Releases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-derelictgl3" title="Using DerelictGL3" class="md-nav__link">
+    Using DerelictGL3
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obtaining-the-binaries" title="Obtaining the binaries" class="md-nav__link">
+    Obtaining the binaries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-opengl-versions" title="Configuring OpenGL versions" class="md-nav__link">
+    Configuring OpenGL versions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-the-opengl-library" title="Loading the OpenGL library" class="md-nav__link">
+    Loading the OpenGL library
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extensions" title="Extensions" class="md-nav__link">
+    Extensions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -465,10 +610,240 @@
                 
                   <h1>DerelictGL3</h1>
                 
-                <div class="admonition note">
+                <p>DerelictGL3 is a dynamic binding to the <a href="https://www.opengl.org">OpenGL</a> library.</p>
+<p>Due to the nature of OpenGL, this package differs from other Derelict packages in a few ways. These differences are described in the relevant sections below.</p>
+<h3 id="releases">Releases<a class="headerlink" href="#releases" title="Permanent link">&para;</a></h3>
+<p>The DUB package name of DerelictGL3 is <code>derelict-gl3</code>.</p>
+<p>The current DUB package version is <code>~&gt;2.0.0-beta</code>.</p>
+<p>Unlike other Derelict packages, DerelictGL3 releases do not correspond to any specific version of the C library. All versions of OpenGL are always supported, even though the <code>SharedLibVersion</code> construct is not. When a new version of OpenGL is released, support is added to the current DerelictGL3 release series and the patch number, rather than the minor number, is bumped in the new release version.</p>
+<table>
+<thead>
+<tr>
+<th>DerelictGL3 Version</th>
+<th>git Branch</th>
+<th>OpenGL Version</th>
+<th>DerelictUtil Version</th>
+<th>Supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.0.0-beta.1</td>
+<td><a href="https://github.com/DerelictOrg/DerelictGL3/tree/master">master</a>/<a href="https://github.com/DerelictOrg/DerelictGL3/tree/2.0">2.0</a></td>
+<td>3.2.x</td>
+<td>3.0.x</td>
+<td>&#x2714;</td>
+</tr>
+<tr>
+<td>1.0.x</td>
+<td><a href="https://github.com/DerelictOrg/DerelictGL3/tree/1.0">1.0</a></td>
+<td>1.0 - 4.5</td>
+<td>1.0.x - 3.0.x</td>
+<td>&#x2714;</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>1.0.x</code> series is compatible with all DerelictUtil versions, as long as it is compiled against and linked with the same version of DerelictUtil as an executable. Unfortunately, in a oversight lost to time, the <code>1.0.x</code> series uses a <code>derelict-util</code> dependency of <code>&gt;=1.0.3</code> which disallows anything less than version <code>1.0.3</code>, but has no contraint on later versions. As such, it's possible to independently compile the DerelictGL3 library against version <code>1.0.x</code> or <code>2.0.x</code> of DerelictUtil, then attempt to link with DerelictUtil <code>3.0.x</code> when building the executable.</p>
+<p>It's recommended to use DerelictGL3 <code>1.0.x</code> only when you need compatibility with the <code>2.0.x</code> series of DerelictUtil because of other Derelict packages. If you compile DerelictGL3 <code>1.0.x</code> independently, make sure you specify version <code>2.0.x</code> of DerelictUtil in your <code>dub.selections.json</code> file. Otherwise, DUB will pull down the latest DerelictUtil and link against it.</p>
+<p>DerelictGL3 <code>3.0.x</code> was overhauled to provide compile-time configuration of supported OpenGL versions and extensions. It also provides the option of wrapping all function declarations in a <code>struct</code>, either automatically or in a custom type, to provide more efficient context management. All new projects should use this version. Support for the <code>1.0.x</code> series will be discontinued at some point in the future.</p>
+<h3 id="using-derelictgl3">Using DerelictGL3<a class="headerlink" href="#using-derelictgl3" title="Permanent link">&para;</a></h3>
+<p>See the generic documentation on <a href="../../building/overview">Compiling and Linking</a> for generic information on incorporating any Derelict package in your project.</p>
+<h4 id="obtaining-the-binaries">Obtaining the binaries<a class="headerlink" href="#obtaining-the-binaries" title="Permanent link">&para;</a></h4>
+<p>OpenGL is available on Windows and Mac OS X out of the box. Windows users should upgrade their graphics card drivers to always have the latest version. Linux and *BSD users should consult their OS knowlege base or support forums to determine enable hardware-accelerated OpenGL.</p>
+<h4 id="configuring-opengl-versions">Configuring OpenGL versions<a class="headerlink" href="#configuring-opengl-versions" title="Permanent link">&para;</a></h4>
+<p>Out of the box, DerelictGL3 will attempt to load all available OpenGL versions as free functions, i.e. not wrapped in a struct. This can be overridden by adding a <code>versions</code> directive to a project's DUB configuration with one of the following values.</p>
+<hr />
+<p><code>DerelictGL3_CustomFreeFuncs</code></p>
+<hr />
+<p>When this version is specified, the DerelictGL3 modules will not declare any types or function pointers. This must be handled by the user using a mixin template, <code>glFreeFuncs</code>. The following enables OpenGL versions 3.3 and lower:</p>
+<div class="codehilite"><pre><span></span><span class="k">module</span> <span class="n">mygl</span><span class="p">;</span>
+<span class="k">public</span> <span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">opengl</span><span class="p">;</span>
+<span class="k">mixin</span> <span class="n">glFreeFuncs</span><span class="p">!(</span><span class="n">GLVersion</span><span class="p">.</span><span class="n">gl33</span><span class="p">);</span>
+</pre></div>
+
+
+<p>This will enable all of the OpenGL types and function pointers for every version up to OpenGL 3.3 into the <code>mygl</code> module. Modules that need to call OpenGL functions should import <code>mygl</code>.</p>
+<p><code>glFreeFuncs</code> takes an optional parameter that will include deprecated types and function pointer declarations. This is <code>false</code> by default, but can be enabled with, e.g., <code>mixin glFreeFuncs(GLVersion.gl33, true);</code>.</p>
+<p>With no arguments, <code>glFreeFuncs</code> will enable all supported versions of OpenGL without deprecations. This is the default behavior.</p>
+<hr />
+<p><code>DerelictGL3_Contexts</code></p>
+<hr />
+<p>This will configure DerelictGL3 to load the OpenGL function pointers into a <code>struct</code>. To use the default implementation, mixin the <code>glContext</code> template along with the desired version:</p>
+<div class="codehilite"><pre><span></span><span class="k">module</span> <span class="n">mygl</span><span class="p">;</span>
+<span class="k">public</span> <span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">opengl</span><span class="p">;</span>
+<span class="k">mixin</span> <span class="n">glContext</span><span class="p">!(</span><span class="n">GLVersion</span><span class="p">.</span><span class="n">gl33</span><span class="p">);</span>
+<span class="n">GLContext</span> <span class="n">context</span><span class="p">;</span>
+</pre></div>
+
+
+<p>This will enable all of the types and function pointers for every version up to OpenGL 3.3 into the <code>mygl</code> module, wrapping the function pointers (but not the types) into a structure named <code>GLContext</code>, and create an instance of that type named <code>context</code>. OpenGL functions can then be called via the <code>context</code> instance, e.g. <code>context.glClear(GL_COLOR_BUFFER_BIT);</code>.</p>
+<p>Deprecated types and functions can be enabled by passing <code>true</code> as a second argument to <code>glContext</code>. With no arguments, <code>glContext</code> will load all supported versions of OpenGL without deprecations (the default behavior).</p>
+<p>Custom contexts are also supported, but they require a bit of string and template <code>mixin</code> boilerplate.</p>
+<div class="codehilite"><pre><span></span><span class="k">module</span> <span class="n">mygl</span><span class="p">;</span>
+<span class="k">public</span> <span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">opengl</span><span class="p">;</span>
+
+<span class="k">enum</span> <span class="n">maxGLVersion</span> <span class="p">=</span> <span class="n">GLVersion</span><span class="p">.</span><span class="n">gl33</span><span class="p">;</span>
+<span class="k">enum</span> <span class="n">supportDeprecated</span> <span class="p">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="c1">// Required imports</span>
+<span class="k">static</span> <span class="k">if</span><span class="p">(!</span><span class="n">supportDeprecated</span><span class="p">)</span> <span class="k">mixin</span><span class="p">(</span><span class="n">glImports</span><span class="p">);</span>
+<span class="k">else</span> <span class="k">mixin</span><span class="p">(</span><span class="n">gl_depImports</span><span class="p">);</span>
+
+<span class="c1">// Type declarations should be outside of the struct</span>
+<span class="k">mixin</span> <span class="n">glDecls</span><span class="p">!(</span><span class="n">maxGLVersion</span><span class="p">,</span> <span class="n">supportDeprecated</span><span class="p">);</span>
+<span class="k">struct</span> <span class="n">MyContext</span> <span class="p">{</span>
+    <span class="k">mixin</span> <span class="n">glFuncs</span><span class="p">!(</span><span class="n">maxGLVersion</span><span class="p">,</span> <span class="n">supportDeprecated</span><span class="p">);</span>
+    <span class="k">mixin</span> <span class="n">glLoaders</span><span class="p">!(</span><span class="n">maxGLVersion</span><span class="p">,</span> <span class="n">supportDeprecated</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">MyContext</span> <span class="n">context</span><span class="p">;</span>
+</pre></div>
+
+
+<p>This is essentially what is done by the default <code>glContext</code> mixin. Note that in <code>glDecls</code>, <code>glFuncs</code>, and <code>glLoaders</code>, the second parameter is optional, with the default value of <code>false</code>.</p>
+<h3 id="loading-the-opengl-library">Loading the OpenGL library<a class="headerlink" href="#loading-the-opengl-library" title="Permanent link">&para;</a></h3>
+<p>The steps required to gain access to different OpenGL versions may differ across operating systems. For example, on Windows OpenGL versions up to 1.1 may be dynamically linked, but 1.2 and above must be loaded dynamically at runtime after a context has been created. On Mac OS X, all of the OpenGL versions may be dynamically linked or dynamically loaded, and in the latter case a context need not be active.</p>
+<p>To hide these differences and present a unified interface on all supported platform, DerelictGL3 requires a three-step process. When using the free function configuration, those steps are:</p>
+<ol>
+<li><strong>Call <code>DerelictGL3.load</code>.</strong> 
+This must be done before any OpenGL functions are called, but may happen before or after a context has been created, but must be done before calling <code>DerelictGL3.reload</code> in the last step. This will load the OpenGL shared library and all OpenGL functions up to version 1.1. Failure to load will result in an exception.</li>
+<li><strong>Create an OpenGL context.</strong> 
+This may occur before or after <code>DerelictGL3.load</code> is called, but must be done before calling <code>DerelictGL3.reload</code> in the next step. DerelictGL3 does not provide the means of creating an OpenGL context. For that, use either the system API (like Win32) or a third-party library such as <a href="../sdl2">SDL</a>, <a href="../glfw3">GLFW</a>, or <a href="../sfml2">SFML</a>.</li>
+<li><strong>Call <code>DerelictGL3.reload</code>.</strong>
+This must occur after <code>DerelictGL3.load</code> as been called and after an OpenGL context has been created. This will load all versions that have been configured from 1.2 and up, as well as any configured extensions. For maximum portability, this function should be called every time the OpenGL context is changed.</li>
+</ol>
+<p>The following example demonstrates. It uses the default DerelictGL3 free function configuration. It does not show the code to create the context.</p>
+<div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">opengl</span><span class="p">;</span>
+<span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Load the OpenGL shared library</span>
+    <span class="n">DerelictGL3</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
+
+    <span class="c1">// Create the context using a system or third-party API</span>
+    <span class="n">myCreateContext</span><span class="p">();</span>
+
+    <span class="c1">// Now load all supported functions</span>
+    <span class="n">DerelictGL3</span><span class="p">.</span><span class="n">reload</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The steps are similar when using the context object configuration.</p>
+<ol>
+<li><strong>Call <code>DerelictGL3.load</code>.</strong> 
+This must be done before any OpenGL functions are called, but may happen before or after a context has been created, but must be done before calling <code>load</code> on a context object in the last step. This will load the OpenGL shared library but does not load any OpenGL functions. Failure to load will result in an exception.</li>
+<li><strong>Create an OpenGL context.</strong> 
+This may occur before or after <code>DerelictGL3.load</code> is called, but must be done before calling <code>load</code> on a context object in the next step. DerelictGL3 does not provide the means of creating an OpenGL context. For that, use either the system API (like Win32) or a third-party library such as <a href="../sdl2">SDL</a>, <a href="../glfw3">GLFW</a>, or <a href="../sfml2">SFML</a>.</li>
+<li><strong>Call <code>load</code> on a context object instance.</strong>
+This must occur after <code>DerelictGL3.load</code> as been called and after an OpenGL context has been created. For maximum portability, context objects should be created for and associated with each OpenGL context used in the program. Then, the <code>load</code> method can be called on each instance just once. This will load all configured OpenGL functions from 1.0 and up and any extensions that have been configured. When the OpenGL context changes, functions can be called through its associated object instance.</li>
+</ol>
+<p>The following examples demonstrates, using the default <code>GLContext</code> type.</p>
+<div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">opengl</span><span class="p">;</span>
+<span class="k">mixin</span> <span class="n">glContext</span><span class="p">!(</span><span class="n">GLVersion</span><span class="p">.</span><span class="n">gl33</span><span class="p">);</span>
+<span class="n">GLContext</span> <span class="n">myContext</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Load the OpenGL shared library</span>
+    <span class="n">DerelictGL3</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
+
+    <span class="c1">// Create the context using a system or third-party API</span>
+    <span class="n">myCreateContext</span><span class="p">();</span>
+
+    <span class="c1">// Now load all supported functions</span>
+    <span class="n">myContext</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Both <code>DerelictGL3.reload</code> and the <code>load</code> method of a context instance return the highest version of OpenGL that was sucessfully loaded in the form of a <code>GLVersion</code> value. You can also obtain the same value by calling calling <code>loadedVersion</code> on the <code>DerelictGL3</code> instance or on the context object.</p>
+<p>The following loads the highest supported version, but requires OpenGL 3.3 at a minimum.</p>
+<div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">opengl</span><span class="p">;</span>
+<span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">DerelictGL3</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
+    <span class="n">myCreateContext</span><span class="p">();</span>
+    <span class="k">auto</span> <span class="n">loaded</span> <span class="p">=</span> <span class="n">DerelictGL3</span><span class="p">.</span><span class="n">reload</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">loaded</span> <span class="p">&lt;</span> <span class="n">GLVersion</span><span class="p">.</span><span class="n">gl33</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="n">Exception</span><span class="p">(</span><span class="s">&quot;OpenGL version too low!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4 id="extensions">Extensions<a class="headerlink" href="#extensions" title="Permanent link">&para;</a></h4>
+<p>Whether using the default configuration or a custom one, no extensions are loaded by default. Extensions must be individually declared using string mixins unless they are part of the core specification of an OpenGL version you have configured.</p>
+<div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This package will be documented by June 25th, 2017.</p>
+<p>To see which extensions are loaded along with the core versions, see the <code>core_*.d</code> files in the DerelictGL3 source directory <a href="https://github.com/DerelictOrg/DerelictGL3/tree/master/source/derelict/opengl/extensions">source/derelict/opengl/extensions</a>. Eventually, they will all be listed in this document.</p>
 </div>
+<p>To demonstrate, let's assume you want to enable the highest OpenGL version available and you want to make use of the OpenGL 4.3 function <code>glMultiDrawArraysIndirect</code>. This function is part of the <code>GL_ARB_multi_draw_indirect</code> extension.</p>
+<div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">opengl</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="n">hasMultiDrawIndirect</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">DerelictGL3</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
+    <span class="n">myCreateContext</span><span class="p">();</span>
+    <span class="k">auto</span> <span class="n">loaded</span> <span class="p">=</span> <span class="n">DerelictGL3</span><span class="p">.</span><span class="n">reload</span><span class="p">();</span>
+    <span class="n">hasMultiDrawIndirect</span> <span class="p">=</span> <span class="p">(</span><span class="n">loaded</span> <span class="p">&gt;=</span> <span class="n">GLVersion</span><span class="p">.</span><span class="n">gl43</span><span class="p">)</span> 
+        <span class="p">||</span> <span class="n">DerelictGL3</span><span class="p">.</span><span class="n">isExtensionLoaded</span><span class="p">(</span><span class="s">&quot;GL_ARB_multi_draw_indirect&quot;</span><span class="p">);</span>
+<span class="p">}</span> 
+</pre></div>
+
+
+<p><code>isExtensionLoaded</code> is also available on context objects, e.g. <code>myContext.isExtensionLoaded(extName);</code>.</p>
+<p>When you are using an extension that has not been promoted to core, or you have configured DerelictGL3 to use a version lower than the one in which the extension was promoted, you must declare the extension. For the free function API, this is a one liner. For example, if you've configured OpenGL 4.1 as the highest version, but want to support the <code>GL_ARB_multidraw_indirect</code> extension:</p>
+<div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">opengl</span><span class="p">;</span>
+<span class="k">mixin</span> <span class="n">glFreeFuncs</span><span class="p">!(</span><span class="n">GLVersion</span><span class="p">.</span><span class="n">gl41</span><span class="p">);</span>
+
+<span class="c1">// GL_ARB_multi_draw_indrect type and function pointer declarations</span>
+<span class="k">mixin</span><span class="p">(</span><span class="n">arbMultiDrawIndirect</span><span class="p">);</span>
+
+<span class="kt">bool</span> <span class="n">hasMultiDrawIndirect</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">DerelictGL3</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
+    <span class="n">myCreateContext</span><span class="p">();</span>
+    <span class="n">DerelictGL3</span><span class="p">.</span><span class="n">reload</span><span class="p">();</span>
+    <span class="n">hasMultiDrawIndirect</span> <span class="p">=</span> 
+            <span class="n">DerelictGL3</span><span class="p">.</span><span class="n">isExtensionLoaded</span><span class="p">(</span><span class="s">&quot;GL_ARB_multi_draw_indirect&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>To use extensions with context objects, you must define a custom context type. It is not currently possible to mix extension in to the default <code>GLContext</code>. Each extension declaration must be split into three parts: types, functions, and the loader.</p>
+<div class="codehilite"><pre><span></span><span class="k">module</span> <span class="n">mygl</span><span class="p">;</span>
+<span class="k">public</span> <span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">opengl</span><span class="p">;</span>
+
+<span class="k">enum</span> <span class="n">maxGLVersion</span> <span class="p">=</span> <span class="n">GLVersion</span><span class="p">.</span><span class="n">gl41</span><span class="p">;</span>
+<span class="k">enum</span> <span class="n">supportDeprecated</span> <span class="p">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="c1">// Required imports</span>
+<span class="k">static</span> <span class="k">if</span><span class="p">(!</span><span class="n">supportDeprecated</span><span class="p">)</span> <span class="k">mixin</span><span class="p">(</span><span class="n">glImports</span><span class="p">);</span>
+<span class="k">else</span> <span class="k">mixin</span><span class="p">(</span><span class="n">gl_depImports</span><span class="p">);</span>
+
+<span class="c1">// Core type declarations</span>
+<span class="k">mixin</span> <span class="n">glDecls</span><span class="p">!(</span><span class="n">maxGLVersion</span><span class="p">,</span> <span class="n">supportDeprecated</span><span class="p">);</span>
+
+<span class="c1">// Extension type declarations</span>
+<span class="k">mixin</span><span class="p">(</span><span class="n">arbMultiDrawIndirectDecls</span><span class="p">);</span>
+
+<span class="k">struct</span> <span class="n">MyContext</span> <span class="p">{</span>
+    <span class="c1">// Core functions</span>
+    <span class="k">mixin</span> <span class="n">glFuncs</span><span class="p">!(</span><span class="n">maxGLVersion</span><span class="p">,</span> <span class="n">supportDeprecated</span><span class="p">);</span>
+
+    <span class="c1">// Extension functions</span>
+    <span class="k">mixin</span><span class="p">(</span><span class="n">arbMultiDrawIndirectFuncs</span><span class="p">);</span>
+
+    <span class="c1">// Core loaders</span>
+    <span class="k">mixin</span> <span class="n">glLoaders</span><span class="p">!(</span><span class="n">maxGLVersion</span><span class="p">,</span> <span class="n">supportDeprecated</span><span class="p">);</span>
+
+    <span class="c1">// Extension loaders</span>
+    <span class="k">mixin</span><span class="p">(</span><span class="n">arbMultiDrawIndirectLoaders</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">MyContext</span> <span class="n">context</span><span class="p">;</span>
+</pre></div>
+
+
+<p>With this, after <code>DerelictGL3.load</code> has been called and a context created, then calling <code>context.load()</code> will load any mixed in extensions that are available. Then <code>context.isExtensionLoaded</code> can be called to test for availability.</p>
                 
                   
                 

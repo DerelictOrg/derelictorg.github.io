@@ -496,6 +496,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sfml2/" title="DerelictSFML2" class="md-nav__link">
+      DerelictSFML2
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -595,6 +607,7 @@
 </ul>
 <h3 id="releases">Releases<a class="headerlink" href="#releases" title="Permanent link">&para;</a></h3>
 <p>The DUB package name of DerelictSDL2 is <code>derelict-sdl2</code>.</p>
+<p>The current DUB package version is <code>~&gt;3.0.0-beta</code>.</p>
 <p>The following table shows the correlation between DerelictSDL2 releases (the most recent patch release of each <code>major.minor</code> series), its corresponding git branch, GLFW versions, and DerelictUtil versions. The latest release is listed at the top and is the recommended version. When using DerelictSDL2 with other Derelict packages, please ensure all of the Derelict packages use the same DerelictUtil <code>major.minor</code> series.</p>
 <table>
 <thead>
@@ -743,7 +756,10 @@ libs <span class="s2">&quot;sdl2&quot;</span> <span class="nv">platform</span><s
 </pre></div>
 
 
-<p><strong>Note:</strong> If you want to use SDL 2.0.1 as a minimum version to take advantage of the [file system API] that was not available in 2.0.0, then be aware that there was a bug in version 2.0.1 on Windows that prevented the preference path from being created on the user's system. The bug was fixed in SDL 2.0.2. In this case, the following code will do the right thing:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to use SDL 2.0.1 as a minimum version to take advantage of the [file system API] that was not available in 2.0.0, then be aware that there was a bug in version 2.0.1 on Windows that prevented the preference path from being created on the user's system. The bug was fixed in SDL 2.0.2. In this case, the following code will do the right thing:</p>
+</div>
 <div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">sdl2</span><span class="p">.</span><span class="n">sdl</span><span class="p">;</span>
 <span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">loader</span> <span class="p">:</span> <span class="n">SharedLibVersion</span><span class="p">;</span>
 
@@ -788,6 +804,20 @@ libs <span class="s2">&quot;sdl2&quot;</span> <span class="nv">platform</span><s
             </div>
           </a>
         
+        
+          <a href="../sfml2/" title="DerelictSFML2" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                DerelictSFML2
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>
