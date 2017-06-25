@@ -22,7 +22,7 @@ void main()
 
 ### Custom library path
 
-It is important to understand the system library path for each system an application is intended to support. For example, on Windows the system loader will search for the SDL DLL first in the application directory, then in the current working directory, then in a couple of predefined system directories before falling back on those specified in the **PATH** environment variable (see [MSDN] for more details). On other platforms, the application directory and current working directory typically are not searched at all (see [this page] for Linux and [this one] for Mac OS X).
+It is important to understand the system library path for each system an application is intended to support. For example, on Windows the system loader will search for the SDL DLL first in the application directory, then in the current working directory, then in a couple of predefined system directories before falling back on those specified in the `PATH` environment variable (see [MSDN] for more details). On other platforms, the application directory and current working directory typically are not searched at all (see [this page] for Linux and [this one] for Mac OS X).
 
 The default library names are selected for each Derelict package based on common formats for each operating system. Sometimes, it is necessary to bypass the default names. For example, a developer may decide to ship special copies of a shared library using a non-standard name, or storing them in a subdirectory under the application directory. In such a case, an overload of the `load` method should be used. One form accepts an array of strings, each a library name. Another overload takes single string containing a comma-separated list of library names. Each name can include a path. If no path is specified, the default search path will be used.
 
@@ -38,6 +38,10 @@ void main()
 }
 ```
 
+[MSDN]: http://msdn.microsoft.com/en-us/library/7d83bc18.aspx
+[this page]: http://tldp.org/HOWTO/Program-Library-HOWTO/dl-libraries.html
+[this one]: https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/dlopen.3.html
+
 ### SharedLibVersion
 
 Some Derelict loaders, but not all, support version-specific loading. In other words, it's possible to tell the loader to attempt to load a lower version of a shared library than the highest version it supports. An example is DerelictFI.
@@ -50,9 +54,6 @@ To work around this, a user can choose the minimum required version of FreeImage
 DerelictFI.load(SharedLibVersion(3, 15, 0));
 ```
 
-Check the documentation for any Derelict package you use to determine if it supports loading with `SharedLibVersion` and, if so, which versions are available as arguments. To future-proof your program, it's a good idea to always use `SharedLibVersion` where supported. Simply calling `load()` will always attempt to load the highest version supported. If a Derelict package is updated and you release a new version of your app, the app can fail if your users haven't yet updated the library on their system. By always specifying the version of the library that you need, your app will always load newer releases of a library (though you shouldn't expect a **3.x** loader to load a **4.x** library).
+Check the documentation for any Derelict package you use to determine if it supports loading with `SharedLibVersion` and, if so, which versions are available as arguments. To future-proof your program, it's a good idea to always use `SharedLibVersion` where supported. Simply calling `load()` will always attempt to load the highest version supported. If a Derelict package is updated and you release a new version of your app, the app can fail if your users haven't yet updated the library on their system. By always specifying the version of the library that you need, your app will always load newer releases of a library (though you shouldn't expect a `3.x` loader to load a `4.x` library).
 
-[MSDN]: http://msdn.microsoft.com/en-us/library/7d83bc18.aspx
-[this page]: http://tldp.org/HOWTO/Program-Library-HOWTO/dl-libraries.html
-[this one]: https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/dlopen.3.html
 [FreeImage library]: http://freeimage.sourceforge.net
