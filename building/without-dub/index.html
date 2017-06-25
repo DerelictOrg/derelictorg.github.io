@@ -291,9 +291,41 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        With Non-DUB Projects
+      </label>
+    
     <a href="./" title="With Non-DUB Projects" class="md-nav__link md-nav__link--active">
       With Non-DUB Projects
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cloning-packages-with-git" title="Cloning packages with git" class="md-nav__link">
+    Cloning packages with git
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fetching-packages-with-dub" title="Fetching packages with dub" class="md-nav__link">
+    Fetching packages with dub
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -462,6 +494,27 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cloning-packages-with-git" title="Cloning packages with git" class="md-nav__link">
+    Cloning packages with git
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fetching-packages-with-dub" title="Fetching packages with dub" class="md-nav__link">
+    Fetching packages with dub
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -477,58 +530,107 @@
                 
                   <h1>With Non-DUB Projects</h1>
                 
-                <p>When using a build system besides DUB, or an IDE, to manage a Derelict project, the first thing to do is to determine which Derelict packages are required. In the example to follow, a project using DerelictGLFW3 and DerelictGL3 is assumed. Both, like all Derelict packages, have a dependency on DerelictUtil. All three of these packages will need to be obtained manually. One way is to clone them from their git repositories, but then the correct branches must be selected for the specific versions of each package required by the project. It's much simpler to perform a manual fetch with DUB and let it grab the correct branches instead.</p>
-<p>It's probably best to use the latest version of DerelictGLFW3 and DerelictGL3. The latest version can be determined by visiting <a href="https://code.dlang.org">code.dlang.org</a> and searching for <code>derelict-glfw3</code> and <code>derelict-gl3</code> on that page. Currently, that is <code>3.1.0</code> for the former and <code>1.0.19</code> for the latter. It's also necessary to determine which version of DerelictUtil to build against. It should be a version compatible with all of the Derelict packages that will be used with the project. For this example, <code>2.0.4</code> is used.</p>
-<p>The following commands will manually fetch each package.</p>
-<div class="codehilite"><pre><span></span>mkdir derelict
-cd derelict
-dub fetch --cache=local derelict-glfw3 --version=3.1.0
-dub fetch --cache=local derelict-gl3 --version=1.0.19
-dub fetch --cache=local derelict-util --version=2.0.4
+                <p>When using an IDE or any build system other than DUB to manage a project using Derelict, the Derelict packages must be manually compiled and configured. </p>
+<p>The first thing to do is to determine which Derelict packages are required. In the example to follow, a hypothetical project using <a href="../../packages/glfw3">DerelictGLFW3</a> and <a href="../../packages/gl3">DerelictGL3</a> serves as an example. Let's assume a project directory tree that looks like this:</p>
+<div class="codehilite"><pre><span></span>- rootDir
+-- bin
+-- libs
+-- import
+--- derelict
+-- source
+-- third-party
+--- derelict
 </pre></div>
 
 
-<p>This will install each package in subdirectories named using the <code>package-name-x.x.x</code> format, e.g. <code>derelict-glfw3-3.1.0</code>. Both DerelictGLFW3 and DerelictGL3 will need to know where to find the source for DerelictUtil. When manually fetching packages like this, they are not automatically added to the search path, so DUB must be told with the following command.</p>
-<div class="codehilite"><pre><span></span>dub add-local derelict-util-2.0.4
+<p>All Derelict packages have a dependency on DerelictUtil. All three of these packages will need to be obtained and compiled. DUB is the only build tool supported, but there are two recommended ways to obtain the sources.</p>
+<div class="admonition note">
+<p class="admonition-title">A DerelictUtil caveat</p>
+<p>Technically, it's not necessary to download and build DerelictUtil. When compiling the other two packages, DUB will fetch the version it needs and stash it in the global cache. However, you still need to get at the DerelictUtil static library and imports when building your program. If you're okay with pulling them out of the global caches (which is in the <code>AppData\Roaming</code> user directory on modern Windows sytems, and <code>~/.dub</code> on other systems) or pointing your build system to the proper directories, you can skip the instructions related to fetching and compiling DerelictUtil in the following sections.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Static binding configurations</p>
+<p>Some Derelict packages support a static binding configuration. When you want to use them this way, it may not be necessary to compile and link with them. When configured as a static binding, the package has no link-time dependency on DerelictUtil and only needs to be compiled if it implements any custom functions. DerelictGLFW3 does not, so to use it as a static binding, fetch it as described in the following sections, skip the build step, then when compiling your executable make sure to compile with <code>-version=DerelictGLFW3_Static</code>. Some packages, such as DerelictSDL2, must still be compiled. In that case, when building the packages, specify the static binding configuration on the <code>dub</code> command line, e.g. <code>build -cderelict-sdl2-static</code>.</p>
+</div>
+<h3 id="cloning-packages-with-git">Cloning packages with git<a class="headerlink" href="#cloning-packages-with-git" title="Permanent link">&para;</a></h3>
+<p>All of the official Derelict packages reside in repositories on GitHub under the <a href="https://github.com/DerelictOrg">DerelictOrg</a> umbrella organization, making each package available via a simple <code>git clone</code> command. For our hypothetical project, that would look like this:</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> rootdir/third-party/derelict
+git clone https://github.com/DerelictOrg/DerelictGLFW3.git glfw3
+git clone https://github.com/DerelictOrg/DerelictGL3 gl3
+git clone https://github.com/DerelictOrg/DerelictUtil util
+</pre></div>
+
+
+<p>In order to satisfy the DerelictUtil dependency for the DerelictGLFW3 and DerelictGL3 packages, you'll need make sure the DerelictUtil package is properly configured. First, you need to make sure you know which version of DerelictUtil each package needs and that each package depends on the same version of DerelictUtil -- you can't mix DerelictUtil <code>2.x</code> with <code>3.x</code> in the same project. The documentation page for each package includes a table that displays that information. For our example, let's assume we want DerelictGL3 version <code>2.0.x</code> and DerelictGLFW3 version <code>4.0.x</code>. Looking at the <a href="../../packages/gl3">DerelictGL3</a> and <a href="../../packages/glfw3">DerelictGLFW3</a> docs, we see that both depend on version <code>3.0.x</code> of DerelictUtil.</p>
+<p>In most cases, you'll want to use the latest version of each package. The master branch of each git repository usually corresponds to the latest release branch and, generally, an effort is made to ensure that patch releases are pushed out as soon as <code>master</code> is updated so that the two branches always stay in sync. However, now and again changes are allowed to accumulate in <code>master</code> over the course of a few days, so there is always a possibility it might be unstable.</p>
+<p>To play it safe, go into the new <code>util</code> directory and checkout the <code>3.0</code> branch:</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> util
+git checkout <span class="m">3</span>.0
+</pre></div>
+
+
+<p>Normally, that will serve you just fine. It gives you the source of the latest <code>3.0.x</code> patch release and you can update it any time you want via <code>git pull</code> to get any new patch releases when they arrive. However, if you want to freeze at a specific patch release, or use an older one, you can checkout a specific release tag. You can use any patch release that satisifies the dependency version contstraint in each of the Derelict packages you intend to use, e.g. DerelictUtil <code>3.0.0</code> does not satisfy the constraint <code>~&gt;3.0.</code>, but <code>3.0.2</code> does. It's recommended to give the new branch a custom name:</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> util
+git checkout tags/v3.0.0 -b <span class="m">3</span>.0.0-local
+</pre></div>
+
+
+<p>Once the DerelictUtil source is configured to the proper branch, DUB needs to be told where to find it. For this, we can use <code>dub add-local</code>, which takes a directory name and an optional versoin number as an argument. For this example, all we need is the directory name. Since we changed into the <code>util</code> directory in the step above, that means simply <code>.</code>.</p>
+<div class="codehilite"><pre><span></span>dub add-local .
+</pre></div>
+
+
+<p>Of course, if you're still in the parent directory, it would be:</p>
+<div class="codehilite"><pre><span></span>dub add-local util
+</pre></div>
+
+
+<p>With that, we're ready to build the DerelictGL3 and DerelictGLFW3 packages. Again, you can choose to build the master branch of each, checkout the latest branch that correponds to the latest release, or checkout a specific tag. For our example, we'll checkout the latest release branches.</p>
+<p>Assuming we're already in the <code>util</code> directory:</p>
+<div class="codehilite"><pre><span></span>dub build -b release -ax86_64
+<span class="nb">cd</span> ../gl3
+git checkout <span class="m">2</span>.0
+dub build -brelease -ax86_64
+<span class="nb">cd</span> ../glfw3
+git checkout <span class="m">4</span>.0
+dub build -brelease -ax86_64
+</pre></div>
+
+
+<p>This will build optimized 64-bit versions of each library. To build debug versions, omit the <code>-brelease</code> flag. To build 32-bit binaries, omit the <code>-ax86_64</code>. On Windows, to build 32-bit COFF binaries, replace <code>ax86_64</code> with <code>x86_mscoff</code>.</p>
+<p>You'll now see the files like <code>util\lib\DerelictUtil.lib</code> on Windows and <code>util/lib/libDerelictUtil.a</code> elsewhere. To use the packages in your project, you need to configure your build tool or IDE to find these libraries along with the source. The import path needs to be set to include the <code>source</code> directory of each packge, e.g. <code>glfw3/source</code>, and the library path the <code>lib</code> directory of each package, e.g. <code>glfw3/lib</code>. Alternatively, you can copy all of the source files to a common root directory, do the same for the library files, and add one directory each to the import and library path configurations in your build tool instead of three.</p>
+<h3 id="fetching-packages-with-dub">Fetching packages with dub<a class="headerlink" href="#fetching-packages-with-dub" title="Permanent link">&para;</a></h3>
+<p>Using the same hypothetical project as the example in the previous section, we'll see how to obtain DerelictGL3 <code>2.0.0</code>, DerelictGLFW3 <code>4.0.0</code>, and DerelictUtil <code>3.0.0</code> via <code>dub</code>. Note that using this approach is akin to cloning the repositories with git and checkout out a specific git tag.</p>
+<p>Starting from the same project root directory as above, the following commands will manually fetch each package.</p>
+<div class="codehilite"><pre><span></span>cd derelict
+dub fetch --cache=local derelict-glfw3 --version=4.0.0
+dub fetch --cache=local derelict-gl3 --version=2.0.0
+dub fetch --cache=local derelict-util --version=3.0.0
+</pre></div>
+
+
+<p>The <code>--cache=local</code> argument causes each package to be installed in subdirectories named using the <code>package-name-x.x.x</code> format, e.g. <code>derelict-glfw3-4.0.0</code>. Each of these directories will cotian a subdirectory that matches the DUB package name, e.g. <code>derelict-glfw3-4.0.0/derelict-glfw3</code>. This second subdirectory is the package root. </p>
+<p>As before, DUB needs to be told where to find DerelictUtil.</p>
+<div class="codehilite"><pre><span></span>dub add-local derelict-util-3.0.0/derelict-util
 </pre></div>
 
 
 <p>With that, all three packages are ready to build.</p>
-<div class="codehilite"><pre><span></span>cd derelict-glfw3-3.1.0
-dub build -brelease
-cd ../derelict-gl3-1.0.19
-dub build -brelease
-cd ../derelict-util-2.0.4
-dub build -brelease
+<div class="codehilite"><pre><span></span>cd derelict-glfw3-4.0.0/derelict-glfw3
+dub build -brelease -ax86_64
+cd ../derelict-gl3-2.0.0/derelict-gl3
+dub build -brelease -ax86_64
+cd ../derelict-util-3.0.0/derelict-util
+dub build -brelease -ax86_64
 </pre></div>
 
 
-<p>This will build optimized versions of each library. To build debug versions, omit the <code>-brelease</code> flag. To explicitly build 64-bit binaries, add <code>-ax86_64</code> to each command line.</p>
-<p>From here on out, assume <strong>$DERELICT</strong> is the path to the derelict directory, whether that is <strong>C:\derelict</strong> or <strong>C:\dev\derelict</strong> or whatever on Windows, or <strong>~/dev/derelict</strong> or whatever on other platforms. Most IDEs and build tools on Windows can work with forward slashes, but change them to backslashes in the following paths if needed.</p>
-<p>At this point, a platform-specific library should exist in the <strong>lib</strong> sudirectory of each package. In order to compile a project using these libraries, the compiler will first need to be able to find the Derelict source modules so that it can parse the import statements it encounters. The following paths are the ones which must be configure in whatever build system is being used.</p>
-<div class="codehilite"><pre><span></span>$DERELICT/derelict-glfw3-2.0.0/source
-$DERELICT/derelict-gl3-1.0.18/source
-$DERELICT/derelict-util-2.0.4/source
-</pre></div>
-
-
-<p>In order to link an executable, the linker will need to know which libraries to link with and where to find them. The libraries needed in this example are shown below, along with their full paths. These will need to be configured appropriately in the build system.</p>
-<p>On Windows the libraries are in the <strong>DerelictFoo.lib</strong> format.</p>
-<div class="codehilite"><pre><span></span>$DERELICT\derelict-glfw3-2.0.0\lib\DerelictGLFW3.lib
-$DERELICT\derelict-gl3-1.0.18\lib\DerelictGL3.lib
-$DERELICT\derelict-util-2.0.4\lib\DerelictUtil.lib
-</pre></div>
-
-
-<p>On POSIX systems the libraries are in the <strong>libDerelictFoo.a</strong> format.</p>
-<div class="codehilite"><pre><span></span>$DERELICT/DerelictSDL2/lib/libDerelictSDL2.a
-$DERELICT/DerelictGL3/lib/libDerelictGL3.a
-$DERELICT/DerelictUtil/lib/libDerelictUtil.a
-</pre></div>
-
-
-<p>It may prove convenient to create a common <strong>$DERELICT/lib</strong> directory, copy all of the libraries there, and then configure the build system to search for all libraries in that path. Then the path need not be included when specifying each library in the build system's configuration.</p>
-<p><strong>Note For Non-Windows Systems:</strong> When building on Mac, Linux, or one of the BSDs), it may also be necessary to link with <strong>libdl</strong>. This is used by DerelictUtil to load shared libraries dynamically at runtime.</p>
+<p>This will build optimized 64-bit versions of each library. To build debug versions, omit the <code>-brelease</code> flag. To build 32-bit binaries, omit the <code>-ax86_64</code>. On Windows, to build 32-bit COFF binaries, replace <code>ax86_64</code> with <code>x86_mscoff</code>.</p>
+<p>You'll now see the files like <code>derelict-util-3.0.0\derelict-util\lib\DerelictUtil.lib</code> on Windows and <code>derelict-util-3.0.0/derelict-util/lib/libDerelictUtil.a</code> elsewhere. To use the packages in your project, you need to configure your build tool or IDE to find these libraries along with the source. The import path needs to be set to include the <code>source</code> directory of each packge, e.g. <code>derelict-glfw3-4.0.0/derelict-glfw3/source</code>, and the library path the <code>lib</code> directory of each package, e.g. <code>derelict-glfw3-4.0.0/derelict-glfw3/lib</code>. Alternatively, you can copy all of the source files to a common root directory, do the same for the library files, and add one directory each to the import and library path configurations in your build tool instead of three.</p>
+<div class="admonition note">
+<p class="admonition-title">For Linux</p>
+<p>When compiling executables that use Derelict dynamic bindings on Linux, it's necessary to link with <code>libdl</code>. This is used by DerelictUtil to load shared libraries dynamically at runtime.</p>
+</div>
 <p>Failure to properly configure the build system will result in compilation or linker errors. It is beyond the scope of this documentation to describe how to configure the various IDEs and build tools people may use with D. Learning to do so is entirely up to the user.</p>
                 
                   

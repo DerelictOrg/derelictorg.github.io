@@ -563,7 +563,7 @@
 
 
 <p>The use of the <code>ShouldThrow</code> enum makes it easier to remember which value to return when implementing the callback. A simple <code>true</code> or <code>false</code> can sometimes be confusing: does <code>true</code> mean throw or don't throw? Because of the enum, <code>derelict.util.exception</code> must be imported, but there is no confusion.</p>
-<p>The important point here is that the callback must be set <em>before</em> calling the <code>load</code> method. Otherwise, the loader will have no callback to call. Also note that this is a basic example. There is usually more than one function that must be ignored. When using a <code>MissingSymbolCallback</code>, it is imperative to check the change log for each new version of the bound C library to understand what has changed between versions so that a complete set of symbol names can be covered. The <code>SharedLibVersion</code> feature, where supported, uses selective symbol loading internally.</p>
+<p>The important point here is that the callback must be set <em>before</em> calling the <code>load</code> method. Otherwise, the loader will have no callback to call. Also note that this is a basic example. There is usually more than one function that must be ignored. When using a <code>MissingSymbolCallback</code>, it is imperative to check the change log for each new version of the bound C library to understand what has changed between versions so that a complete set of symbol names can be covered. The <a href="../loader#sharedlibversion"><code>SharedLibVersion</code> feature</a>, where supported, uses selective symbol loading internally.</p>
                 
                   
                 
