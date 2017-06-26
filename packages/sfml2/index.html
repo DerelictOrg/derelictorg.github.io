@@ -435,9 +435,61 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        DerelictSFML2
+      </label>
+    
     <a href="./" title="DerelictSFML2" class="md-nav__link md-nav__link--active">
       DerelictSFML2
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#releases" title="Releases" class="md-nav__link">
+    Releases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-derelictsfml2" title="Using DerelictSFML2" class="md-nav__link">
+    Using DerelictSFML2
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obtaining-the-csfml-binaries" title="Obtaining the CSFML binaries" class="md-nav__link">
+    Obtaining the CSFML binaries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-the-csfml-libraries" title="Loading the CSFML libraries" class="md-nav__link">
+    Loading the CSFML libraries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -462,6 +514,47 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#releases" title="Releases" class="md-nav__link">
+    Releases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-derelictsfml2" title="Using DerelictSFML2" class="md-nav__link">
+    Using DerelictSFML2
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obtaining-the-csfml-binaries" title="Obtaining the CSFML binaries" class="md-nav__link">
+    Obtaining the CSFML binaries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-the-csfml-libraries" title="Loading the CSFML libraries" class="md-nav__link">
+    Loading the CSFML libraries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -477,7 +570,107 @@
                 
                   <h1>DerelictSFML2</h1>
                 
-                <p>Yeah, yeah. I'm getting there. Patience, please.</p>
+                <p>DerelictSFML2 provides both <a href="../../bindings">static and dynamic bindings</a> the 2.x series of [SFML (Simple and Fast Multimedia Library)]. DerelictSFML2 does not support Derelict's [SharedLibVersion] feature.</p>
+<p>SFLM is a C++ library. Although D has some support for binding to C++, Derelict packages only bind to C APIs. The SFML project provides such an API in the form of <a href="https://github.com/SFML/CSFML">CSFML</a>. When using DerelictSFML2, the CSFML distribution is required.</p>
+<p>SFML consists of five modules, all of which are bundled as independent libraries in the same distribution and share the same version number: System, Window, Graphics, Audio and Network. Each library has a corresponding Derelict loader.</p>
+<h3 id="releases">Releases<a class="headerlink" href="#releases" title="Permanent link">&para;</a></h3>
+<p>The DUB package name of DerelictSFML2 is <code>derelict-sfml2</code>.</p>
+<p>The current DUB package version is <code>~&gt;4.0.0-beta</code>.</p>
+<p>The following table shows the correlation between DerelictSFML2 releases (the most recent patch release of each <code>major.minor</code> series), its corresponding git branch, SFML versions, and DerelictUtil versions. The latest release is listed at the top and is the recommended version. When using DerelictSFML2 with other Derelict packages, please ensure all of the Derelict packages use the same DerelictUtil <code>major.minor</code> series.</p>
+<table>
+<thead>
+<tr>
+<th>DerelictSFML2 Version</th>
+<th>git Branch</th>
+<th>CSFML  Version</th>
+<th>DerelictUtil Version</th>
+<th>Supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.0.0-beta.1</td>
+<td><a href="https://github.com/DerelictOrg/DerelictSFML2/tree/master">master</a>/<a href="https://github.com/DerelictOrg/DerelictSFML2/tree/4.0">4.0</a></td>
+<td>2.4</td>
+<td>3.0.x</td>
+<td>&#x2714;</td>
+</tr>
+<tr>
+<td>3.0.2</td>
+<td><a href="https://github.com/DerelictOrg/DerelictSFML2/tree/3.0">3.0</a></td>
+<td>2.3</td>
+<td>2.0.x</td>
+<td>&#x2714; (bugfix only)</td>
+</tr>
+<tr>
+<td>2.0.5</td>
+<td><a href="https://github.com/DerelictOrg/DerelictSFML2/tree/2.0.0">2.0.0</a></td>
+<td>2.2</td>
+<td>2.0.x</td>
+<td>&#x2716;</td>
+</tr>
+<tr>
+<td>1.2.1</td>
+<td><a href="https://github.com/DerelictOrg/DerelictSFML2/tree/2.2">2.2</a></td>
+<td>2.2</td>
+<td>1.0.x</td>
+<td>&#x2716;</td>
+</tr>
+<tr>
+<td>1.1.0</td>
+<td><a href="https://github.com/DerelictOrg/DerelictSFML2/tree/2.1">2.1</a></td>
+<td>2.1</td>
+<td>1.0.x</td>
+<td>&#x2716;</td>
+</tr>
+<tr>
+<td>1.0.0</td>
+<td><a href="https://github.com/DerelictOrg/DerelictSFML2/tree/2.0">2.0</a></td>
+<td>2.0</td>
+<td>1.0.x</td>
+<td>&#x2716;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="using-derelictsfml2">Using DerelictSFML2<a class="headerlink" href="#using-derelictsfml2" title="Permanent link">&para;</a></h3>
+<p>See the generic documentation on [Compiling and Linuking] for generic information on incorporating any Derelict package in your project.</p>
+<h4 id="obtaining-the-csfml-binaries">Obtaining the CSFML binaries<a class="headerlink" href="#obtaining-the-csfml-binaries" title="Permanent link">&para;</a></h4>
+<p>OS X and Windows binaries of all releases of CSFML, from 2.0 to the latest, are available from the <a href="https://www.sfml-dev.org/download/csfml/">CSFML download page</a>.</p>
+<p>Linux binaries for some releases are available from the same page, but newer releases must either be built from source or installed from the system package manager where available.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As DerelictSFML2 does not support a static binding configuration, there's no need to install the development version of the SFML packages from any package manager.</p>
+</div>
+<p>The CSFML source is avaliable from the same download page and can also be obtained from <a href="https://github.com/SFML/CSFML">GitHub</a>. The steps required to compile CSFML on different platforms should be similar to those described in the instructions for compiling SFML at the <a href="https://github.com/SFML/SFML/wiki/Tutorials">SFML wiki</a>.</p>
+<h4 id="loading-the-csfml-libraries">Loading the CSFML libraries<a class="headerlink" href="#loading-the-csfml-libraries" title="Permanent link">&para;</a></h4>
+<p>DerelictSFML2 is a dynamic binding, so the functions from the CSFML libraries must be loaded at runtime via a call to the appropriate loader. </p>
+<p>Note that unlike most other Derelict packages, there is no loader in DerelictSFML2 that matches the package name, i.e. you will never call <code>DerelictSFML2.load</code>. Instead, each SFML library has a corresponding loader named with the format <code>DerelictSFML2Library</code>, e.g. <code>DerelictSFML2System</code>.</p>
+<p>Each library has its own module, so they can be imported individually like so:</p>
+<div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">sfml2</span><span class="p">.</span><span class="n">system</span><span class="p">,</span>
+       <span class="n">derelict</span><span class="p">.</span><span class="n">sfml2</span><span class="p">.</span><span class="n">window</span><span class="p">;</span>
+<span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">DerelictSFML2System</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
+    <span class="n">DerelictSFML2Window</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Alternatively, you can import them all at once with a single line, then all five loaders will be available:</p>
+<div class="codehilite"><pre><span></span><span class="k">import</span> <span class="n">derelict</span><span class="p">.</span><span class="n">sfml2</span><span class="p">;</span>
+<span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">DerelictSFML2Audio</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
+    <span class="n">DerelictSFML2Graphics</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
+    <span class="n">DerelictSFML2Network</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
+    <span class="n">DerelictSFML2System</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
+    <span class="n">DerelictSFML2Window</span><span class="p">.</span><span class="n">load</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All of the SFML libraries depend on the System library, but that <strong>does not</strong> mean you have to load the System library. On Windows, it needs to be in the same directory as the other libraries (on other systems it will generally be in the proper location) for them to find it, but you only need to load it yourself if you intend to call any functions from it.</p>
+</div>
                 
                   
                 

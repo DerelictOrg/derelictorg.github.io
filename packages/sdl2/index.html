@@ -608,7 +608,7 @@
 <h3 id="releases">Releases<a class="headerlink" href="#releases" title="Permanent link">&para;</a></h3>
 <p>The DUB package name of DerelictSDL2 is <code>derelict-sdl2</code>.</p>
 <p>The current DUB package version is <code>~&gt;3.0.0-beta</code>.</p>
-<p>The following table shows the correlation between DerelictSDL2 releases (the most recent patch release of each <code>major.minor</code> series), its corresponding git branch, GLFW versions, and DerelictUtil versions. The latest release is listed at the top and is the recommended version. When using DerelictSDL2 with other Derelict packages, please ensure all of the Derelict packages use the same DerelictUtil <code>major.minor</code> series.</p>
+<p>The following table shows the correlation between DerelictSDL2 releases (the most recent patch release of each <code>major.minor</code> series), its corresponding git branch, SDL versions, and DerelictUtil versions. The latest release is listed at the top and is the recommended version. When using DerelictSDL2 with other Derelict packages, please ensure all of the Derelict packages use the same DerelictUtil <code>major.minor</code> series.</p>
 <table>
 <thead>
 <tr>
@@ -665,6 +665,10 @@
 </tbody>
 </table>
 <p>All new development happens on the master branch. Pull requests and issues reported on unsupported branches will be ignored. Only the 3.0.x series supports the static binding configuration. The 2.1.x series should be preferred only for compatibility with other Derelict packages that require DerelictUtil 2.0.x.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The satellite libraries are distributed separately from the main SDL packages and have their own versioning scheme. However, their APIs change very rarely, so they are excluded from the table above. The latest release of any of the satellite libraries should be compatible with any version of DerelictSDL2.</p>
+</div>
 <p>[2.0.2] https://github.com/DerelictOrg/DerelictSDL2/tree/2.0.2</p>
 <h3 id="using-derelictsdl2">Using DerelictSDL2<a class="headerlink" href="#using-derelictsdl2" title="Permanent link">&para;</a></h3>
 <p>See the generic documentation on [Compiling and Linuking] for generic information on incorporating any Derelict package in your project.</p>
