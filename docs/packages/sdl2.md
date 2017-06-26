@@ -15,7 +15,7 @@ The DUB package name of DerelictSDL2 is `derelict-sdl2`.
 
 The current DUB package version is `~>3.0.0-beta`.
 
-The following table shows the correlation between DerelictSDL2 releases (the most recent patch release of each `major.minor` series), its corresponding git branch, GLFW versions, and DerelictUtil versions. The latest release is listed at the top and is the recommended version. When using DerelictSDL2 with other Derelict packages, please ensure all of the Derelict packages use the same DerelictUtil `major.minor` series.
+The following table shows the correlation between DerelictSDL2 releases (the most recent patch release of each `major.minor` series), its corresponding git branch, SDL versions, and DerelictUtil versions. The latest release is listed at the top and is the recommended version. When using DerelictSDL2 with other Derelict packages, please ensure all of the Derelict packages use the same DerelictUtil `major.minor` series.
 
 | DerelictSDL2 Version  | git Branch     | SDL  Version | DerelictUtil Version | Supported |
 | --------------------- | ----------     | ------------ | -------------------- | --------- |
@@ -27,6 +27,9 @@ The following table shows the correlation between DerelictSDL2 releases (the mos
 | 1.1.17                | n/a            | 2.0.0        | 1.0.x                | &#x2716;  |
 
 All new development happens on the master branch. Pull requests and issues reported on unsupported branches will be ignored. Only the 3.0.x series supports the static binding configuration. The 2.1.x series should be preferred only for compatibility with other Derelict packages that require DerelictUtil 2.0.x.
+
+!!! note
+    The satellite libraries are distributed separately from the main SDL packages and have their own versioning scheme. However, their APIs change very rarely, so they are excluded from the table above. The latest release of any of the satellite libraries should be compatible with any version of DerelictSDL2.
 
 [master]: https://github.com/DerelictOrg/DerelictSDL2/tree/master
 [3.0]: https://github.com/DerelictOrg/DerelictSDL2/tree/3.0
