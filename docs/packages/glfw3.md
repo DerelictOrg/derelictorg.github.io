@@ -67,10 +67,10 @@ By default, DerelictGLFW3 will be configured as a dynamic binding. There are two
     "derelict-glfw3": "derelict-glfw3-static"
 },
 "libs-windows": {
-    "glfw3dll"
+    ["glfw3dll"]
 },
 "libs-posix": {
-    "glfw3"
+    ["glfw3"]
 }
 ```
 
@@ -91,10 +91,10 @@ The alternative is to replace the `subConfiguration` with a `versions` entry and
 },
 "versions": ["DerelictGLFW3_Static"],
 "libs-windows": {
-    "glfw3dll"
+    ["glfw3dll"]
 },
 "libs-posix": {
-    "glfw3"
+    ["glfw3"]
 }
 ```
 

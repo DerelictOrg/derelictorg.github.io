@@ -88,7 +88,7 @@ By default, DerelictSDL2 will be configured as a dynamic binding. There are two 
     "derelict-sdl2": "derelict-sdl2-static"
 },
 "libs": {
-    "sdl2"
+    ["sdl2"]
 },
 ```
 
@@ -108,7 +108,7 @@ The alternative is to replace the `subConfiguration` with a `versions` entry and
 },
 "versions": ["DerelictSDL2_Static"],
 "libs": {
-    "sdl2"
+    ["sdl2"]
 }
 ```
 
