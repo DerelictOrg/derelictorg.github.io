@@ -553,8 +553,8 @@
 <p>When creating a project for DUB to manage, a configuration file of the name <strong>dub.json</strong> or <strong>dub.sdl</strong> must be provided. This documentation is not a tutorial on general DUB use, so to learn more about using DUB from the command line and configuring DUB packages, please see the <a href="https://code.dlang.org/getting_started">DUB documentation</a>. For more DUB assitance, visit the <a href="../forum.rejectedsoftware.com/groups/rejectedsoftware.dub/">DUB forums</a>.</p>
 <p>To use any package from the DerelictOrg collection in your project, you'll simply need to add it to your project configuration as a dependency. When you execute <code>dub</code> or <code>dub build</code> in your project configuration's root directory, DUB will make sure that the dependencies are installed, compiled and linked. You can upgrade to the latest version of each of your project's dependencies by executing <code>dub upgrade</code> in the same directory.</p>
 <p>All packages from DerelictOrg are registered in the DUB registry under names that are formatted in a specific format derived from the package name. For example, the package DerelictSDL2 is registered as <code>derelict-sdl2</code> and the package DerelictGL3 as <code>derelict-gl3</code>. Every Derelict package under the DerelictOrg umbrella follows that pattern.</p>
-<p>Some people maintain third-party Derelict-style packages, using DerelictUtil as a foundation, outside of the DerelictOrg group. Some of these packages are registred with names using a format that puts <code>derelict-extras</code> in front of the package name. For example, a third-party package called DerelictFoo might be registered as <code>derelict-extras-foo</code>. While this approach is encouraged, many such packages are still registered as <code>derelict-foo</code>. Still others might use another format entirely. Please be aware that the DerelictOrg maintainers are not responsible for such packages and any support requests should be directed to the person or persons who are via the links to their source repositories from the package pages at the <a href="https://code.dlang.org/">DUB Package Registry</a>.</p>
-<p>To enable any package from the DUB registry, including the Derelict packages, in a DUB-managed project, simply add the registered package name, coupled with a version string, as a dependency in the project configuration. For example, a project using both DerelictSDL2 and DerelictGL3 would have something like the following in its configuration:</p>
+<p>Some people maintain third-party Derelict-style packages, using DerelictUtil as a foundation, outside of the DerelictOrg group. Some of these packages are registred with names using a format that puts <code>derelict-extras</code> in front of the package name. For example, a third-party package called DerelictFoo might be registered as <code>derelict-extras-foo</code>. While this approach is encouraged, many such packages are still registered as <code>derelict-foo</code>. Still others might use another format entirely. Please be aware that the DerelictOrg maintainers are not responsible for such packages and any support requests should be directed to the person or persons who are responsible via the links to their source repositories from the package pages at the <a href="https://code.dlang.org/">DUB Package Registry</a>.</p>
+<p>To enable any package from the DUB registry in a DUB-managed project, simply add the registered package name, coupled with a version string, as a dependency in the project configuration. For example, a project using both DerelictSDL2 and DerelictGL3 would have something like the following in its configuration:</p>
 <p><strong>dub.json</strong></p>
 <div class="codehilite"><pre><span></span><span class="s2">&quot;dependencies&quot;</span><span class="err">:</span> <span class="p">{</span>
     <span class="nt">&quot;derelict-sdl2&quot;</span><span class="p">:</span> <span class="s2">&quot;~&gt;3.0.0&quot;</span><span class="p">,</span>
@@ -569,32 +569,40 @@ dependency <span class="s2">&quot;derelict-gl3&quot;</span> <span class="nv">ver
 </pre></div>
 
 
-<p>This specifies a version of DerelictSDL2 <em>greater than or equal to</em> <code>2.0.0</code> and <em>less than</em> <code>2.1.0</code>, and similarly for DerelictGL3 <code>1.0.18</code> - <code>1.1.0</code>. When compiling a project for the first time, DUB will check the local system for any version matching the constraints and, if none is found, will fetch the latest from git that does match. Later, when running <code>dub upgrade</code>, DUB will look to see if a newer version which matches the constraints is available. For more information on DUB dependencies, see the <a href="https://code.dlang.org/getting_started">DUB documentation</a> and the <a href="https://github.com/dlang/dub/wiki/Version-management">DUB Wiki page</a> on version management. See the page <a href="../../packages/latest">Latest Versions</a> for a table of all of the latest release version tags for the supported DerelictOrg packages.</p>
+<p>This specifies a version of DerelictSDL2 <em>greater than or equal to</em> <code>2.0.0</code> and <em>less than</em> <code>2.1.0</code>, and similarly for DerelictGL3 <code>1.0.18</code> - <code>1.1.0</code>. When compiling a project for the first time, DUB will check the local system for any version that satisfies the constraints and, if none is found, will fetch from git a version that does. Later, when running <code>dub upgrade</code>, DUB will look to see if a newer version which satisfies the constraints is available. For more information on DUB dependencies, see the <a href="https://code.dlang.org/getting_started">DUB documentation</a> and the <a href="https://github.com/dlang/dub/wiki/Version-management">DUB Wiki page</a> on version management. See the page <a href="../../packages/latest">Latest Versions</a> for a table of all of the latest release version tags for the supported DerelictOrg packages.</p>
 <h3 id="dynamic-bindings">Dynamic bindings<a class="headerlink" href="#dynamic-bindings" title="Permanent link">&para;</a></h3>
 <p>All Derelict packages are configured as dynamic bindings by default (see <a href="../../bindings">this page</a> to understand the difference between static and dynamic bindings). This does not mean they require dynamic linking. There is no link-time dependency at all. Instead, the C shared library is loaded manually at runtime with a call to a <code>load</code> function on a loader instance, e.g. <code>DerelictSDL2.load</code>.</p>
-<p>For this to work, the shared library needs to be on the system path. On Posix systems, that usually means installing from the package manager. It is not necessary to install the development packages for this to work, given the lack of a link-time dependency. For example, Ubuntu users can install SDL via <code>sudo apt-get install libsdl2-2.0</code>, but need not install <code>libsdl2-dev</code>. On Windows, this usually means placing the C DLL in the executable's directory, though <a href="../../loading/loader">Derelict loaders</a> support loading from custom locations, e.g. <code>DerelictSDL2.load("dlls/SDL2.dll")</code>.</p>
+<p>For this to work, the shared library needs to be on the system path. On Posix systems, that usually means installing the C library via the system package manager. It is not necessary to install the C library's development packages for this to work, given the lack of a link-time dependency. For example, Ubuntu users can install SDL via <code>sudo apt-get install libsdl2-2.0</code>, but need not install <code>libsdl2-dev</code>. On Windows, this usually means placing the C DLL in the executable's directory, though <a href="../../loading/loader">Derelict loaders</a> support loading from custom locations, e.g. <code>DerelictSDL2.load("dlls/SDL2.dll")</code>.</p>
 <h3 id="static-bindings">Static bindings<a class="headerlink" href="#static-bindings" title="Permanent link">&para;</a></h3>
 <p>Derelict packages that support a static binding configuration can be configured using a <code>subConfiguration</code> entry in the project config, or a <code>versions</code> entry. The subconfigurations are in the format of <code>package-name-static</code>, e.g. <code>derelict-sdl2-static</code>. This is the preferred approach, as it completely eliminates the dynamic binding modules from the build.</p>
 <p><strong>dub.json</strong></p>
-<div class="codehilite"><pre><span></span><span class="s2">&quot;subConfigurations&quot;</span><span class="err">:</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><span class="s2">&quot;dependencies&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&quot;derelict-sdl2&quot;</span><span class="p">:</span> <span class="s2">&quot;~&gt;3.0.0&quot;</span>
+<span class="p">}</span><span class="err">,</span>
+<span class="s2">&quot;subConfigurations&quot;</span><span class="err">:</span> <span class="p">{</span>
     <span class="nt">&quot;derelict-sdl2&quot;</span><span class="p">:</span> <span class="s2">&quot;derelict-sdl2-static&quot;</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p><strong>dub.sdl</strong></p>
-<div class="codehilite"><pre><span></span>subConfiguration <span class="s2">&quot;derelict-sdl2&quot;</span> <span class="s2">&quot;derelict-sdl2-static&quot;</span>
+<div class="codehilite"><pre><span></span>dependency <span class="s2">&quot;derelict-sdl2&quot;</span> <span class="nv">version</span><span class="o">=</span><span class="s2">&quot;~&gt;3.0.0&quot;</span>
+subConfiguration <span class="s2">&quot;derelict-sdl2&quot;</span> <span class="s2">&quot;derelict-sdl2-static&quot;</span>
 </pre></div>
 
 
 <p>Versions can be <code>Derelict_Static</code>, which enables the static binding configuration for all packages in a project that support it, or <code>PackageName_Static</code>, e.g. <code>DerelictSDL2_Static</code> which enables it for the specific package.</p>
 <p><strong>dub.json</strong></p>
-<div class="codehilite"><pre><span></span><span class="s2">&quot;versions&quot;</span><span class="err">:</span> <span class="p">[</span><span class="s2">&quot;DerelictSDL2_Static&quot;</span><span class="p">]</span>
+<div class="codehilite"><pre><span></span><span class="s2">&quot;dependencies&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&quot;derelict-sdl2&quot;</span><span class="p">:</span> <span class="s2">&quot;~&gt;3.0.0&quot;</span>
+<span class="p">}</span><span class="err">,</span>
+<span class="s2">&quot;versions&quot;</span><span class="err">:</span> <span class="p">[</span><span class="s2">&quot;DerelictSDL2_Static&quot;</span><span class="p">]</span>
 </pre></div>
 
 
 <p><strong>dub.sdl</strong></p>
-<div class="codehilite"><pre><span></span>versions <span class="s2">&quot;DerelictSDL2_Static&quot;</span>
+<div class="codehilite"><pre><span></span>dependency <span class="s2">&quot;derelict-sdl2&quot;</span> <span class="nv">version</span><span class="o">=</span><span class="s2">&quot;~&gt;3.0.0&quot;</span>
+versions <span class="s2">&quot;DerelictSDL2_Static&quot;</span>
 </pre></div>
 
 
