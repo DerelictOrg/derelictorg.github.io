@@ -1,11 +1,12 @@
 DerelictSFML2 provides both [static and dynamic bindings] the 2.x series of [SFML (Simple and Fast Multimedia Library)]. DerelictSFML2 does not support Derelict's [SharedLibVersion] feature.
 
-SFLM is a C++ library. Although D has some support for binding to C++, Derelict packages only bind to C APIs. The SFML project provides such an API in the form of [CSFML]. When using DerelictSFML2, the CSFML distribution is required.
+SFML is a C++ library. Although D has some support for binding to C++, Derelict packages only bind to C APIs. The SFML project provides such an API in the form of [CSFML]. When using DerelictSFML2, the CSFML distribution is required.
 
 SFML consists of five modules, all of which are bundled as independent libraries in the same distribution and share the same version number: System, Window, Graphics, Audio and Network. Each library has a corresponding Derelict loader.
 
 [static and dynamic bindings]: ../bindings
-[SFML2 (Simple and Fast Multimedia Library)]: https://www.sfml-dev.org/
+[SharedLibVersion]: ../loading/loader/#ShaderLibVersion
+[SFML (Simple and Fast Multimedia Library)]: https://www.sfml-dev.org/
 [CSFML]: https://github.com/SFML/CSFML
 
 ### Releases
@@ -18,7 +19,7 @@ The following table shows the correlation between DerelictSFML2 releases (the mo
 
 | DerelictSFML2 Version  | git Branch     | CSFML  Version | DerelictUtil Version | Supported |
 | ---------------------  | ----------     | -------------- | -------------------- | --------- |
-| 4.0.0-beta.1           | [master]/[4.0] | 2.4            | 3.0.x                | &#x2714;  |
+| 4.0.0-beta             | [master]/[4.0] | 2.4            | 3.0.x                | &#x2714;  |
 | 3.0.2                  | [3.0]          | 2.3            | 2.0.x                | &#x2714; (bugfix only)  |
 | 2.0.5                  | [2.0.0]        | 2.2            | 2.0.x                | &#x2716;  |
 | 1.2.1                  | [2.2]          | 2.2            | 1.0.x                | &#x2716;  |
@@ -35,7 +36,7 @@ The following table shows the correlation between DerelictSFML2 releases (the mo
 
 ### Using DerelictSFML2
 
-See the generic documentation on [Compiling and Linuking] for generic information on incorporating any Derelict package in your project.
+See the generic documentation on [Compiling and Linking] for generic information on incorporating any Derelict package in your project.
 
 [Compiling and Linking]: ../building/overview
 

@@ -1,4 +1,4 @@
-All Derelict packages have one thing in common. Because each package is a [dynamic binding], it must be loaded at runtime. The interface for this is the same across all packages. The DerelictUtil package contains all of the functionality needed to load a dynamic library at runtime. Each binding contains a loader class that extends from `SharedLibLoader`, a class found in `derelict.util.loader`. This class exposes two methods for dynamically loading shared libraries.
+All Derelict packages have one thing in common. Because each package is a [dynamic binding], it must be loaded at runtime. The interface for this is the same across all packages. The DerelictUtil package contains all of the functionality needed to load a dynamic library at run time. Each binding contains a loader class that extends from `SharedLibLoader`, a class found in `derelict.util.loader`. This class exposes two methods for dynamically loading shared libraries.
 
 Some of the Derelict packages support a static binding configuration that eliminates the need to use a `SharedLibLoader`. Instead, the C library is linked either statically or dynamically when compiling the executable. This page is exclusively about using Derelict packages in the dynamic binding configuration.
 
@@ -24,12 +24,12 @@ void main()
 
 It is important to understand the system library path for each system an application is intended to support. For example, on Windows the system loader will search for the SDL DLL first in the application directory, then in the current working directory, then in a couple of predefined system directories before falling back on those specified in the `PATH` environment variable (see [MSDN] for more details). On other platforms, the application directory and current working directory typically are not searched at all (see [this page] for Linux and [this one] for Mac OS X).
 
-The default library names are selected for each Derelict package based on common formats for each operating system. Sometimes, it is necessary to bypass the default names. For example, a developer may decide to ship special copies of a shared library using a non-standard name, or storing them in a subdirectory under the application directory. In such a case, an overload of the `load` method should be used. One form accepts an array of strings, each a library name. Another overload takes single string containing a comma-separated list of library names. Each name can include a path. If no path is specified, the default search path will be used.
+The default library names are selected for each Derelict package based on common formats for each operating system. Sometimes, it is necessary to bypass the default names. For example, a developer may decide to ship special copies of a shared library using a non-standard name, or storing them in a subdirectory under the application directory. In such a case, an overload of the `load` method should be used. One form accepts an array of strings, each a library name. Another overload takes a single string containing a comma-separated list of library names. Each name can include a path. If no path is specified, the default search path will be used.
 
 ```D
 import derelict.sdl2.sdl;
 
-version Windows libName = "dlls\\MySDL2.dll";
+version(Windows) libName = "dlls\\MySDL2.dll";
 else libName = "MySDL2.so";
 
 void main()
@@ -46,9 +46,9 @@ void main()
 
 Some Derelict loaders, but not all, support version-specific loading. In other words, it's possible to tell the loader to attempt to load a lower version of a shared library than the highest version it supports. An example is DerelictFI.
 
-DerelictFI is a binding to the [FreeImage library]. FreeImage is supported on every major platform. Most Linux distributions make it available through the system package manager, but the version available is always behind the highest version supported by DerelictFI. A program that simply calls `DerelictFI.load()` on such systems will fail to load the library.
+DerelictFI is a binding to the [FreeImage library]. FreeImage is supported on every major platform. Most Linux distributions make it available through the system package manager, but the version available is usually behind the highest version supported by DerelictFI. A program that simply calls `DerelictFI.load()` on such systems will fail to load the library.
 
-To work around this, a user can choose the minimum required version of FreeImage. The lowest supported by DerelictFI is `3.15.0`. If none of the functions added in later versions of FreeImage are needed, then the call to `DerelictFI.load` can be made like so:
+To work around this, a program using DerelictFI can select the minimum required version of the FreeImage library. The lowest supported by DerelictFI is `3.15.0`. If none of the functions added in later versions of FreeImage are needed, then the call to `DerelictFI.load` can be made like so:
 
 ```D
 DerelictFI.load(SharedLibVersion(3, 15, 0));

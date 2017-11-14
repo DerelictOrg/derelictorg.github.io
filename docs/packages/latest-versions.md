@@ -1,4 +1,4 @@
-The following table shows the latest release version of every supported package in the DerelictOrg umbrella, along with the name of the C library to which it binds and name of the primary maintainer. Click on the package name to go to the package-specific documentation (work in progress) for details, the C library names to visit the C project pages, and the maintainer names to visit their GitHub profiles.
+The following table shows the latest release version of every supported package in the DerelictOrg umbrella, along with the name of the C library to which it binds and the name of the primary maintainer. Click on the package name to go to the package-specific documentation (work in progress) for details, the C library names to visit the C project pages, and the maintainer names to visit their GitHub profiles.
 
 !!! note 
     The following packages are not currently supported, though they may become so in the future: **DerelictAllegro5**, **DerelictCEF**, **DerelictGLES**.

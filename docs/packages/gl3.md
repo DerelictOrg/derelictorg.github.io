@@ -14,10 +14,10 @@ Unlike other Derelict packages, DerelictGL3 releases do not correspond to any sp
 
 | DerelictGL3 Version   | git Branch     | OpenGL Version | DerelictUtil Version | Supported |
 | --------------------- | ----------     | ------------   | -------------------- | --------- |
-| 2.0.0-beta.1          | [master]/[2.0] | 3.2.x          | 3.0.x                | &#x2714;  |
+| 2.0.0-beta            | [master]/[2.0] | 3.2.x          | 3.0.x                | &#x2714;  |
 | 1.0.x                 | [1.0]          | 1.0 - 4.5      | 1.0.x - 3.0.x        | &#x2714;  |
 
-The `1.0.x` series is compatible with all DerelictUtil versions, as long as it is compiled against and linked with the same version of DerelictUtil as an executable. Unfortunately, in an oversight lost to time, the `1.0.x` series uses a `derelict-util` dependency of `>=1.0.3` which disallows anything less than version `1.0.3`, but has no contraint on later versions. As such, it's possible to independently compile the DerelictGL3 library against version `1.0.x` or `2.0.x` of DerelictUtil, then attempt to link with DerelictUtil `3.0.x` when building the executable.
+The `1.0.x` series is compatible with all DerelictUtil versions, as long as it is compiled against and linked with the same version of DerelictUtil as an executable. Unfortunately, in an oversight lost to time, the `1.0.x` series uses a `derelict-util` dependency of `>=1.0.3` which disallows anything less than version `1.0.3`, but has no constraint on later versions. As such, it's possible to independently compile the DerelictGL3 library against version `1.0.x` or `2.0.x` of DerelictUtil, then attempt to link with DerelictUtil `3.0.x` when building the executable.
 
 It's recommended to use DerelictGL3 `1.0.x` only when you need compatibility with the `2.0.x` series of DerelictUtil because of other Derelict packages. If you compile DerelictGL3 `1.0.x` independently, make sure you specify version `2.0.x` of DerelictUtil in your `dub.selections.json` file. Otherwise, DUB will pull down the latest DerelictUtil and link against it.
 
@@ -47,7 +47,7 @@ Out of the box, DerelictGL3 will attempt to load all available OpenGL versions a
 
 -----------------------------
 
-When this version is specified, the DerelictGL3 modules will not declare any types or function pointers. This must be handled by the user using a mixin template, `glFreeFuncs`. The following enables OpenGL versions 3.3 and lower:
+When this version is specified, the DerelictGL3 modules will not declare any types or function pointers. This must be handled by the user using a mixin template, `glFreeFuncs`. The following enables only OpenGL versions 3.3 and lower:
 
 ```d
 module mygl;
@@ -103,6 +103,9 @@ MyContext context;
 
 This is essentially what is done by the default `glContext` mixin. Note that in `glDecls`, `glFuncs`, and `glLoaders`, the second parameter is optional, with the default value of `false`.
 
+!!! note
+    There is a currently unresolved issue that causes the compiler to seemingly hang when using contexts and compiling with `-release`. Compilation eventually succeeds, but it can take a very long time.
+
 ### Loading the OpenGL library
 
 The steps required to gain access to different OpenGL versions may differ across operating systems. For example, on Windows OpenGL versions up to 1.1 may be dynamically linked, but 1.2 and above must be loaded dynamically at runtime after a context has been created. On Mac OS X, all of the OpenGL versions may be dynamically linked or dynamically loaded, and in the latter case a context need not be active.
@@ -114,7 +117,7 @@ This must be done before any OpenGL functions are called, but may happen before 
 2. **Create an OpenGL context.** 
 This may occur before or after `DerelictGL3.load` is called, but must be done before calling `DerelictGL3.reload` in the next step. DerelictGL3 does not provide the means of creating an OpenGL context. For that, use either the system API (like Win32) or a third-party library such as [SDL], [GLFW], or [SFML].
 3. **Call `DerelictGL3.reload`.**
-This must occur after `DerelictGL3.load` as been called and after an OpenGL context has been created. This will load all versions that have been configured from 1.2 and up, as well as any configured extensions. For maximum portability, this function should be called every time the OpenGL context is changed.
+This must occur after `DerelictGL3.load` has been called and after an OpenGL context has been created. This will load all versions that have been configured from 1.2 and up, as well as any configured extensions. For maximum portability, this function should be called every time the OpenGL context is changed.
 
 The following example demonstrates. It uses the default DerelictGL3 free function configuration. It does not show the code to create the context.
 
@@ -135,13 +138,13 @@ void main() {
 The steps are similar when using the context object configuration.
 
 1. **Call `DerelictGL3.load`.** 
-This must be done before any OpenGL functions are called, but may happen before or after a context has been created, but must be done before calling `load` on a context object in the last step. This will load the OpenGL shared library but does not load any OpenGL functions. Failure to load will result in an exception.
+This must be done before any OpenGL functions are called, but may happen before or after a context has been created, but must be done before calling `load` on a context object in the last step. This will load the OpenGL shared library but does not load any OpenGL functions. Failure to ca ll `DerelictGL3.load` will result in an exception.
 2. **Create an OpenGL context.** 
 This may occur before or after `DerelictGL3.load` is called, but must be done before calling `load` on a context object in the next step. DerelictGL3 does not provide the means of creating an OpenGL context. For that, use either the system API (like Win32) or a third-party library such as [SDL], [GLFW], or [SFML].
 3. **Call `load` on a context object instance.**
 This must occur after `DerelictGL3.load` as been called and after an OpenGL context has been created. For maximum portability, context objects should be created for and associated with each OpenGL context used in the program. Then, the `load` method can be called on each instance just once. This will load all configured OpenGL functions from 1.0 and up and any extensions that have been configured. When the OpenGL context changes, functions can be called through its associated object instance.
 
-The following examples demonstrates, using the default `GLContext` type.
+The following example demonstrates using the default `GLContext` type.
 
 ```d
 import derelict.opengl;
@@ -221,7 +224,7 @@ void main() {
 }
 ```
 
-To use extensions with context objects, you must define a custom context type. It is not currently possible to mix extension in to the default `GLContext`. Each extension declaration must be split into three parts: types, functions, and the loader.
+To use extensions with context objects, you must define a custom context type. It is not currently possible to mix extensions in to the default `GLContext`. Each extension declaration must be split into three parts: types, functions, and the loader.
 
 ```d
 module mygl;

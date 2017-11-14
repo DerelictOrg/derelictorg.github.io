@@ -19,7 +19,7 @@ The following table shows the correlation between DerelictSDL2 releases (the mos
 
 | DerelictSDL2 Version  | git Branch     | SDL  Version | DerelictUtil Version | Supported |
 | --------------------- | ----------     | ------------ | -------------------- | --------- |
-| 3.0.0-beta.2          | [master]/[3.0] | 2.0.0 - 2.0.5| 3.0.x                | &#x2714;  |
+| 3.0.0-beta            | [master]/[3.0] | 2.0.0 - 2.0.5| 3.0.x                | &#x2714;  |
 | 2.1.4                 | [2.1]          | 2.0.0 - 2.0.4| 2.0.x                | &#x2714; (bugfix only)  |
 | 2.0.2                 | [2.0.2]        | 2.0.0 - 2.0.4| 2.0.x                | &#x2716;  |
 | 1.9.7                 | n/a            | 2.0.2 - 2.0.3| 2.0.x                | &#x2716;  |
@@ -34,11 +34,11 @@ All new development happens on the master branch. Pull requests and issues repor
 [master]: https://github.com/DerelictOrg/DerelictSDL2/tree/master
 [3.0]: https://github.com/DerelictOrg/DerelictSDL2/tree/3.0
 [2.1]: https://github.com/DerelictOrg/DerelictSDL2/tree/2.1
-[2.0.2] https://github.com/DerelictOrg/DerelictSDL2/tree/2.0.2
+[2.0.2]: https://github.com/DerelictOrg/DerelictSDL2/tree/2.0.2
 
 ### Using DerelictSDL2
 
-See the generic documentation on [Compiling and Linuking] for generic information on incorporating any Derelict package in your project.
+See the generic documentation on [Compiling and Linking] for generic information on incorporating any Derelict package in your project.
 
 [Compiling and Linking]: ../building/overview
 
@@ -56,7 +56,7 @@ For the dynamic binding configuration, either the Runtime Binaries or the Develo
 
 Windows binaries for Visual Studio are also available via [NuGet] and [vcpkg].
 
-Binaries Mac OS X can be obtained through [Homebrew] or [MacPorts].
+Binaries for Mac OS X can be obtained through [Homebrew] or [MacPorts].
 
 Binaries for other systems can be obtained through the system package manager.
 
@@ -77,7 +77,7 @@ The SDL source can be downloaded from the download page or cloned from the [SDL 
 
 #### Choosing the configuration
 
-By default, DerelictSDL2 will be configured as a dynamic binding. There are two ways to enable the static binding configuration. The recommended way is to add a `subConfiguration` entry to your project configuration with the value `derelict-sdl2-static` and the appropriate library, as in the following examples. 
+By default, DerelictSDL2 will be configured as a dynamic binding. There are two ways to enable the static binding configuration. The recommended way is to add a `subConfiguration` entry to your project configuration with the value `derelict-sdl2-static` and link to the appropriate library, as in the following examples. 
 
 **dub.json**
 ```json
@@ -99,7 +99,7 @@ subConfiguration "derelict-sdl2" "derelict-sdl2-static"
 libs "sdl2"
 ```
 
-The alternative is to replace the `subConfiguration` with a `versions` entry and give it one of two values, either `Derelict_Static` or `DerelictSDL2_Static`. The former will enable the static binding configuration of any other Derelict packages in your project that support it. The latter will enable it only for DerelictSDL2.
+The alternative is to replace the `subConfiguration` with a `versions` entry and give it one of two values, either `Derelict_Static` or `DerelictSDL2_Static`. The former will enable the static binding configuration of all Derelict packages in your project that support it. The latter will enable it only for DerelictSDL2.
 
 **dub.json**
 ```json
@@ -160,7 +160,7 @@ void main() {
 ```
 
 !!! note 
-    If you want to use SDL 2.0.1 as a minimum version to take advantage of the [file system API] that was not available in 2.0.0, then be aware that there was a bug in version 2.0.1 on Windows that prevented the preference path from being created on the user's system. The bug was fixed in SDL 2.0.2. In this case, the following code will do the right thing:
+    If you want to use SDL 2.0.1 as a minimum version to take advantage of the [file system paths API] that was not available in 2.0.0, then be aware that there was a bug in version 2.0.1 on Windows that prevented the preference path from being created on the user's system. The bug was fixed in SDL 2.0.2. In this case, the following code will do the right thing:
 
 ```d
 import derelict.sdl2.sdl;
@@ -173,6 +173,7 @@ void main() {
 }
 ```
 
-See the loader documentation for more info.
+See the [loader documentation] for more info.
 
-[loader]: ../loading/loader
+[file system paths API]: https://wiki.libsdl.org/CategoryFilesystem
+[loader documentation]: ../loading/loader
