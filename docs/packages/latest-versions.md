@@ -5,28 +5,28 @@ The following table shows the latest release version of every supported package 
 
 | Package           | Latest Version | C Library                                | Maintainer         |
 | :------           | -------------- | ----------                               | ----------         |
-| DerelictAL        | 2.0.0-beta.1   | [OpenAL]                                 | [Mike Parker]      |
-| DerelictALURE     | 2.0.0-beta.1   | [ALURE (AL Utilities REtooled)]          | [Mike Parker]      |
-| DerelictASSIMP3   | 2.0.0-beta.1   | [ASSIMP (Open Asset Import Library)]     | [Mike Parker]      |
+| DerelictAL        | 2.0.0-beta     | [OpenAL]                                 | [Mike Parker]      |
+| DerelictALURE     | 2.0.0-beta     | [ALURE (AL Utilities REtooled)]          | [Mike Parker]      |
+| DerelictASSIMP3   | 2.0.0-beta     | [ASSIMP (Open Asset Import Library)]     | [Mike Parker]      |
 | DerelictBgfx      | 8.1.0          | [bgfx]                                   | [Guillaume Piolat] |
 | DerelictCL        | 3.1.0          | [OpenCL]                                 | [Guillaume Piolat] |
 | DerelictCUDA      | 3.1.0          | [CUDA]                                   | [Guillaume Piolat] |
 | DerelictENet      | 4.1.0          | [ENet]                                   | [Guillaume Piolat] |
-| DerelictFI        | 3.0.0-beta.1   | [FreeImage]                              | [Mike Parker]      |
-| DerelictFT        | 2.0.0-beta.1   | [FreeType]                               | [Mike Parker]      |
-| [DerelictGL3]     | 2.0.0-beta.1   | [OpenGL]                                 | [Mike Parker]      |
-| [DerelictGLFW3]   | 4.0.0-beta.1   | [GLFW]                                   | [Mike Parker]      |
-| DerelictIL        | 2.0.0-beta.1   | [DevIL]                                  | [Mike Parker]      |
-| DerelictLua       | 2.0.0-beta.1   | [Lua]                                    | [Mike Parker]      |
-| DerelictODE       | 3.0.0-beta.1   | [ODE (Open Dynamics Engine)]             | [Mike Parker]      |
-| DerelictOgg       | 2.0.0-beta.1   | [libogg]                                 | [Mike Parker]      |
-| DerelictPHYSFS    | 3.0.0-beta.1   | [PhysicsFS]                              | [Mike Parker]      |
-| DerelictPQ        | 3.0.0-beta.2   | [libpq]                                  | [Mike Parker]      |
-| [DerelictSDL2]    | 3.0.0-beta.2   | [SDL (Simple DirectMedia Layer)]         | [Mike Parker]      |
-| [DerelictSFML2]   | 4.0.0-beta.1   | [SFML]                                   | [Mike Parker]      |
-| DerelictTheora    | 2.0.0-beta.1   | [libtheora]                              | [Mike Parker]      |
-| DerelictUtil      | 3.0.0-beta.1   | n/a                                      | [Mike Parker]      |
-| DerelictVorbis    | 2.0.0-beta.1   | [libvorbis]                              | [Mike Parker]      |
+| DerelictFI        | 3.0.0-beta     | [FreeImage]                              | [Mike Parker]      |
+| DerelictFT        | 2.0.0-beta     | [FreeType]                               | [Mike Parker]      |
+| [DerelictGL3]     | 2.0.0-beta     | [OpenGL]                                 | [Mike Parker]      |
+| [DerelictGLFW3]   | 4.0.0-beta     | [GLFW]                                   | [Mike Parker]      |
+| DerelictIL        | 2.0.0-beta     | [DevIL]                                  | [Mike Parker]      |
+| DerelictLua       | 2.0.0-beta     | [Lua]                                    | [Mike Parker]      |
+| DerelictODE       | 3.0.0-beta     | [ODE (Open Dynamics Engine)]             | [Mike Parker]      |
+| DerelictOgg       | 2.0.0-beta     | [libogg]                                 | [Mike Parker]      |
+| DerelictPHYSFS    | 3.0.0-beta     | [PhysicsFS]                              | [Mike Parker]      |
+| DerelictPQ        | 3.0.0-beta     | [libpq]                                  | [Mike Parker]      |
+| [DerelictSDL2]    | 3.0.0-beta     | [SDL (Simple DirectMedia Layer)]         | [Mike Parker]      |
+| [DerelictSFML2]   | 4.0.0-beta     | [SFML]                                   | [Mike Parker]      |
+| DerelictTheora    | 2.0.0-beta     | [libtheora]                              | [Mike Parker]      |
+| DerelictUtil      | 3.0.0-beta     | n/a                                      | [Mike Parker]      |
+| DerelictVorbis    | 2.0.0-beta     | [libvorbis]                              | [Mike Parker]      |
 
 
 [DerelictGL3]: gl3
