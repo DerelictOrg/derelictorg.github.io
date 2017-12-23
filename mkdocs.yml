@@ -25,6 +25,7 @@ pages:
     - 'Load Failures' : 'loading/failure.md'
   - 'Packages' :
     - 'Latest Versions': 'packages/latest-versions.md'
+    - 'DerelictFT': 'packages/ft.md'
     - 'DerelictGL3': 'packages/gl3.md'
     - 'DerelictGLFW3': 'packages/glfw3.md'
     - 'DerelictSDL2': 'packages/sdl2.md'

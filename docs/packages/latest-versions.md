@@ -1,6 +1,6 @@
 The following table shows the latest release version of every supported package in the DerelictOrg umbrella, along with the name of the C library to which it binds and the name of the primary maintainer. Click on the package name to go to the package-specific documentation (work in progress) for details, the C library names to visit the C project pages, and the maintainer names to visit their GitHub profiles.
 
-!!! note 
+!!! note
     The following packages are not currently supported, though they may become so in the future: **DerelictAllegro5**, **DerelictCEF**, **DerelictGLES**.
 
 | Package           | Latest Version | C Library                                | Maintainer         |
@@ -13,7 +13,7 @@ The following table shows the latest release version of every supported package 
 | DerelictCUDA      | 3.1.0          | [CUDA]                                   | [Guillaume Piolat] |
 | DerelictENet      | 4.1.0          | [ENet]                                   | [Guillaume Piolat] |
 | DerelictFI        | 3.0.0-beta     | [FreeImage]                              | [Mike Parker]      |
-| DerelictFT        | 2.0.0-beta     | [FreeType]                               | [Mike Parker]      |
+| [DerelictFT]      | 2.0.0-beta     | [FreeType]                               | [Mike Parker]      |
 | [DerelictGL3]     | 2.0.0-beta     | [OpenGL]                                 | [Mike Parker]      |
 | [DerelictGLFW3]   | 4.0.0-beta     | [GLFW]                                   | [Mike Parker]      |
 | DerelictIL        | 2.0.0-beta     | [DevIL]                                  | [Mike Parker]      |
@@ -28,7 +28,7 @@ The following table shows the latest release version of every supported package 
 | DerelictUtil      | 3.0.0-beta     | n/a                                      | [Mike Parker]      |
 | DerelictVorbis    | 2.0.0-beta     | [libvorbis]                              | [Mike Parker]      |
 
-
+[DerelictFT]: ft
 [DerelictGL3]: gl3
 [DerelictGLFW3]: glfw3
 [DerelictSDL2]: sdl2
